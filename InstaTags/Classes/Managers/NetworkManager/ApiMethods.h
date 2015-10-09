@@ -1,0 +1,59 @@
+//
+//  ApiConstants.h
+//  InstaTags
+//
+//  Created by Dmitriy Demchenko on 9/25/15.
+//  Copyright (c) 2015 Dmitriy Demchenko. All rights reserved.
+//
+
+#import <Foundation/Foundation.h>
+
+#ifndef INSTATAGS_ApiMethods_h
+#define INSTATAGS_ApiMethods_h
+
+#pragma mark - Client Info
+
+static NSString *const INSTAGRAM_CLIENT_ID      = @"15cc709935094bfaa0e14f485fee38da";
+static NSString *const INSTAGRAM_CLIENT_SECRET  = @"f13aef57842f417c93e05ce2637194fb";
+static NSString *const INSTAGRAM_WEBSITE_URL    = @"https://www.facebook.com/snowdima";
+static NSString *const INSTAGRAM_REDIRECT_URI   = @"instatags://instagram/authentication";
+static NSString *const INSTAGRAM_SUPPORT_EMAIL  = @"organization_98@yahoo.com";
+static NSString *const INSTAGRAM_GRANT_TYPE     = @"authorization_code";
+
+static NSString *const INSTAGRAM_ACCESS_TOKEN   = @"INSTAGRAM_ACCESS_TOKEN";
+
+#pragma mark - Host URL
+
+static NSString *const OAuthHostURL =   @"https://api.instagram.com/oauth/";
+static NSString *const TagsHostURL =    @"https://api.instagram.com/v1/tags/";
+
+#pragma mark - Authentication request
+
+static NSString *const NM_AuthorizationPath     = @"authorize/";
+static NSString *const NM_AccessTokenPath       = @"access_token";
+
+static NSString *const NM_ParameterClientID     = @"client_id=";
+static NSString *const NM_ParameterRedirectURI  = @"redirect_uri=";
+static NSString *const NM_ResponseType          = @"response_type=code";
+
+static NSString *const NM_ParameterCode         = @"code=";
+
+static NSString *const NM_ParameterClientSecret = @"client_secret";
+static NSString *const NM_ParameterGrantType    = @"grant_type";
+
+#pragma mark - Response keys
+
+static NSString *const kAccessToken             = @"access_token";
+
+static NSString *const kUser                    = @"user";
+
+static NSString *const kTagsName                = @"name";
+static NSString *const kTagsData                = @"data";
+static NSString *const kTagsImages              = @"images";
+static NSString *const kTagsStandardResolution  = @"standard_resolution";
+static NSString *const kTagsURL                 = @"url";
+
+static NSString *const kTagsPagination          = @"pagination";
+static NSString *const kTagsNextURL             = @"next_url";
+
+#endif

@@ -1,0 +1,38 @@
+//
+//  PrefixHeader.pch
+//  InstaTags
+//
+//  Created by Dmitriy Demchenko on 9/25/15.
+//  Copyright (c) 2015 Dmitriy Demchenko. All rights reserved.
+//
+
+#ifndef INSTATAGS_PrefixHeader_pch
+#define INSTATAGS_PrefixHeader_pch
+
+#import "Constants.h"
+
+
+#pragma mark - Categories
+
+#import "UIColor+AppColors.h"
+#import "UIFont+AppFont.h"
+#import "UIView+Visibility.h"
+#import "CAAnimation+CompetionBlock.h"
+#import "NSArray+ObjectMapping.h"
+#import "NSString+Convenience.h"
+
+
+#pragma mark - Frameworks & Libraries
+
+#import <MagicalRecord/MagicalRecord.h>
+#import <MagicalRecord/MagicalRecord+ShorthandMethods.h>
+#import <MagicalRecord/MagicalRecordShorthandMethodAliases.h>
+#import "MBProgressHUD.h"
+
+
+#pragma mark - Managers & Models
+
+#import "DDAPIManager.h"
+#import "DDModel.h"
+
+#endif

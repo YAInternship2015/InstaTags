@@ -1,0 +1,20 @@
+/* 
+  Localizable.strings
+  InstaTags
+
+  Created by Dmitriy Demchenko on 10/9/15.
+  Copyright (c) 2015 Dmitriy Demchenko. All rights reserved.
+*/
+
+
+"Receiver Not Found" = "Ресивер не найден";
+"The Receiver App is not installed. It must be installed to send text." = "Не установлен ресивер приложения. Он должен быть установлен, чтобы отправить текст.";
+"OK" = "OK";
+
+"Tag selected." = "Тэг выбран.";
+"Tag can't be less than 3 characters." = "Тэг не может быть короче 3 символов.";
+"Dismiss" = "Спрятать";
+
+"Everything is very simple! Start search tag, choose tag to view photos." = "Все очень просто! Начинайте поиск тэгов, выбирайте тэг для просмотра фотографий.";
+"Login to view photos." = "Войдите, чтобы смотреть фотографии.";
+"login" = "войти";
