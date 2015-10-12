@@ -199,7 +199,7 @@
 - (void)showPhotosAction {
     [MBProgressHUD showHUDAddedTo:self.view animated:YES];
     __weak typeof(self) weakSelf = self;
-    [[DDApiManager sharedManager] getImagesWithTag:self.selectTag completionHandler:^(BOOL succes, NSArray *responseArray, NSError *error) {
+    [[DDApiManager sharedManager] loadImagesWithTag:self.selectTag completionHandler:^(BOOL succes, NSArray *responseArray, NSError *error) {
         DDInstagramViewerController *controller = (DDInstagramViewerController *)[self.storyboard instantiateViewControllerWithIdentifier:DDInstagramViewerControllerID];
         controller.tagStringForTitle = [self.selectTag capitalizedString];
         [MBProgressHUD hideHUDForView:self.view animated:YES];

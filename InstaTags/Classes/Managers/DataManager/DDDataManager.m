@@ -33,7 +33,7 @@
 - (void)pagination {
     __weak typeof(self) weakSelf = self;
 #warning в succes опечатка
-    [[DDApiManager sharedManager] getImagesWithTag:nil completionHandler:^(BOOL succes, id responseObject, NSError *error) {
+    [[DDApiManager sharedManager] loadImagesWithTag:nil completionHandler:^(BOOL succes, id responseObject, NSError *error) {
         [weakSelf insertItemsToCoreDataFromArray:responseObject];
     }];
 }

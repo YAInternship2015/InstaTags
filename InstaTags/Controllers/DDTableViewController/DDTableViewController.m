@@ -65,7 +65,7 @@ static NSString *const InstagramCellIdentifier = @"InstagramCellIdentifier";
 
 - (void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath {
     if (indexPath.row == [self.dataSource numberOfModels] - 1) {
-        [self.dataSource getNextImagePack];
+        [self.dataSource requestNextImagePack];
     }
 }
 

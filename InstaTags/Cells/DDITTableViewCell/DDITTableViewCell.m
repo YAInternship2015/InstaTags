@@ -27,8 +27,8 @@
     self.full_name.text = post.user_full_name;
     
     self.instagramImageView.image = nil;
-#warning картинку-плейсхолдер надо вынести в категорию UIImage
-    [self.instagramImageView sd_setImageWithURL:[NSURL URLWithString:post.instagram_image_url] placeholderImage:[UIImage imageNamed:@"placeholder_image"]];
+//#warning картинку-плейсхолдер надо вынести в категорию UIImage
+    [self.instagramImageView sd_setImageWithURL:[NSURL URLWithString:post.instagram_image_url] placeholderImage:[UIImage appPlaceholderImage]];
     
     self.captionLabel.text = post.caption_text;
 }

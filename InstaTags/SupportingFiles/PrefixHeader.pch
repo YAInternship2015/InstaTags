@@ -16,6 +16,7 @@
 
 #import "UIColor+AppColors.h"
 #import "UIFont+AppFont.h"
+#import "UIImage+PlaceholderImage.h"
 #import "UIView+Visibility.h"
 #import "CAAnimation+CompetionBlock.h"
 #import "NSArray+ObjectMapping.h"

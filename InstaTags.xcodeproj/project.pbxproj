@@ -38,6 +38,7 @@
 		32A77C501BB5DB890044A6D4 /* proximanova-regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = 32A77C4A1BB5DB890044A6D4 /* proximanova-regular.otf */; };
 		32A77C521BB5DB890044A6D4 /* proximanova-regularitalic.otf in Resources */ = {isa = PBXBuildFile; fileRef = 32A77C4C1BB5DB890044A6D4 /* proximanova-regularitalic.otf */; };
 		32A77C531BB5DB890044A6D4 /* proximanova-semibold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 32A77C4D1BB5DB890044A6D4 /* proximanova-semibold.otf */; };
+		32AD919F1BCBF2810018A4B0 /* UIImage+PlaceholderImage.m in Sources */ = {isa = PBXBuildFile; fileRef = 32AD919E1BCBF2810018A4B0 /* UIImage+PlaceholderImage.m */; };
 		32B6743E1BB8673B00978C07 /* CAAnimation+CompetionBlock.m in Sources */ = {isa = PBXBuildFile; fileRef = 32B6743D1BB8673B00978C07 /* CAAnimation+CompetionBlock.m */; };
 		32C93BF31BB82CBA00945C62 /* PreStartController.m in Sources */ = {isa = PBXBuildFile; fileRef = 32C93BF21BB82CBA00945C62 /* PreStartController.m */; };
 		32C93BFB1BB82D6700945C62 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 32C93BF61BB82D6700945C62 /* LaunchScreen.xib */; };
@@ -123,6 +124,8 @@
 		32A77C4A1BB5DB890044A6D4 /* proximanova-regular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "proximanova-regular.otf"; sourceTree = "<group>"; };
 		32A77C4C1BB5DB890044A6D4 /* proximanova-regularitalic.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "proximanova-regularitalic.otf"; sourceTree = "<group>"; };
 		32A77C4D1BB5DB890044A6D4 /* proximanova-semibold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "proximanova-semibold.otf"; sourceTree = "<group>"; };
+		32AD919D1BCBF2810018A4B0 /* UIImage+PlaceholderImage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "UIImage+PlaceholderImage.h"; path = "UIImage+PlaceholderImage/UIImage+PlaceholderImage.h"; sourceTree = "<group>"; };
+		32AD919E1BCBF2810018A4B0 /* UIImage+PlaceholderImage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UIImage+PlaceholderImage.m"; path = "UIImage+PlaceholderImage/UIImage+PlaceholderImage.m"; sourceTree = "<group>"; };
 		32B6743C1BB8673B00978C07 /* CAAnimation+CompetionBlock.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "CAAnimation+CompetionBlock.h"; sourceTree = "<group>"; };
 		32B6743D1BB8673B00978C07 /* CAAnimation+CompetionBlock.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "CAAnimation+CompetionBlock.m"; sourceTree = "<group>"; };
 		32C93BF11BB82CBA00945C62 /* PreStartController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PreStartController.h; sourceTree = "<group>"; };
@@ -494,6 +497,15 @@
 			path = ProximaNovaFont;
 			sourceTree = "<group>";
 		};
+		32AD91A01BCBF2890018A4B0 /* UIImage+PlaceholderImage */ = {
+			isa = PBXGroup;
+			children = (
+				32AD919D1BCBF2810018A4B0 /* UIImage+PlaceholderImage.h */,
+				32AD919E1BCBF2810018A4B0 /* UIImage+PlaceholderImage.m */,
+			);
+			name = "UIImage+PlaceholderImage";
+			sourceTree = "<group>";
+		};
 		32B6743B1BB8673B00978C07 /* CAAnimation+CompetionBlock */ = {
 			isa = PBXGroup;
 			children = (
@@ -583,6 +595,7 @@
 				329692E41BB5E3D100B271EB /* NSArray+ObjectMapping */,
 				32F7B0951BBC7E86007207DB /* NSString+Convenience */,
 				32C93C011BB8335900945C62 /* UIFont+AppFont */,
+				32AD91A01BCBF2890018A4B0 /* UIImage+PlaceholderImage */,
 			);
 			path = Categories;
 			sourceTree = "<group>";
@@ -792,6 +805,7 @@
 				329692E71BB5E3D100B271EB /* NSArray+ObjectMapping.m in Sources */,
 				3214359A1BBFB728001C149A /* DDPostModel.m in Sources */,
 				328B6AE21BB5CD63004AF4CF /* DDSearchTagsController.m in Sources */,
+				32AD919F1BCBF2810018A4B0 /* UIImage+PlaceholderImage.m in Sources */,
 				32E5B3511BB5C1D500B2ED5F /* AppDelegate.m in Sources */,
 				32F7B0981BBC7E86007207DB /* NSString+Convenience.m in Sources */,
 				3214359E1BBFB836001C149A /* DDCaptionModel.m in Sources */,

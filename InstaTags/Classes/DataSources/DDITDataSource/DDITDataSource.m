@@ -49,17 +49,17 @@
     [[NSManagedObjectContext MR_defaultContext] MR_saveToPersistentStoreAndWait];
 }
 
-- (void)getNextImagePack {
+- (void)requestNextImagePack {
     [[DDDataManager sharedManager] pagination];
 }
 
 
 #pragma mark - NSFetchedResultsControllerDelegate
 
-- (void)controllerDidChangeContent:(NSFetchedResultsController *)controller {
-#warning не понял, зачем нужно заново переконфигурировать контроллер
-    [self setupFetchedResultsController];
-}
+//- (void)controllerDidChangeContent:(NSFetchedResultsController *)controller {
+//#warning не понял, зачем нужно заново переконфигурировать контроллер
+//    [self setupFetchedResultsController];
+//}
 
 - (void)controller:(NSFetchedResultsController *)controller didChangeObject:(id)anObject atIndexPath:(NSIndexPath *)indexPath forChangeType:(NSFetchedResultsChangeType)type newIndexPath:(NSIndexPath *)newIndexPath {
     [self.delegate contentWasChangedAtIndexPath:indexPath forChangeType:type newIndexPath:newIndexPath];

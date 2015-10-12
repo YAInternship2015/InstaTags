@@ -19,7 +19,7 @@ typedef void (^CompletionBlock)(BOOL succes, id responseObject, NSError *error);
 - (void)receiveRedirectFromInstagram;
 
 - (void)searchForTagsByName:(NSString *)tagsByName completionHandler:(CompletionBlock)completionHandler;
-#warning здесь вместо get надо load или request
-- (void)getImagesWithTag:(NSString *)tag completionHandler:(CompletionBlock)completionHandler;
+//#warning здесь вместо get надо load или request
+- (void)loadImagesWithTag:(NSString *)tag completionHandler:(CompletionBlock)completionHandler;
 
 @end

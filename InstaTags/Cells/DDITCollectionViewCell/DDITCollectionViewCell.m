@@ -19,7 +19,7 @@
 @implementation DDITCollectionViewCell
 
 - (void)configWithPostModel:(DDModel *)post {
-    [self.instagramImage sd_setImageWithURL:[NSURL URLWithString:post.instagram_image_url] placeholderImage:[UIImage imageNamed:@"placeholder_image"]];
+    [self.instagramImage sd_setImageWithURL:[NSURL URLWithString:post.instagram_image_url] placeholderImage:[UIImage appPlaceholderImage]];
 }
 
 @end

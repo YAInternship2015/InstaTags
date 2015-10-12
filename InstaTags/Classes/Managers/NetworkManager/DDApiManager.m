@@ -117,7 +117,7 @@
     }];
 }
 
-- (void)getImagesWithTag:(NSString *)tag completionHandler:(CompletionBlock)completionHandler {
+- (void)loadImagesWithTag:(NSString *)tag completionHandler:(CompletionBlock)completionHandler {
     
     self.myTag = tag;
     
