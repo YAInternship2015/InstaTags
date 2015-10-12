@@ -49,10 +49,9 @@
     [[NSManagedObjectContext MR_defaultContext] MR_saveToPersistentStoreAndWait];
 }
 
-- (void)requestNextImagePack {
-    [[DDDataManager sharedManager] loadNextStackOfPosts];
+- (void)requestNextPosts {
+    [[DDDataManager sharedManager] postsWithTag:nil completion:nil];
 }
-
 
 #pragma mark - NSFetchedResultsControllerDelegate
 

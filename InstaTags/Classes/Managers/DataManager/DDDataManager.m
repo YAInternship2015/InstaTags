@@ -41,14 +41,18 @@
     }];
 }
 
-//#warning плохое имя метода, ничего не говорит о том, что в нем происходит
-- (void)loadNextStackOfPosts {
-    __weak typeof(self) weakSelf = self;
-//#warning в succes опечатка
-    [[DDApiManager sharedManager] loadImagesWithTag:nil completionHandler:^(BOOL success, id responseObject, NSError *error) {
-        [weakSelf insertItemsToCoreDataFromArray:responseObject];
+- (void)postsWithTag:(NSString *)tag completion:(DataManagerBlock)completion {
+    
+    [[DDApiManager sharedManager] loadImagesWithTag:tag completionHandler:^(BOOL success, id responseObject, NSError *error) {
+        __weak typeof(self) weakSelf = self;
+        [weakSelf insertItemsToCoreDataFromArray:responseObject[kTagsData]];
+        if (tag) {
+            completion(success, nil, nil);
+        }
     }];
 }
+
+#pragma mark - Private methods
 
 - (void)insertItemsToCoreDataFromArray:(NSArray *)array {
     
@@ -57,7 +61,7 @@
         DDPostModel *networkObject = [[DDPostModel alloc] init];
         networkObject.objectDictionary = obj;
         
-#warning так как "пачки" данных в приложении небольшие, я бы порекомендовал вынести перебор массива в MagicalRecord блок, чтобы save произошел один, а не для каждой отдельной модели
+//#warning так как "пачки" данных в приложении небольшие, я бы порекомендовал вынести перебор массива в MagicalRecord блок, чтобы save произошел один, а не для каждой отдельной модели
         [MagicalRecord saveWithBlockAndWait:^(NSManagedObjectContext *localContext) {
             DDModel *item = nil;
             NSArray *savedItemArray = [DDModel MR_findAllWithPredicate:[NSPredicate predicateWithFormat:@"post_id == %@", networkObject.post_id]];

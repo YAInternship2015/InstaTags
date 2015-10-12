@@ -17,7 +17,6 @@ typedef void (^DataManagerBlock)(BOOL success, id responseObject, NSError *error
 + (DDDataManager *)sharedManager;
 - (void)saveUserProfile:(NSDictionary *)userProfile;
 - (void)tagsByName:(NSString *)name completion:(DataManagerBlock)completion;
-- (void)loadNextStackOfPosts;
-- (void)insertItemsToCoreDataFromArray:(NSArray *)array;
+- (void)postsWithTag:(NSString *)tag completion:(DataManagerBlock)completion;
 
 @end

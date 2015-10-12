@@ -46,7 +46,7 @@ static CGFloat const durationAnimationDeleteCell = 0.3f;
 
 - (void)collectionView:(UICollectionView *)collectionView willDisplayCell:(UICollectionViewCell *)cell forItemAtIndexPath:(NSIndexPath *)indexPath {
     if (indexPath.row == [self.dataSource numberOfModels] - 1) {
-        [self.dataSource requestNextImagePack];
+        [self.dataSource requestNextPosts];
     }
 }
 

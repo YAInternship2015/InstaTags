@@ -130,12 +130,15 @@
     [manager GET:pathString parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
         
         weakSelf.nextURL = responseObject[kTagsPagination][kTagsNextURL];
+        completionHandler (YES, responseObject, nil);
+        
+        /*
         completionHandler (YES, responseObject[kTagsData], nil);
         
 #warning этого здесь не должно быть
         if (tag) {
             [[DDDataManager sharedManager] insertItemsToCoreDataFromArray:responseObject[kTagsData]];
-        }
+        }*/
         
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
         NSLog(@"%@", [error localizedDescription]);

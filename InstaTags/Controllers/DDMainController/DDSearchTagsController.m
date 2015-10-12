@@ -9,10 +9,12 @@
 #import "DDSearchTagsController.h"
 #import "DDInstagramViewerController.h"
 #import <SDWebImage/UIImageView+WebCache.h>
-#import "DDInputValidator.h"
 #import "DDTagsDataSource.h"
+#import "DDDataManager.h"
+#import "DDInputValidator.h"
 
-#warning достаточно "жирный" контроллер, много чего умеет делать. Напрашивается вынос датасорса для пикера и, как вариант, вынос логин-части с профилем пользователя (верхняя часть на экране) в отдельный контроллер, который добавится как child на этот. Если будет время, попробуйте что-то из этого воплотить в жизнь
+//#warning достаточно "жирный" контроллер, много чего умеет делать. Напрашивается вынос датасорса для пикера и, как вариант, вынос логин-части с профилем пользователя (верхняя часть на экране) в отдельный контроллер, который добавится как child на этот. Если будет время, попробуйте что-то из этого воплотить в жизнь
+
 @interface DDSearchTagsController () <DDTagsDataSourceDelegate>
 
 // before login
@@ -204,14 +206,29 @@
 }
 
 - (void)showPhotosAction {
+    
     [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+    
     __weak typeof(self) weakSelf = self;
+    
+    [[DDDataManager sharedManager] postsWithTag:self.selectTag completion:^(BOOL success, id responseObject, NSError *error) {
+        
+        if (success) {
+            DDInstagramViewerController *controller = (DDInstagramViewerController *)[self.storyboard instantiateViewControllerWithIdentifier:DDInstagramViewerControllerID];
+            controller.tagStringForTitle = [weakSelf.selectTag capitalizedString];
+            [MBProgressHUD hideHUDForView:weakSelf.view animated:YES];
+            [weakSelf.navigationController pushViewController:controller animated:YES];
+        } else {
+            [MBProgressHUD hideHUDForView:weakSelf.view animated:YES];
+        }
+    }];
+    /*
     [[DDApiManager sharedManager] loadImagesWithTag:self.selectTag completionHandler:^(BOOL success, NSArray *responseArray, NSError *error) {
         DDInstagramViewerController *controller = (DDInstagramViewerController *)[self.storyboard instantiateViewControllerWithIdentifier:DDInstagramViewerControllerID];
         controller.tagStringForTitle = [self.selectTag capitalizedString];
         [MBProgressHUD hideHUDForView:self.view animated:YES];
         [weakSelf.navigationController pushViewController:controller animated:YES];
-    }];
+    }];*/
 }
 
 @end
