@@ -15,7 +15,7 @@
 
 + (DDDataManager *)sharedManager;
 - (void)saveUserProfile:(NSDictionary *)userProfile;
-- (void)pagination;
+- (void)loadNextStackOfPosts;
 - (void)insertItemsToCoreDataFromArray:(NSArray *)array;
 
 @end

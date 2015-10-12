@@ -29,8 +29,8 @@
     [[NSNotificationCenter defaultCenter] postNotificationName:NotificationUserProfileSaved object:nil];
 }
 
-#warning плохое имя метода, ничего не говорит о том, что в нем происходит
-- (void)pagination {
+//#warning плохое имя метода, ничего не говорит о том, что в нем происходит
+- (void)loadNextStackOfPosts {
     __weak typeof(self) weakSelf = self;
 //#warning в succes опечатка
     [[DDApiManager sharedManager] loadImagesWithTag:nil completionHandler:^(BOOL success, id responseObject, NSError *error) {

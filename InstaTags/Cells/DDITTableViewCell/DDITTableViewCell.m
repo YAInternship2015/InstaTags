@@ -11,9 +11,9 @@
 
 @interface DDITTableViewCell ()
 
-#warning в моделях формат с "_" еще как-то оправдывается, здесь уже нет. Пользуйтесь camel case'ом
-@property (weak, nonatomic) IBOutlet UIImageView *profile_picture;
-@property (weak, nonatomic) IBOutlet UILabel *full_name;
+//#warning в моделях формат с "_" еще как-то оправдывается, здесь уже нет. Пользуйтесь camel case'ом
+@property (weak, nonatomic) IBOutlet UIImageView *profilePicture;
+@property (weak, nonatomic) IBOutlet UILabel *fullName;
 @property (weak, nonatomic) IBOutlet UIImageView *instagramImageView;
 @property (weak, nonatomic) IBOutlet UILabel *captionLabel;
 
@@ -23,8 +23,8 @@
 
 - (void)configWithPostModel:(DDModel *)post {
     
-    [self.profile_picture sd_setImageWithURL:[NSURL URLWithString:post.user_profile_picture]];
-    self.full_name.text = post.user_full_name;
+    [self.profilePicture sd_setImageWithURL:[NSURL URLWithString:post.user_profile_picture]];
+    self.fullName.text = post.user_full_name;
     
     self.instagramImageView.image = nil;
 //#warning картинку-плейсхолдер надо вынести в категорию UIImage

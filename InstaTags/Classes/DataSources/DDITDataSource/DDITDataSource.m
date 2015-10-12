@@ -50,7 +50,7 @@
 }
 
 - (void)requestNextImagePack {
-    [[DDDataManager sharedManager] pagination];
+    [[DDDataManager sharedManager] loadNextStackOfPosts];
 }
 
 
