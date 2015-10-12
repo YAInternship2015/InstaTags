@@ -1,5 +1,5 @@
 //
-//  UIImage+PlaceholderImage.h
+//  UIImage+Convenience.h
 //  InstaTags
 //
 //  Created by Dmitriy Demchenko on 10/12/15.
@@ -8,8 +8,9 @@
 
 #import <UIKit/UIKit.h>
 
-@interface UIImage (PlaceholderImage)
+@interface UIImage (Convenience)
 
 + (UIImage *)appPlaceholderImage;
++ (UIImage *)appBackButton;
 
 @end

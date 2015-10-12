@@ -1,17 +1,21 @@
 //
-//  UIImage+PlaceholderImage.m
+//  UIImage+Convenience.m
 //  InstaTags
 //
 //  Created by Dmitriy Demchenko on 10/12/15.
 //  Copyright (c) 2015 Dmitriy Demchenko. All rights reserved.
 //
 
-#import "UIImage+PlaceholderImage.h"
+#import "UIImage+Convenience.h"
 
-@implementation UIImage (PlaceholderImage)
+@implementation UIImage (Convenience)
 
 + (UIImage *)appPlaceholderImage {
     return [UIImage imageNamed:@"placeholder_image"];
+}
+
++ (UIImage *)appBackButton {
+    return [UIImage imageNamed:@"back_button"];
 }
 
 @end
