@@ -8,7 +8,7 @@
 
 #import <Foundation/Foundation.h>
 
-typedef void (^CompletionBlock)(BOOL success, id responseObject, NSError *error);
+typedef void (^DataManagerBlock)(BOOL success, id responseObject, NSError *error);
 
 @interface DDApiManager : NSObject
 
@@ -18,8 +18,8 @@ typedef void (^CompletionBlock)(BOOL success, id responseObject, NSError *error)
 - (void)directUserToAuthorizationURL;
 - (void)receiveRedirectFromInstagram;
 
-- (void)searchForTagsByName:(NSString *)tagsByName completionHandler:(CompletionBlock)completionHandler;
+- (void)searchForTagsByName:(NSString *)tagsByName completionHandler:(DataManagerBlock)completionHandler;
 //#warning здесь вместо get надо load или request
-- (void)loadImagesWithTag:(NSString *)tag completionHandler:(CompletionBlock)completionHandler;
+- (void)loadImagesWithTag:(NSString *)tag completionHandler:(DataManagerBlock)completionHandler;
 
 @end

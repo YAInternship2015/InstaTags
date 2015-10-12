@@ -38,6 +38,10 @@ static NSString *const kPostID = @"post_id";
 
 static NSString *const kUserFullName                = @"full_name";
 static NSString *const kUserProfilePicture          = @"profile_picture";
-static NSString *const NotificationUserProfileSaved = @"NotificationUserProfileSaved";
+
+#pragma mark - Notifications
+
+static NSString *const NotificationUserProfileSaved     = @"NotificationUserProfileSaved";
+static NSString *const NotificationTagsArrayDidChange   = @"NotificationTagsArrayDidChange";
 
 #endif

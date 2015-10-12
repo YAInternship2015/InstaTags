@@ -10,9 +10,10 @@
 #import "DDInstagramViewerController.h"
 #import <SDWebImage/UIImageView+WebCache.h>
 #import "DDInputValidator.h"
+#import "DDTagsDataSource.h"
 
 #warning достаточно "жирный" контроллер, много чего умеет делать. Напрашивается вынос датасорса для пикера и, как вариант, вынос логин-части с профилем пользователя (верхняя часть на экране) в отдельный контроллер, который добавится как child на этот. Если будет время, попробуйте что-то из этого воплотить в жизнь
-@interface DDSearchTagsController ()
+@interface DDSearchTagsController () <DDTagsDataSourceDelegate>
 
 // before login
 @property (weak, nonatomic) IBOutlet UIActivityIndicatorView *loginActivityIndicator;
@@ -35,8 +36,8 @@
 @property (nonatomic, weak) IBOutlet UIView *gradientView;
 @property (nonatomic, strong) IBOutlet UITapGestureRecognizer *tap;
 @property (nonatomic, strong) CAGradientLayer *gradient;
-@property (nonatomic, strong) NSArray *tagsByNameArray;
 @property (nonatomic, strong) NSString *selectTag;
+@property (nonatomic, strong) DDTagsDataSource *tagsDataSource;
 
 @end
 
@@ -47,6 +48,8 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+    self.tagsDataSource = [[DDTagsDataSource alloc] initWithDelegate:self];
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(setupOrUpdateViewIfUserLogin) name:NotificationUserProfileSaved object:nil];
     
@@ -92,26 +95,30 @@
 #pragma mark - UITextFieldDelegate
 
 - (BOOL)textFieldShouldReturn:(UITextField *)textField {
+    
     [textField resignFirstResponder];
     [MBProgressHUD showHUDAddedTo:self.view animated:YES];
-    __weak typeof(self) weakSelf = self;
     
     NSError *error = NULL;
     if ([DDInputValidator validateInputString:textField.text error:&error]) {
-#warning вообще работать с API клиентами должны дата менеджеры. Вью контроллер говорит менеджеру "дай мне что-то", менеджер говорит апи клиенту, чтобы тот згарузил данные, затем менеджер как-то обрабатывает полученные данные и возвращает их контроллеру через блоки
-        [[DDApiManager sharedManager] searchForTagsByName:[self.searchField.text removeWhitespaces] completionHandler:^(BOOL success, NSArray *responseArray, NSError *error) {
-            weakSelf.tagsByNameArray = responseArray;
-            [weakSelf.searchHelpLabel setVisible:NO animated:YES];
-            [weakSelf.pickerView setVisible:YES animated:YES];
-            [weakSelf.pickerView reloadAllComponents];
-            [weakSelf.pickerView selectRow:0 inComponent:0 animated:YES];
-            [MBProgressHUD hideHUDForView:self.view animated:YES];
-        }];
+//#warning вообще работать с API клиентами должны дата менеджеры. Вью контроллер говорит менеджеру "дай мне что-то", менеджер говорит апи клиенту, чтобы тот згарузил данные, затем менеджер как-то обрабатывает полученные данные и возвращает их контроллеру через блоки
+        [self.tagsDataSource requestForTagsByName:[self.searchField.text removeWhitespaces]];
     } else {
         [MBProgressHUD hideHUDForView:self.view animated:YES];
     }
-    
     return YES;
+}
+
+#pragma mark - DDTagsDataSourceDelegate
+
+- (void)dataWasChanged:(DDTagsDataSource *)dataSource {
+    
+    [self.searchHelpLabel setVisible:NO animated:YES];
+    [self.pickerView setVisible:YES animated:YES];
+    [self.pickerView reloadAllComponents];
+    [self.pickerView selectRow:0 inComponent:0 animated:YES];
+    
+    [MBProgressHUD hideHUDForView:self.view animated:YES];
 }
 
 #pragma mark - UIPickerViewDataSource
@@ -121,19 +128,19 @@
 }
 
 - (NSInteger)pickerView:(UIPickerView *)pickerView numberOfRowsInComponent:(NSInteger)component {
-    return [self.tagsByNameArray count];
+    return [self.tagsDataSource countTags];
 }
 
 - (NSAttributedString *)pickerView:(UIPickerView *)pickerView attributedTitleForRow:(NSInteger)row forComponent:(NSInteger)component {
     NSDictionary *attributes = @{NSFontAttributeName : [UIFont appFontProximanovaRegularWithSize:16.f],
                                  NSForegroundColorAttributeName :[UIColor appSearchFieldColor]};
-    return [[NSAttributedString alloc] initWithString:self.tagsByNameArray[row] attributes:attributes];
+    return [[NSAttributedString alloc] initWithString:[self.tagsDataSource tagForIndex:row] attributes:attributes];
 }
 
 #pragma mark - UIPickerViewDelegate
 
 - (void)pickerView:(UIPickerView *)pickerView didSelectRow:(NSInteger)row inComponent:(NSInteger)component {
-    self.selectTag = self.tagsByNameArray[row];
+    self.selectTag = [self.tagsDataSource tagForIndex:row];
     if (self.selectTag) {
         [self.showPhotosButton setVisible:YES animated:YES];
     }

@@ -29,6 +29,7 @@
 		328B6ADE1BB5CC28004AF4CF /* DDAppearanceConfigurator.m in Sources */ = {isa = PBXBuildFile; fileRef = 328B6AD61BB5CC28004AF4CF /* DDAppearanceConfigurator.m */; };
 		328B6ADF1BB5CC28004AF4CF /* DDInputValidator.m in Sources */ = {isa = PBXBuildFile; fileRef = 328B6AD91BB5CC28004AF4CF /* DDInputValidator.m */; };
 		328B6AE21BB5CD63004AF4CF /* DDSearchTagsController.m in Sources */ = {isa = PBXBuildFile; fileRef = 328B6AE11BB5CD63004AF4CF /* DDSearchTagsController.m */; };
+		329048521BCC29DC00F5D12D /* DDTagsDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = 329048511BCC29DC00F5D12D /* DDTagsDataSource.m */; };
 		329692E71BB5E3D100B271EB /* NSArray+ObjectMapping.m in Sources */ = {isa = PBXBuildFile; fileRef = 329692E61BB5E3D100B271EB /* NSArray+ObjectMapping.m */; };
 		32A77C3A1BB5D1F90044A6D4 /* DDApiManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 32A77C391BB5D1F90044A6D4 /* DDApiManager.m */; };
 		32A77C411BB5D2810044A6D4 /* DDNetworkObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 32A77C3D1BB5D2810044A6D4 /* DDNetworkObject.m */; };
@@ -110,6 +111,8 @@
 		328B6AD91BB5CC28004AF4CF /* DDInputValidator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DDInputValidator.m; sourceTree = "<group>"; };
 		328B6AE01BB5CD63004AF4CF /* DDSearchTagsController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DDSearchTagsController.h; path = DDMainController/DDSearchTagsController.h; sourceTree = "<group>"; };
 		328B6AE11BB5CD63004AF4CF /* DDSearchTagsController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DDSearchTagsController.m; path = DDMainController/DDSearchTagsController.m; sourceTree = "<group>"; };
+		329048501BCC29DC00F5D12D /* DDTagsDataSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DDTagsDataSource.h; sourceTree = "<group>"; };
+		329048511BCC29DC00F5D12D /* DDTagsDataSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DDTagsDataSource.m; sourceTree = "<group>"; };
 		329692E51BB5E3D100B271EB /* NSArray+ObjectMapping.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSArray+ObjectMapping.h"; sourceTree = "<group>"; };
 		329692E61BB5E3D100B271EB /* NSArray+ObjectMapping.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSArray+ObjectMapping.m"; sourceTree = "<group>"; };
 		32A77C371BB5D1F90044A6D4 /* DDApiConstants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DDApiConstants.h; sourceTree = "<group>"; };
@@ -287,8 +290,8 @@
 		325565481BCC27D5001FFEF9 /* DataSources */ = {
 			isa = PBXGroup;
 			children = (
-				325565491BCC27D5001FFEF9 /* DDPostsDataSource */,
 				3255654C1BCC27D5001FFEF9 /* DDTagsDataSource */,
+				325565491BCC27D5001FFEF9 /* DDPostsDataSource */,
 			);
 			path = DataSources;
 			sourceTree = "<group>";
@@ -305,6 +308,8 @@
 		3255654C1BCC27D5001FFEF9 /* DDTagsDataSource */ = {
 			isa = PBXGroup;
 			children = (
+				329048501BCC29DC00F5D12D /* DDTagsDataSource.h */,
+				329048511BCC29DC00F5D12D /* DDTagsDataSource.m */,
 			);
 			path = DDTagsDataSource;
 			sourceTree = "<group>";
@@ -826,6 +831,7 @@
 				32C93BFD1BB82D6700945C62 /* DDSplashSegue.m in Sources */,
 				328B6ADE1BB5CC28004AF4CF /* DDAppearanceConfigurator.m in Sources */,
 				328B6ADF1BB5CC28004AF4CF /* DDInputValidator.m in Sources */,
+				329048521BCC29DC00F5D12D /* DDTagsDataSource.m in Sources */,
 				324C66BE1BC1BBF70063D72D /* DDPostCoreDataModel.xcdatamodel in Sources */,
 				3280831B1BC2F9B900319BC5 /* DDDataManager.m in Sources */,
 				321B313D1BB5BEB4005B4EBD /* main.m in Sources */,

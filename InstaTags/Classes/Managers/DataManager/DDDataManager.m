@@ -8,6 +8,7 @@
 
 #import "DDDataManager.h"
 #import "DDPostModel.h"
+#import "DDApiConstants.h"
 
 @implementation DDDataManager
 
@@ -27,6 +28,17 @@
     [[NSUserDefaults standardUserDefaults] synchronize];
     
     [[NSNotificationCenter defaultCenter] postNotificationName:NotificationUserProfileSaved object:nil];
+}
+
+- (void)tagsByName:(NSString *)name completion:(DataManagerBlock)completion {
+    __block NSMutableArray *tagsArray = [[NSMutableArray alloc] init];
+    [[DDApiManager sharedManager] searchForTagsByName:name completionHandler:^(BOOL success, id responseObject, NSError *error) {
+        NSArray *dataArray = responseObject[kTagsData];
+        [dataArray enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
+            [tagsArray addObject:obj[kTagsName]];
+        }];
+        completion(success, tagsArray, nil);
+    }];
 }
 
 //#warning плохое имя метода, ничего не говорит о том, что в нем происходит

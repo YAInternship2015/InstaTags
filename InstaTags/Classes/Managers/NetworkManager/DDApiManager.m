@@ -97,7 +97,7 @@
 
 #pragma mark - Requests
 
-- (void)searchForTagsByName:(NSString *)tagsByName completionHandler:(CompletionBlock)completionHandler {
+- (void)searchForTagsByName:(NSString *)tagsByName completionHandler:(DataManagerBlock)completionHandler {
     
     // https://api.instagram.com/v1/tags/search?q=snowy&access_token=ACCESS-TOKEN
     
@@ -105,19 +105,20 @@
     
     AFHTTPRequestOperationManager *manager = [[AFHTTPRequestOperationManager alloc] initWithBaseURL:[NSURL URLWithString:TagsHostURL]];
     [manager GET:pathString parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
+        /*
         NSArray *dataArray = responseObject[kTagsData];
         __block NSMutableArray *tagsByNameArray = [[NSMutableArray alloc] init];
-#warning обработка полученных данных должна происходить не в API клиенте
+//#warning обработка полученных данных должна происходить не в API клиенте
         [dataArray enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
             [tagsByNameArray addObject:obj[kTagsName]];
-        }];
-        completionHandler(YES, tagsByNameArray, nil);
+        }];*/
+        completionHandler(YES, responseObject, nil);
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
         NSLog(@"%@", [error localizedDescription]);
     }];
 }
 
-- (void)loadImagesWithTag:(NSString *)tag completionHandler:(CompletionBlock)completionHandler {
+- (void)loadImagesWithTag:(NSString *)tag completionHandler:(DataManagerBlock)completionHandler {
     
     // https://api.instagram.com/v1/tags/{tag-name}/media/recent?access_token=ACCESS-TOKEN
     

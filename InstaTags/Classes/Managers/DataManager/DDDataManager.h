@@ -10,11 +10,13 @@
 
 //#warning зачем нужен этот блок?
 //typedef void (^DMBlock)(BOOL succeыs);
+typedef void (^DataManagerBlock)(BOOL success, id responseObject, NSError *error);
 
 @interface DDDataManager : NSObject
 
 + (DDDataManager *)sharedManager;
 - (void)saveUserProfile:(NSDictionary *)userProfile;
+- (void)tagsByName:(NSString *)name completion:(DataManagerBlock)completion;
 - (void)loadNextStackOfPosts;
 - (void)insertItemsToCoreDataFromArray:(NSArray *)array;
 
