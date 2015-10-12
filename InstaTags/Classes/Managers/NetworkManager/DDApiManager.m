@@ -8,14 +8,14 @@
 
 #import "DDApiManager.h"
 #import "AFNetworking.h"
-#import "ApiMethods.h"
+#import "DDApiMethods.h"
 #import "DDPostModel.h"
 #import "DDDataManager.h"
 
 @interface DDApiManager ()
 
-#warning не понял, зачем нужно свойство myTag
-@property (nonatomic, strong) NSString *myTag;
+//#warning не понял, зачем нужно свойство myTag
+//@property (nonatomic, strong) NSString *myTag;
 @property (nonatomic, strong) NSString *nextURL;
 
 @end
@@ -118,8 +118,6 @@
 }
 
 - (void)loadImagesWithTag:(NSString *)tag completionHandler:(CompletionBlock)completionHandler {
-    
-    self.myTag = tag;
     
     // https://api.instagram.com/v1/tags/{tag-name}/media/recent?access_token=ACCESS-TOKEN
     

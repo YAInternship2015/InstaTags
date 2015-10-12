@@ -1,5 +1,5 @@
 //
-//  ApiConstants.h
+//  DDApiMethods.h
 //  InstaTags
 //
 //  Created by Dmitriy Demchenko on 9/25/15.

@@ -112,7 +112,7 @@
 		328B6AE11BB5CD63004AF4CF /* DDSearchTagsController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DDSearchTagsController.m; path = DDMainController/DDSearchTagsController.m; sourceTree = "<group>"; };
 		329692E51BB5E3D100B271EB /* NSArray+ObjectMapping.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSArray+ObjectMapping.h"; sourceTree = "<group>"; };
 		329692E61BB5E3D100B271EB /* NSArray+ObjectMapping.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSArray+ObjectMapping.m"; sourceTree = "<group>"; };
-		32A77C371BB5D1F90044A6D4 /* ApiMethods.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ApiMethods.h; sourceTree = "<group>"; };
+		32A77C371BB5D1F90044A6D4 /* DDApiMethods.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DDApiMethods.h; sourceTree = "<group>"; };
 		32A77C381BB5D1F90044A6D4 /* DDApiManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DDApiManager.h; sourceTree = "<group>"; };
 		32A77C391BB5D1F90044A6D4 /* DDApiManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DDApiManager.m; sourceTree = "<group>"; };
 		32A77C3C1BB5D2810044A6D4 /* DDNetworkObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DDNetworkObject.h; sourceTree = "<group>"; };
@@ -401,7 +401,7 @@
 		328B6AD11BB5CC28004AF4CF /* NetworkManager */ = {
 			isa = PBXGroup;
 			children = (
-				32A77C371BB5D1F90044A6D4 /* ApiMethods.h */,
+				32A77C371BB5D1F90044A6D4 /* DDApiMethods.h */,
 				32A77C381BB5D1F90044A6D4 /* DDApiManager.h */,
 				32A77C391BB5D1F90044A6D4 /* DDApiManager.m */,
 			);
