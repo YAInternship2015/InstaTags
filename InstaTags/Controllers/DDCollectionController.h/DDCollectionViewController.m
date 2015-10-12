@@ -8,11 +8,11 @@
 
 #import "DDCollectionViewController.h"
 #import "DDITCollectionViewCell.h"
-#import "DDITDataSource.h"
+#import "DDPostsDataSource.h"
 
-@interface DDCollectionViewController () <DDITDataSourceDelegate>
+@interface DDCollectionViewController () <DDPostsDataSourceDelegate>
 
-@property (nonatomic, strong) DDITDataSource *dataSource;
+@property (nonatomic, strong) DDPostsDataSource *dataSource;
 
 @end
 
@@ -25,7 +25,7 @@ static CGFloat const durationAnimationDeleteCell = 0.3f;
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.dataSource = [[DDITDataSource alloc] initWithDelegate:self];
+    self.dataSource = [[DDPostsDataSource alloc] initWithDelegate:self];
 }
 
 #pragma mark - UICollectionViewDataSource

@@ -8,11 +8,11 @@
 
 #import "DDTableViewController.h"
 #import "DDITTableViewCell.h"
-#import "DDITDataSource.h"
+#import "DDPostsDataSource.h"
 
-@interface DDTableViewController () <DDITDataSourceDelegate>
+@interface DDTableViewController () <DDPostsDataSourceDelegate>
 
-@property (nonatomic, strong) DDITDataSource *dataSource;
+@property (nonatomic, strong) DDPostsDataSource *dataSource;
 @property (nonatomic, weak) IBOutlet UIActivityIndicatorView *activityIndicator;
 
 @end
@@ -28,7 +28,7 @@ static NSString *const InstagramCellIdentifier = @"InstagramCellIdentifier";
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.dataSource = [[DDITDataSource alloc] initWithDelegate:self];
+    self.dataSource = [[DDPostsDataSource alloc] initWithDelegate:self];
     [self.activityIndicator setVisible:NO];
 }
 

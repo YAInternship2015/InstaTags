@@ -6,21 +6,21 @@
 //  Copyright (c) 2015 Dmitriy Demchenko. All rights reserved.
 //
 
-#import "DDITDataSource.h"
+#import "DDPostsDataSource.h"
 #import "DDDataManager.h"
 
-@interface DDITDataSource () <NSFetchedResultsControllerDelegate>
+@interface DDPostsDataSource () <NSFetchedResultsControllerDelegate>
 
 @property (nonatomic, strong) NSFetchedResultsController *fetchedResultsController;
 
 @end
 
 
-@implementation DDITDataSource
+@implementation DDPostsDataSource
 
 #pragma mark - Lifecycle
 
-- (instancetype)initWithDelegate:(id<DDITDataSourceDelegate>)delegate {
+- (instancetype)initWithDelegate:(id<DDPostsDataSourceDelegate>)delegate {
     self = [super init];
     if (self) {
         self.delegate = delegate;

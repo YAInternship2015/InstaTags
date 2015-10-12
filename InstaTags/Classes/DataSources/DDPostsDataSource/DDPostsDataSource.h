@@ -8,14 +8,14 @@
 
 #import <Foundation/Foundation.h>
 
-@protocol DDITDataSourceDelegate;
+@protocol DDPostsDataSourceDelegate;
 
 
-@interface DDITDataSource : NSObject
+@interface DDPostsDataSource : NSObject
 
-@property (nonatomic, weak) id<DDITDataSourceDelegate>delegate;
+@property (nonatomic, weak) id<DDPostsDataSourceDelegate>delegate;
 
-- (instancetype)initWithDelegate:(id<DDITDataSourceDelegate>)delegate;
+- (instancetype)initWithDelegate:(id<DDPostsDataSourceDelegate>)delegate;
 - (NSUInteger)numberOfModels;
 - (DDModel *)modelForIndex:(NSInteger)index;
 - (void)removeModelAtIndex:(NSIndexPath *)indexPath;
@@ -25,7 +25,7 @@
 @end
 
 
-@protocol DDITDataSourceDelegate <NSObject>
+@protocol DDPostsDataSourceDelegate <NSObject>
 
 @required
 - (void)contentWasChangedAtIndexPath:(NSIndexPath *)indexPath forChangeType:(NSFetchedResultsChangeType)type newIndexPath:(NSIndexPath *)newIndexPath;
