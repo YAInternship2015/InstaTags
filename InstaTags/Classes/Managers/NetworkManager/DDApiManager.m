@@ -14,6 +14,7 @@
 
 @interface DDApiManager ()
 
+#warning не понял, зачем нужно свойство myTag
 @property (nonatomic, strong) NSString *myTag;
 @property (nonatomic, strong) NSString *nextURL;
 
@@ -35,8 +36,8 @@
 
 #pragma mark - Authentication
 
+#warning API клиент должен ТОЛЬКО отправлять запросы. Никакого маппинга моделей, перебрасывания на экраны и работы с UI.
 - (void)directUserToAuthorizationURL {
-    
     // https://api.instagram.com/oauth/authorize/?client_id=CLIENT-ID&redirect_uri=REDIRECT-URI&response_type=code
     
     NSString *receivingAccessTokenURL = [NSString stringWithFormat:@"%@%@?%@%@&%@%@&%@", OAuthHostURL, NM_AuthorizationPath, NM_ParameterClientID, INSTAGRAM_CLIENT_ID, NM_ParameterRedirectURI, INSTAGRAM_REDIRECT_URI, NM_ResponseType];
@@ -106,6 +107,7 @@
     [manager GET:pathString parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
         NSArray *dataArray = responseObject[kTagsData];
         __block NSMutableArray *tagsByNameArray = [[NSMutableArray alloc] init];
+#warning обработка полученных данных должна происходить не в API клиенте
         [dataArray enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
             [tagsByNameArray addObject:obj[kTagsName]];
         }];
@@ -131,6 +133,7 @@
         weakSelf.nextURL = responseObject[kTagsPagination][kTagsNextURL];
         completionHandler (YES, responseObject[kTagsData], nil);
         
+#warning этого здесь не должно быть
         if (tag) {
             [[DDDataManager sharedManager] insertItemsToCoreDataFromArray:responseObject[kTagsData]];
         }

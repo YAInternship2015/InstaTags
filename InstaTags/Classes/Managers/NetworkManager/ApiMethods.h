@@ -6,6 +6,8 @@
 //  Copyright (c) 2015 Dmitriy Demchenko. All rights reserved.
 //
 
+#warning Как файл называется странно. И ему нужно добавить префикс приложения
+
 #import <Foundation/Foundation.h>
 
 #ifndef INSTATAGS_ApiMethods_h

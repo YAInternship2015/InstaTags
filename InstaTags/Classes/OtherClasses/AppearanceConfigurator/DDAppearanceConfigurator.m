@@ -15,6 +15,7 @@
     [[UINavigationBar appearance] setBarTintColor:[UIColor appBaseBlueColor]];
     [[UINavigationBar appearance] setTintColor:[UIColor whiteColor]];
     [[UINavigationBar appearance] setTitleTextAttributes:@{NSFontAttributeName : [UIFont appFontProximanovaRegularWithSize:18.f], NSForegroundColorAttributeName : [UIColor whiteColor]}];
+#warning картинку надо вынести в категорию UIImage
     [[UINavigationBar appearance] setBackIndicatorImage:[UIImage imageNamed:@"back_button"]];
     [[UINavigationBar appearance] setBackIndicatorTransitionMaskImage:[UIImage imageNamed:@"back_button"]];
 }

@@ -57,6 +57,7 @@
 #pragma mark - NSFetchedResultsControllerDelegate
 
 - (void)controllerDidChangeContent:(NSFetchedResultsController *)controller {
+#warning не понял, зачем нужно заново переконфигурировать контроллер
     [self setupFetchedResultsController];
 }
 

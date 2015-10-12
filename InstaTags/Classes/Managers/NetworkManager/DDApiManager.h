@@ -14,10 +14,12 @@ typedef void (^CompletionBlock)(BOOL succes, id responseObject, NSError *error);
 
 + (DDApiManager *)sharedManager;
 
+#warning плозие имена методов
 - (void)directUserToAuthorizationURL;
 - (void)receiveRedirectFromInstagram;
 
 - (void)searchForTagsByName:(NSString *)tagsByName completionHandler:(CompletionBlock)completionHandler;
+#warning здесь вместо get надо load или request
 - (void)getImagesWithTag:(NSString *)tag completionHandler:(CompletionBlock)completionHandler;
 
 @end

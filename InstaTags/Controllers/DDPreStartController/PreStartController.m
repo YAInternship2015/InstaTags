@@ -14,6 +14,8 @@
 
 @end
 
+#warning объявление констант лучше делать до секции @interface
+
 static CGFloat const LogoPosition = 53.5f;
 static CGFloat const AnimationDuration = 1.5f;
 static NSString *const SegueIdentifierSplash = @"SegueIdentifierSplash";

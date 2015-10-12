@@ -19,6 +19,7 @@
 - (NSUInteger)numberOfModels;
 - (DDModel *)modelForIndex:(NSInteger)index;
 - (void)removeModelAtIndex:(NSIndexPath *)indexPath;
+#warning в здесь лучше не get, а load или request. Get подразумевает мгновенную операцию, в load или request - длительную
 - (void)getNextImagePack;
 
 @end

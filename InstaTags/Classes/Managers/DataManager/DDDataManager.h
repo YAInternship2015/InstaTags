@@ -8,6 +8,7 @@
 
 #import <Foundation/Foundation.h>
 
+#warning зачем нужен этот блок?
 typedef void (^DMBlock)(BOOL succes);
 
 @interface DDDataManager : NSObject

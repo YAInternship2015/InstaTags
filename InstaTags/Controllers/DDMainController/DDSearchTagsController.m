@@ -11,6 +11,7 @@
 #import <SDWebImage/UIImageView+WebCache.h>
 #import "DDInputValidator.h"
 
+#warning достаточно "жирный" контроллер, много чего умеет делать. Напрашивается вынос датасорса для пикера и, как вариант, вынос логин-части с профилем пользователя (верхняя часть на экране) в отдельный контроллер, который добавится как child на этот. Если будет время, попробуйте что-то из этого воплотить в жизнь
 @interface DDSearchTagsController ()
 
 // before login
@@ -97,6 +98,7 @@
     
     NSError *error = NULL;
     if ([DDInputValidator validateInputString:textField.text error:&error]) {
+#warning вообще работать с API клиентами должны дата менеджеры. Вью контроллер говорит менеджеру "дай мне что-то", менеджер говорит апи клиенту, чтобы тот згарузил данные, затем менеджер как-то обрабатывает полученные данные и возвращает их контроллеру через блоки
         [[DDApiManager sharedManager] searchForTagsByName:[self.searchField.text removeWhitespaces] completionHandler:^(BOOL succes, NSArray *responseArray, NSError *error) {
             weakSelf.tagsByNameArray = responseArray;
             [weakSelf.searchHelpLabel setVisible:NO animated:YES];

@@ -29,8 +29,10 @@
     [[NSNotificationCenter defaultCenter] postNotificationName:NotificationUserProfileSaved object:nil];
 }
 
+#warning плохое имя метода, ничего не говорит о том, что в нем происходит
 - (void)pagination {
     __weak typeof(self) weakSelf = self;
+#warning в succes опечатка
     [[DDApiManager sharedManager] getImagesWithTag:nil completionHandler:^(BOOL succes, id responseObject, NSError *error) {
         [weakSelf insertItemsToCoreDataFromArray:responseObject];
     }];
@@ -43,6 +45,7 @@
         DDPostModel *networkObject = [[DDPostModel alloc] init];
         networkObject.objectDictionary = obj;
         
+#warning так как "пачки" данных в приложении небольшие, я бы порекомендовал вынести перебор массива в MagicalRecord блок, чтобы save произошел один, а не для каждой отдельной модели
         [MagicalRecord saveWithBlockAndWait:^(NSManagedObjectContext *localContext) {
             DDModel *item = nil;
             NSArray *savedItemArray = [DDModel MR_findAllWithPredicate:[NSPredicate predicateWithFormat:@"post_id == %@", networkObject.post_id]];
