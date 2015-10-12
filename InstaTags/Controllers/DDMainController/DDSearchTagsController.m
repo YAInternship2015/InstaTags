@@ -99,7 +99,7 @@
     NSError *error = NULL;
     if ([DDInputValidator validateInputString:textField.text error:&error]) {
 #warning вообще работать с API клиентами должны дата менеджеры. Вью контроллер говорит менеджеру "дай мне что-то", менеджер говорит апи клиенту, чтобы тот згарузил данные, затем менеджер как-то обрабатывает полученные данные и возвращает их контроллеру через блоки
-        [[DDApiManager sharedManager] searchForTagsByName:[self.searchField.text removeWhitespaces] completionHandler:^(BOOL succes, NSArray *responseArray, NSError *error) {
+        [[DDApiManager sharedManager] searchForTagsByName:[self.searchField.text removeWhitespaces] completionHandler:^(BOOL success, NSArray *responseArray, NSError *error) {
             weakSelf.tagsByNameArray = responseArray;
             [weakSelf.searchHelpLabel setVisible:NO animated:YES];
             [weakSelf.pickerView setVisible:YES animated:YES];
@@ -199,7 +199,7 @@
 - (void)showPhotosAction {
     [MBProgressHUD showHUDAddedTo:self.view animated:YES];
     __weak typeof(self) weakSelf = self;
-    [[DDApiManager sharedManager] loadImagesWithTag:self.selectTag completionHandler:^(BOOL succes, NSArray *responseArray, NSError *error) {
+    [[DDApiManager sharedManager] loadImagesWithTag:self.selectTag completionHandler:^(BOOL success, NSArray *responseArray, NSError *error) {
         DDInstagramViewerController *controller = (DDInstagramViewerController *)[self.storyboard instantiateViewControllerWithIdentifier:DDInstagramViewerControllerID];
         controller.tagStringForTitle = [self.selectTag capitalizedString];
         [MBProgressHUD hideHUDForView:self.view animated:YES];

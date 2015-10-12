@@ -8,7 +8,7 @@
 
 #import <Foundation/Foundation.h>
 
-typedef void (^CompletionBlock)(BOOL succes, id responseObject, NSError *error);
+typedef void (^CompletionBlock)(BOOL success, id responseObject, NSError *error);
 
 @interface DDApiManager : NSObject
 

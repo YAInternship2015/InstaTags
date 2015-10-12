@@ -32,8 +32,8 @@
 #warning плохое имя метода, ничего не говорит о том, что в нем происходит
 - (void)pagination {
     __weak typeof(self) weakSelf = self;
-#warning в succes опечатка
-    [[DDApiManager sharedManager] loadImagesWithTag:nil completionHandler:^(BOOL succes, id responseObject, NSError *error) {
+//#warning в succes опечатка
+    [[DDApiManager sharedManager] loadImagesWithTag:nil completionHandler:^(BOOL success, id responseObject, NSError *error) {
         [weakSelf insertItemsToCoreDataFromArray:responseObject];
     }];
 }
