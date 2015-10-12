@@ -14,7 +14,7 @@ typedef void (^CompletionBlock)(BOOL succes, id responseObject, NSError *error);
 
 + (DDApiManager *)sharedManager;
 
-#warning плозие имена методов
+#warning плохие имена методов
 - (void)directUserToAuthorizationURL;
 - (void)receiveRedirectFromInstagram;
 

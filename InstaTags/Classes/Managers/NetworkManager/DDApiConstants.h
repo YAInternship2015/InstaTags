@@ -1,17 +1,17 @@
 //
-//  DDApiMethods.h
+//  DDApiConstants.h
 //  InstaTags
 //
 //  Created by Dmitriy Demchenko on 9/25/15.
 //  Copyright (c) 2015 Dmitriy Demchenko. All rights reserved.
 //
 
-#warning Как файл называется странно. И ему нужно добавить префикс приложения
+//#warning Как файл называется странно. И ему нужно добавить префикс приложения
 
 #import <Foundation/Foundation.h>
 
-#ifndef INSTATAGS_ApiMethods_h
-#define INSTATAGS_ApiMethods_h
+#ifndef INSTATAGS_ApiConstants_h
+#define INSTATAGS_ApiConstants_h
 
 #pragma mark - Client Info
 

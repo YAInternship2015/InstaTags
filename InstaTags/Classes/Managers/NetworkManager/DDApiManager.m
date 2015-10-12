@@ -8,7 +8,7 @@
 
 #import "DDApiManager.h"
 #import "AFNetworking.h"
-#import "DDApiMethods.h"
+#import "DDApiConstants.h"
 #import "DDPostModel.h"
 #import "DDDataManager.h"
 
