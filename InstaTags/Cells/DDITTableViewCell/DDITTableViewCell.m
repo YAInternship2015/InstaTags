@@ -26,8 +26,6 @@
     [self.profilePicture sd_setImageWithURL:[NSURL URLWithString:post.user_profile_picture]];
     self.fullName.text = (post.user_full_name) ? post.user_full_name : post.username;
     
-    NSLog(@"%@ %@", post.user_full_name, post.username);
-    
     self.instagramImageView.image = nil;
 //#warning картинку-плейсхолдер надо вынести в категорию UIImage
     [self.instagramImageView sd_setImageWithURL:[NSURL URLWithString:post.instagram_image_url] placeholderImage:[UIImage appPlaceholderImage]];

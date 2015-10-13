@@ -8,6 +8,7 @@
 
 #import "AppDelegate.h"
 #import "DDAppearanceConfigurator.h"
+#import "DDApiManager.h"
 
 @interface AppDelegate ()
 

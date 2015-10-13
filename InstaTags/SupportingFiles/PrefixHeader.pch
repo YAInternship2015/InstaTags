@@ -31,9 +31,8 @@
 #import "MBProgressHUD.h"
 
 
-#pragma mark - Managers & Models
+#pragma mark - Models
 
-#import "DDAPIManager.h"
 #import "DDModel.h"
 
 #endif

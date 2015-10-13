@@ -8,6 +8,7 @@
 
 #import "DDDataManager.h"
 #import "DDPostModel.h"
+#import "DDApiManager.h"
 #import "DDApiConstants.h"
 
 @implementation DDDataManager

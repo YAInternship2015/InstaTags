@@ -328,7 +328,7 @@
 			isa = PBXGroup;
 			children = (
 				328083181BC2F9B900319BC5 /* DataManager */,
-				328B6AD11BB5CC28004AF4CF /* NetworkManager */,
+				328B6AD11BB5CC28004AF4CF /* ApiManager */,
 			);
 			name = Managers;
 			sourceTree = "<group>";
@@ -418,14 +418,14 @@
 			path = CoreDataModels;
 			sourceTree = "<group>";
 		};
-		328B6AD11BB5CC28004AF4CF /* NetworkManager */ = {
+		328B6AD11BB5CC28004AF4CF /* ApiManager */ = {
 			isa = PBXGroup;
 			children = (
 				32A77C371BB5D1F90044A6D4 /* DDApiConstants.h */,
 				32A77C381BB5D1F90044A6D4 /* DDApiManager.h */,
 				32A77C391BB5D1F90044A6D4 /* DDApiManager.m */,
 			);
-			name = NetworkManager;
+			name = ApiManager;
 			path = Managers/NetworkManager;
 			sourceTree = "<group>";
 		};
