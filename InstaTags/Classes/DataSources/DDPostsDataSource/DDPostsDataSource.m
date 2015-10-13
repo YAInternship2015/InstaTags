@@ -49,8 +49,12 @@
     [[NSManagedObjectContext MR_defaultContext] MR_saveToPersistentStoreAndWait];
 }
 
-- (void)requestNextPosts {
-    [[DDDataManager sharedManager] postsWithTag:nil completion:nil];
+- (void)requestPostWithTag:(NSString *)tag completion:(SuccessBlock)completion {
+    [[DDDataManager sharedManager] postsWithTag:tag completion:^(BOOL success, id responseObject, NSError *error) {
+        if (tag && success) {
+            completion(success);
+        }
+    }];
 }
 
 #pragma mark - NSFetchedResultsControllerDelegate

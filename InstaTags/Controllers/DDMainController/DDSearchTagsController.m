@@ -10,10 +10,11 @@
 #import "DDInstagramViewerController.h"
 #import <SDWebImage/UIImageView+WebCache.h>
 #import "DDTagsDataSource.h"
-#import "DDDataManager.h"
+#import "DDPostsDataSource.h"
 #import "DDInputValidator.h"
 #import "DDApiManager.h"
 
+#warning Из данного замечания реализовал вынос датасорса для пикера, который решил еще одну ошибку с обращением к ApiManager, child - обязательно реализую позже, спасибо за данную рекомендацию, получил понимание практического применения контейнеров
 //#warning достаточно "жирный" контроллер, много чего умеет делать. Напрашивается вынос датасорса для пикера и, как вариант, вынос логин-части с профилем пользователя (верхняя часть на экране) в отдельный контроллер, который добавится как child на этот. Если будет время, попробуйте что-то из этого воплотить в жизнь
 
 @interface DDSearchTagsController () <DDTagsDataSourceDelegate>
@@ -41,6 +42,7 @@
 @property (nonatomic, strong) CAGradientLayer *gradient;
 @property (nonatomic, strong) NSString *selectTag;
 @property (nonatomic, strong) DDTagsDataSource *tagsDataSource;
+@property (nonatomic, strong) DDPostsDataSource *postsDataSource;
 
 @end
 
@@ -105,6 +107,7 @@
     NSError *error = NULL;
     if ([DDInputValidator validateInputString:textField.text error:&error]) {
 //#warning вообще работать с API клиентами должны дата менеджеры. Вью контроллер говорит менеджеру "дай мне что-то", менеджер говорит апи клиенту, чтобы тот згарузил данные, затем менеджер как-то обрабатывает полученные данные и возвращает их контроллеру через блоки
+#warning добавил tagsDataSource, котрый стал поставщиком для пикера, и который через dataManager пробрасывает запрос в apiManager
         [self.tagsDataSource requestForTagsByName:[self.searchField.text removeWhitespaces]];
     } else {
         [MBProgressHUD hideHUDForView:self.view animated:YES];
@@ -212,8 +215,8 @@
     
     __weak typeof(self) weakSelf = self;
     
-    [[DDDataManager sharedManager] postsWithTag:self.selectTag completion:^(BOOL success, id responseObject, NSError *error) {
-        
+    self.postsDataSource = [[DDPostsDataSource alloc] init];
+    [self.postsDataSource requestPostWithTag:self.selectTag completion:^(BOOL success) {
         if (success) {
             DDInstagramViewerController *controller = (DDInstagramViewerController *)[self.storyboard instantiateViewControllerWithIdentifier:DDInstagramViewerControllerID];
             controller.tagStringForTitle = [weakSelf.selectTag capitalizedString];
@@ -223,13 +226,6 @@
             [MBProgressHUD hideHUDForView:weakSelf.view animated:YES];
         }
     }];
-    /*
-    [[DDApiManager sharedManager] loadImagesWithTag:self.selectTag completionHandler:^(BOOL success, NSArray *responseArray, NSError *error) {
-        DDInstagramViewerController *controller = (DDInstagramViewerController *)[self.storyboard instantiateViewControllerWithIdentifier:DDInstagramViewerControllerID];
-        controller.tagStringForTitle = [self.selectTag capitalizedString];
-        [MBProgressHUD hideHUDForView:self.view animated:YES];
-        [weakSelf.navigationController pushViewController:controller animated:YES];
-    }];*/
 }
 
 @end

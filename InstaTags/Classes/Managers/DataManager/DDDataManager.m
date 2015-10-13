@@ -63,6 +63,7 @@
         networkObject.objectDictionary = obj;
         
 //#warning так как "пачки" данных в приложении небольшие, я бы порекомендовал вынести перебор массива в MagicalRecord блок, чтобы save произошел один, а не для каждой отдельной модели
+#warning Не смог применить данную рекомендацию, тК при переборке массива внутри блока происходит сбой при обновлении контента tableView & collectionView
         [MagicalRecord saveWithBlockAndWait:^(NSManagedObjectContext *localContext) {
             DDModel *item = nil;
             NSArray *savedItemArray = [DDModel MR_findAllWithPredicate:[NSPredicate predicateWithFormat:@"post_id == %@", networkObject.post_id]];
