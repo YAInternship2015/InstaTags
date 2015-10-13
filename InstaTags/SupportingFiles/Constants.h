@@ -6,16 +6,16 @@
 //  Copyright (c) 2015 Dmitriy Demchenko. All rights reserved.
 //
 
-#import <Foundation/Foundation.h>
+#import <Foundation/Foundation.h> // tWGC3uLpB4nhUt
 
 #ifndef INSTATAGS_Constants_h
 #define INSTATAGS_Constants_h
 
 
-#pragma mark - Instagram API
+#pragma mark - Notifications
 
-//static NSString *const INSTAGRAM_CODE                   = @"INSTAGRAM_CODE";
-static NSString *const INSTAGRAM_ACCESS_TOKEN_RECEIVED  = @"INSTAGRAM_ACCESS_TOKEN_RECEIVED";
+static NSString *const NotificationUserProfileSaved     = @"NotificationUserProfileSaved";
+
 
 #pragma mark - Stroryboard IDs
 
@@ -30,20 +30,27 @@ static NSString *const SegueIdentifierCollectionController  = @"SegueIdentifierC
 
 #pragma mark - CoreData
 
-static NSString *const EntityDDModel        = @"DDModel";
-static NSString *const kSavedDate           = @"saved_date";
+static NSString *const kSavedDate               = @"saved_date";
 
-#pragma mark - Requests
+#pragma mark - Requst parameters and values
 
-static NSString *const NM_AccessTokenPath   = @"access_token";
+static NSString *const NM_AuthorizationPath     = @"authorize/";
+static NSString *const NM_AccessTokenPath       = @"access_token";
+static NSString *const NM_ParameterClientID     = @"client_id=";
+static NSString *const NM_ParameterRedirectURI  = @"redirect_uri=";
+static NSString *const NM_ResponseType          = @"response_type=code";
+static NSString *const NM_ParameterCode         = @"code=";
+static NSString *const NM_ParameterClientSecret = @"client_secret";
+static NSString *const NM_ParameterGrantType    = @"grant_type";
 
-#pragma mark - User profile
+#pragma mark - Response keys
 
-static NSString *const kUserFullName        = @"full_name";
-static NSString *const kUserProfilePicture  = @"profile_picture";
-
-#pragma mark - Notifications
-
-static NSString *const NotificationUserProfileSaved     = @"NotificationUserProfileSaved";
+static NSString *const kTagsName                = @"name";
+static NSString *const kTagsData                = @"data";
+static NSString *const kTagsImages              = @"images";
+static NSString *const kTagsStandardResolution  = @"standard_resolution";
+static NSString *const kTagsURL                 = @"url";
+static NSString *const kTagsPagination          = @"pagination";
+static NSString *const kTagsNextURL             = @"next_url";
 
 #endif

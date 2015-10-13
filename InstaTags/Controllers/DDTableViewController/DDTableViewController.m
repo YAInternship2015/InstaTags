@@ -10,17 +10,15 @@
 #import "DDITTableViewCell.h"
 #import "DDPostsDataSource.h"
 
-@interface DDTableViewController () <DDPostsDataSourceDelegate>
+static NSString *const InstagramCellIdentifier = @"InstagramCellIdentifier";
+
+@interface DDTableViewController () <DDPostsDataSourceDelegate> // tWGC3uLpB4nhUt
 
 @property (nonatomic, strong) DDPostsDataSource *dataSource;
 @property (nonatomic, weak) IBOutlet UIActivityIndicatorView *activityIndicator;
 
 @end
 
-
-static NSString *const InstagramCellIdentifier = @"InstagramCellIdentifier";
-
-#pragma mark - Lifecycle
 
 @implementation DDTableViewController
 

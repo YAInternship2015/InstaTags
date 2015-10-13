@@ -10,6 +10,8 @@
 #import "DDTableViewController.h"
 #import "DDCollectionViewController.h"
 
+static CGFloat const AnimateDuration = 1.3f;
+
 @interface DDContainerViewController ()
 
 @property (nonatomic, strong) DDTableViewController *tableController;
@@ -19,8 +21,6 @@
 
 @end
 
-
-static CGFloat const AnimateDuration = 1.3f;
 
 @implementation DDContainerViewController
 

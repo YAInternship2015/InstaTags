@@ -8,6 +8,8 @@
 
 #import <Foundation/Foundation.h>
 
+@class DDModel;
+
 @protocol DDPostsDataSourceDelegate;
 
 typedef void (^SuccessBlock)(BOOL success);

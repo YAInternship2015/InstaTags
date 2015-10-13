@@ -10,11 +10,7 @@
 
 @interface DDAuthenticationManager : NSObject
 
-- (void)directUserToAuthorizationURL;
-
-- (BOOL)getInstagramCodeWithURL:(NSURL *)url;
-
-
-//- (void)receiveRedirectFromInstagram;
+- (void)authenticationAndLoginUser;
+- (BOOL)getInstagramCodeFromURL:(NSURL *)url;
 
 @end

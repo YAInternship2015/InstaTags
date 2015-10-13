@@ -9,6 +9,8 @@
 #import "DDNetworkObject.h"
 #import <objc/runtime.h>
 
+#warning Хотелось бы услышать комментарии по моему рукотворному маппингу ))
+
 @implementation DDNetworkObject
 
 #pragma mark - Public methods

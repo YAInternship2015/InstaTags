@@ -8,6 +8,7 @@
 
 #import "DDPostsDataSource.h"
 #import "DDDataManager.h"
+#import "DDModel.h"
 
 @interface DDPostsDataSource () <NSFetchedResultsControllerDelegate>
 

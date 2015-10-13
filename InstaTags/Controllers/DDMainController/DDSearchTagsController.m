@@ -13,6 +13,7 @@
 #import "DDTagsDataSource.h"
 #import "DDPostsDataSource.h"
 #import "DDInputValidator.h"
+#import "DDUser+FetchingEntity.h"
 
 #warning Из данного замечания реализовал вынос датасорса для пикера, который решил еще одну ошибку с обращением к ApiManager, child - обязательно реализую позже, спасибо за данную рекомендацию, получил понимание практического применения контейнеров
 //#warning достаточно "жирный" контроллер, много чего умеет делать. Напрашивается вынос датасорса для пикера и, как вариант, вынос логин-части с профилем пользователя (верхняя часть на экране) в отдельный контроллер, который добавится как child на этот. Если будет время, попробуйте что-то из этого воплотить в жизнь
@@ -58,7 +59,7 @@
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(setupOrUpdateViewIfUserLogin) name:NotificationUserProfileSaved object:nil];
     
-    if (![[NSUserDefaults standardUserDefaults] boolForKey:INSTAGRAM_ACCESS_TOKEN_RECEIVED]) {
+    if (![DDUser MR_countOfEntities]) {
         [self setupViewIfUserDontLogin];
     } else {
         [self setupOrUpdateViewIfUserLogin];
@@ -170,9 +171,11 @@
     
     // show user profile
     [self.userFullNameLabel setVisible:YES animated:YES];
-    self.userFullNameLabel.text = [[NSUserDefaults standardUserDefaults] valueForKey:kUserFullName];
+    self.userFullNameLabel.text = [DDUser savedUser].full_name;
+//    self.userFullNameLabel.text = [[NSUserDefaults standardUserDefaults] valueForKey:kUserFullName];
     [self.userProfilePicture setVisible:YES animated:YES];
-    [self.userProfilePicture sd_setImageWithURL:[NSURL URLWithString:[[NSUserDefaults standardUserDefaults] valueForKey:kUserProfilePicture]]];
+//    [self.userProfilePicture sd_setImageWithURL:[NSURL URLWithString:[[NSUserDefaults standardUserDefaults] valueForKey:kUserProfilePicture]]];
+    [self.userProfilePicture sd_setImageWithURL:[NSURL URLWithString:[DDUser savedUser].profile_picture]];
     
     // search field
     self.searchField.enabled = YES;
@@ -207,7 +210,7 @@
     [self.loginActivityIndicator startAnimating];
     
     DDAuthenticationManager *manager = [[DDAuthenticationManager alloc] init];
-    [manager directUserToAuthorizationURL];
+    [manager authenticationAndLoginUser];
 }
 
 - (void)showPhotosAction {

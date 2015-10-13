@@ -8,21 +8,19 @@
 
 #import "DDAuthenticationManager.h"
 #import "AFNetworking.h"
-#import "DDApiConstants.h"
 #import "DDDataManager.h"
+#import "DDUserProfileModel.h"  // networkObjectModel
+#import "DDUser.h"              // coreDataModel
 
+static NSString *const INSTAGRAM_CLIENT_SECRET  = @"f13aef57842f417c93e05ce2637194fb";
+static NSString *const INSTAGRAM_WEBSITE_URL    = @"https://www.facebook.com/snowdima";
+static NSString *const INSTAGRAM_SUPPORT_EMAIL  = @"organization_98@yahoo.com";
+static NSString *const INSTAGRAM_GRANT_TYPE     = @"authorization_code";
 static NSString *const INSTAGRAM_URL_SCHEME     = @"instatags";
 static NSString *const INSTAGRAM_CLIENT_ID      = @"15cc709935094bfaa0e14f485fee38da";
 static NSString *const INSTAGRAM_REDIRECT_URI   = @"instatags://instagram/authentication";
 
 static NSString *const OAuthHostURL             = @"https://api.instagram.com/oauth/";
-
-static NSString *const NM_AuthorizationPath     = @"authorize/";
-static NSString *const NM_ParameterClientID     = @"client_id=";
-static NSString *const NM_ParameterRedirectURI  = @"redirect_uri=";
-static NSString *const NM_ResponseType          = @"response_type=code";
-
-static NSString *const NM_ParameterCode         = @"code=";
 
 
 @interface DDAuthenticationManager ()
@@ -32,22 +30,20 @@ static NSString *const NM_ParameterCode         = @"code=";
 @end
 
 
-@implementation DDAuthenticationManager // tWGC3uLpB4nhUt
+@implementation DDAuthenticationManager
 
 #pragma mark - Puplic methods
 
-// 1
-- (void)directUserToAuthorizationURL {
+- (void)authenticationAndLoginUser {
     // https://api.instagram.com/oauth/authorize/?client_id=CLIENT-ID&redirect_uri=REDIRECT-URI&response_type=code
     
     NSString *receivingAccessTokenURL = [NSString stringWithFormat:@"%@%@?%@%@&%@%@&%@", OAuthHostURL, NM_AuthorizationPath, NM_ParameterClientID, INSTAGRAM_CLIENT_ID, NM_ParameterRedirectURI, INSTAGRAM_REDIRECT_URI, NM_ResponseType];
     [[UIApplication sharedApplication] openURL:[NSURL URLWithString:receivingAccessTokenURL]];
 }
 
-// 3
-- (BOOL)getInstagramCodeWithURL:(NSURL *)url {
+- (BOOL)getInstagramCodeFromURL:(NSURL *)url {
     
-    BOOL success;
+    BOOL success = NO;
     
     if([[url scheme] isEqualToString:INSTAGRAM_URL_SCHEME]) {
 
@@ -62,14 +58,13 @@ static NSString *const NM_ParameterCode         = @"code=";
             if([[url absoluteString] rangeOfString:@"error="].location != NSNotFound) {
                 NSLog(@"error occured!");
             }
-            success = NO;
         }
     }
     return success;
 }
 
 #pragma mark - Private methods
-// 4
+
 - (void)receiveRedirectFromInstagram {
     
     // http://your-redirect-uri?code=CODE
@@ -85,7 +80,6 @@ static NSString *const NM_ParameterCode         = @"code=";
     }
 }
 
-// 5
 - (void)requestAccessToken {
     
     /*
@@ -109,25 +103,26 @@ static NSString *const NM_ParameterCode         = @"code=";
     manager.responseSerializer = [AFJSONResponseSerializer serializer];
     
     [manager POST:fullPathString parameters:parameters success:^(AFHTTPRequestOperation *operation, id responseObject) {
-        
-        [[NSUserDefaults standardUserDefaults] setValue:responseObject[kAccessToken] forKey:INSTAGRAM_ACCESS_TOKEN];
-        [[NSUserDefaults standardUserDefaults] setBool:YES forKey:INSTAGRAM_ACCESS_TOKEN_RECEIVED];
-        [[NSUserDefaults standardUserDefaults] synchronize];
-        
-        [self saveUserProfile:responseObject[kUser]];
-        
+        [self saveUserProfileFromResponseObject:responseObject];
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
         NSLog(@"%@", [error localizedDescription]);
     }];
 }
 
-- (void)saveUserProfile:(NSDictionary *)userProfile {
+- (void)saveUserProfileFromResponseObject:(id)responseObject {
     
-    [[NSUserDefaults standardUserDefaults] setValue:userProfile[kUserFullName] forKey:kUserFullName];
-    [[NSUserDefaults standardUserDefaults] setValue:userProfile[kUserProfilePicture] forKey:kUserProfilePicture];
-    [[NSUserDefaults standardUserDefaults] synchronize];
+    DDUserProfileModel *networkObject = [[DDUserProfileModel alloc] init];
+    networkObject.objectDictionary = responseObject;
     
-    [[NSNotificationCenter defaultCenter] postNotificationName:NotificationUserProfileSaved object:nil];
+    [MagicalRecord saveWithBlock:^(NSManagedObjectContext *localContext) {
+        DDUser *user = [DDUser MR_createEntityInContext:localContext];
+        user.access_token = networkObject.access_token;
+        user.username = networkObject.user.username;
+        user.full_name = networkObject.user.full_name;
+        user.profile_picture = networkObject.user.profile_picture;
+    } completion:^(BOOL contextDidSave, NSError *error) {
+        [[NSNotificationCenter defaultCenter] postNotificationName:NotificationUserProfileSaved object:nil];
+    }];
 }
 
 @end

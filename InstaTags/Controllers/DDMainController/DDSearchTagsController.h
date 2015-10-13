@@ -8,10 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@class DDUserModel;
-
 @interface DDSearchTagsController : UIViewController
-
-@property (nonatomic, strong) DDUserModel *currentUser;
 
 @end

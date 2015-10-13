@@ -8,6 +8,7 @@
 
 #import "DDITTableViewCell.h"
 #import <SDWebImage/UIImageView+WebCache.h>
+#import "DDModel.h"
 
 @interface DDITTableViewCell ()
 
@@ -18,6 +19,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *captionLabel;
 
 @end
+
 
 @implementation DDITTableViewCell
 

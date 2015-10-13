@@ -9,14 +9,13 @@
 #import "DDInstagramViewerController.h"
 #import "DDContainerViewController.h"
 
+static NSString *const EmbedContainer = @"EmbedContainer";
+
 @interface DDInstagramViewerController ()
 
 @property (nonatomic, strong) DDContainerViewController *containerViewController;
 
 @end
-
-
-static NSString *const EmbedContainer = @"EmbedContainer";
 
 
 @implementation DDInstagramViewerController

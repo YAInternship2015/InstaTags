@@ -8,9 +8,10 @@
 
 #import "DDApiManager.h"
 #import "AFNetworking.h"
-#import "DDApiConstants.h"
-#import "DDPostModel.h"
 #import "DDDataManager.h"
+#import "DDUser+FetchingEntity.h"
+
+static NSString *const TagsHostURL = @"https://api.instagram.com/v1/tags/";
 
 @interface DDApiManager ()
 
@@ -34,66 +35,13 @@
     return manager;
 }
 
-/*
-#pragma mark - Authentication
-
-#warning API клиент должен ТОЛЬКО отправлять запросы. Никакого маппинга моделей, перебрасывания на экраны и работы с UI.
-- (void)directUserToAuthorizationURL {
-    // https://api.instagram.com/oauth/authorize/?client_id=CLIENT-ID&redirect_uri=REDIRECT-URI&response_type=code
-    
-    NSString *receivingAccessTokenURL = [NSString stringWithFormat:@"%@%@?%@%@&%@%@&%@", OAuthHostURL, NM_AuthorizationPath, NM_ParameterClientID, INSTAGRAM_CLIENT_ID, NM_ParameterRedirectURI, INSTAGRAM_REDIRECT_URI, NM_ResponseType];
-    [[UIApplication sharedApplication] openURL:[NSURL URLWithString:receivingAccessTokenURL]];
-}
-
-- (void)receiveRedirectFromInstagram {
-    
-    // http://your-redirect-uri?code=CODE
-    
-    NSString *customScheme = [INSTAGRAM_URL_SCHEME stringByAppendingString:@"://"];
-    NSString *fullPath = [NSString stringWithFormat:@"%@?%@%@", customScheme, NM_ParameterCode, [[NSUserDefaults standardUserDefaults] valueForKey:INSTAGRAM_CODE]];
-    NSURL *url = [NSURL URLWithString:fullPath];
-    
-    if ([[UIApplication sharedApplication] canOpenURL:url]) {
-        [self requestAccessToken];
-        
-    } else {
-        [[[UIAlertView alloc] initWithTitle:[@"Receiver Not Found" localized] message:[@"The Receiver App is not installed. It must be installed to send text." localized] delegate:nil cancelButtonTitle:[@"OK" localized] otherButtonTitles:nil] show];
-    }
-}
-
-- (void)requestAccessToken {
-    
-    NSString *fullPathString = [OAuthHostURL stringByAppendingString:NM_AccessTokenPath];
-    
-    NSDictionary *parameters = @{[NM_ParameterClientID removeLastCharacter] : INSTAGRAM_CLIENT_ID,
-                                 NM_ParameterClientSecret : INSTAGRAM_CLIENT_SECRET,
-                                 NM_ParameterGrantType : INSTAGRAM_GRANT_TYPE,
-                                 [NM_ParameterRedirectURI removeLastCharacter] : INSTAGRAM_REDIRECT_URI,
-                                 [NM_ParameterCode removeLastCharacter] : [[NSUserDefaults standardUserDefaults] valueForKey:INSTAGRAM_CODE]};
-    
-    AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
-    manager.responseSerializer = [AFJSONResponseSerializer serializer];
-    
-    [manager POST:fullPathString parameters:parameters success:^(AFHTTPRequestOperation *operation, id responseObject) {
-        
-        [[NSUserDefaults standardUserDefaults] setValue:responseObject[kAccessToken] forKey:INSTAGRAM_ACCESS_TOKEN];
-        [[NSUserDefaults standardUserDefaults] setBool:YES forKey:INSTAGRAM_ACCESS_TOKEN_RECEIVED];
-        [[NSUserDefaults standardUserDefaults] synchronize];
-        
-        [[DDDataManager sharedManager] saveUserProfile:responseObject[kUser]];
-    
-    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-        NSLog(@"%@", [error localizedDescription]);
-    }];
-}*/
-
-#pragma mark - Requests
+#pragma mark - Public methods
 
 - (void)searchForTagsByName:(NSString *)tagsByName completionHandler:(ApiManagerBlock)completionHandler {
     
     // https://api.instagram.com/v1/tags/search?q=snowy&access_token=ACCESS-TOKEN
     
-    NSString *pathString = [NSString stringWithFormat:@"search?q=%@&%@%@", tagsByName, [NM_AccessTokenPath stringByAppendingString:@"=" ], [[NSUserDefaults standardUserDefaults] valueForKey:INSTAGRAM_ACCESS_TOKEN]];
+    NSString *pathString = [NSString stringWithFormat:@"search?q=%@&%@%@", tagsByName, [NM_AccessTokenPath stringByAppendingString:@"=" ], [DDUser savedUser].access_token];
     
     AFHTTPRequestOperationManager *manager = [[AFHTTPRequestOperationManager alloc] initWithBaseURL:[NSURL URLWithString:TagsHostURL]];
     [manager GET:pathString parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
@@ -104,6 +52,7 @@
         [dataArray enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
             [tagsByNameArray addObject:obj[kTagsName]];
         }];*/
+#warning Вынес все лишнее, оставил completionHandler
         completionHandler(YES, responseObject, nil);
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
         NSLog(@"%@", [error localizedDescription]);
@@ -114,7 +63,7 @@
     
     // https://api.instagram.com/v1/tags/{tag-name}/media/recent?access_token=ACCESS-TOKEN
     
-    NSString *pathString = (!self.nextURL) ? [NSString stringWithFormat:@"%@%@/media/recent?%@%@&count=5", TagsHostURL, tag, [NM_AccessTokenPath stringByAppendingString:@"=" ], [[NSUserDefaults standardUserDefaults] valueForKey:INSTAGRAM_ACCESS_TOKEN]] : self.nextURL;
+    NSString *pathString = (!self.nextURL) ? [NSString stringWithFormat:@"%@%@/media/recent?%@%@&count=5", TagsHostURL, tag, [NM_AccessTokenPath stringByAppendingString:@"=" ], [DDUser savedUser].access_token] : self.nextURL;
     
     __weak typeof(self) weakSelf = self;
     
@@ -123,10 +72,10 @@
         
         weakSelf.nextURL = responseObject[kTagsPagination][kTagsNextURL];
         completionHandler (YES, responseObject, nil);
-        
+
+#warning Вынес все лишнее, оставил completionHandler & nextURL
         /*
-        completionHandler (YES, responseObject[kTagsData], nil);
-        
+        completionHandler (YES, responseObject[kTagsData], nil);        
 #warning этого здесь не должно быть
         if (tag) {
             [[DDDataManager sharedManager] insertItemsToCoreDataFromArray:responseObject[kTagsData]];

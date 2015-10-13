@@ -10,14 +10,14 @@
 #import "DDITCollectionViewCell.h"
 #import "DDPostsDataSource.h"
 
+static CGFloat const durationAnimationDeleteCell = 0.3f;
+
 @interface DDCollectionViewController () <DDPostsDataSourceDelegate>
 
 @property (nonatomic, strong) DDPostsDataSource *dataSource;
 
 @end
 
-
-static CGFloat const durationAnimationDeleteCell = 0.3f;
 
 @implementation DDCollectionViewController
 

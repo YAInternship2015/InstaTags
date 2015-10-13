@@ -8,6 +8,8 @@
 
 #import <UIKit/UIKit.h>
 
+@class DDModel;
+
 @interface DDITCollectionViewCell : UICollectionViewCell
 
 - (void)configWithPostModel:(DDModel *)model;

@@ -30,9 +30,4 @@
 #import <MagicalRecord/MagicalRecordShorthandMethodAliases.h>
 #import "MBProgressHUD.h"
 
-
-#pragma mark - Models
-
-#import "DDModel.h"
-
 #endif

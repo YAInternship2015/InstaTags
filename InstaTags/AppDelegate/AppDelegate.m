@@ -22,18 +22,16 @@
     [DDAppearanceConfigurator configurateNavigationBarAndStatusBar];
     [DDAppearanceConfigurator configurateTextField];
     
-    [MagicalRecord setupCoreDataStackWithStoreNamed:EntityDDModel];
+    [MagicalRecord setupCoreDataStack];
     
     return YES;
 }
 
-// 2
 - (BOOL)application:(UIApplication *)application openURL:(NSURL *)url sourceApplication:(NSString *)sourceApplication annotation:(id)annotation {
 #warning Вынес в отдельный класс DDAuthenticationManager
 //#warning эту логику надо убрать из AppDelegate
     DDAuthenticationManager *manager = [[DDAuthenticationManager alloc] init];
-    
-    return [manager getInstagramCodeWithURL:url];
+    return [manager getInstagramCodeFromURL:url];
 }
 
 @end

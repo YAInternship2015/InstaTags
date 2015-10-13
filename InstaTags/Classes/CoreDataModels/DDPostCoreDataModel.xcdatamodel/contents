@@ -9,7 +9,14 @@
         <attribute name="user_profile_picture" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="username" optional="YES" attributeType="String" syncable="YES"/>
     </entity>
+    <entity name="DDUser" representedClassName="DDUser" syncable="YES">
+        <attribute name="access_token" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="full_name" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="profile_picture" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="username" optional="YES" attributeType="String" syncable="YES"/>
+    </entity>
     <elements>
         <element name="DDModel" positionX="-63" positionY="-18" width="128" height="150"/>
+        <element name="DDUser" positionX="-63" positionY="36" width="128" height="105"/>
     </elements>
 </model>

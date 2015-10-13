@@ -8,6 +8,7 @@
 
 #import "DDITCollectionViewCell.h"
 #import <SDWebImage/UIImageView+WebCache.h>
+#import "DDModel.h"
 
 @interface DDITCollectionViewCell ()
 
