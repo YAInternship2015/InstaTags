@@ -13,6 +13,8 @@
 
 @implementation DDDataManager
 
+#pragma mark - Public methods
+
 + (DDDataManager *)sharedManager {
     static DDDataManager *manager = nil;
     static dispatch_once_t onceTaken;
@@ -20,15 +22,6 @@
         manager = [[DDDataManager alloc] init];
     });
     return manager;
-}
-
-- (void)saveUserProfile:(NSDictionary *)userProfile {
-    
-    [[NSUserDefaults standardUserDefaults] setValue:userProfile[kUserFullName] forKey:kUserFullName];
-    [[NSUserDefaults standardUserDefaults] setValue:userProfile[kUserProfilePicture] forKey:kUserProfilePicture];
-    [[NSUserDefaults standardUserDefaults] synchronize];
-    
-    [[NSNotificationCenter defaultCenter] postNotificationName:NotificationUserProfileSaved object:nil];
 }
 
 - (void)tagsByName:(NSString *)name completion:(DataManagerBlock)completion {

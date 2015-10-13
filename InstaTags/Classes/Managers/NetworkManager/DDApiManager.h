@@ -8,18 +8,19 @@
 
 #import <Foundation/Foundation.h>
 
-typedef void (^DataManagerBlock)(BOOL success, id responseObject, NSError *error);
+typedef void (^ApiManagerBlock)(BOOL success, id responseObject, NSError *error);
 
 @interface DDApiManager : NSObject
 
 + (DDApiManager *)sharedManager;
 
-#warning плохие имена методов
-- (void)directUserToAuthorizationURL;
-- (void)receiveRedirectFromInstagram;
+//#warning плохие имена методов
+//- (void)directUserToAuthorizationURL;
+//- (void)receiveRedirectFromInstagram;
 
-- (void)searchForTagsByName:(NSString *)tagsByName completionHandler:(DataManagerBlock)completionHandler;
+
+- (void)searchForTagsByName:(NSString *)tagsByName completionHandler:(ApiManagerBlock)completionHandler;
 //#warning здесь вместо get надо load или request
-- (void)loadImagesWithTag:(NSString *)tag completionHandler:(DataManagerBlock)completionHandler;
+- (void)loadImagesWithTag:(NSString *)tag completionHandler:(ApiManagerBlock)completionHandler;
 
 @end

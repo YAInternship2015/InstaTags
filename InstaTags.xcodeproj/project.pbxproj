@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		32030E1D1BCD430500832BB5 /* DDAuthenticationManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 32030E1C1BCD430500832BB5 /* DDAuthenticationManager.m */; };
 		3214358A1BBF9313001C149A /* UIView+Visibility.m in Sources */ = {isa = PBXBuildFile; fileRef = 321435891BBF9313001C149A /* UIView+Visibility.m */; };
 		321435921BBFB697001C149A /* DDImagesModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 321435911BBFB697001C149A /* DDImagesModel.m */; };
 		3214359A1BBFB728001C149A /* DDPostModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 321435961BBFB728001C149A /* DDPostModel.m */; };
@@ -66,6 +67,8 @@
 /* Begin PBXFileReference section */
 		1FF9FE1B3411397A09D575B3 /* Pods-InstaTags.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-InstaTags.release.xcconfig"; path = "Pods/Target Support Files/Pods-InstaTags/Pods-InstaTags.release.xcconfig"; sourceTree = "<group>"; };
 		29E7D454D01B10C141266527 /* libPods-InstaTags.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-InstaTags.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		32030E1B1BCD430500832BB5 /* DDAuthenticationManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DDAuthenticationManager.h; path = Managers/AuthenticationManager/DDAuthenticationManager.h; sourceTree = "<group>"; };
+		32030E1C1BCD430500832BB5 /* DDAuthenticationManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DDAuthenticationManager.m; path = Managers/AuthenticationManager/DDAuthenticationManager.m; sourceTree = "<group>"; };
 		321435881BBF9313001C149A /* UIView+Visibility.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "UIView+Visibility.h"; path = "UIView+Visibility/UIView+Visibility.h"; sourceTree = "<group>"; };
 		321435891BBF9313001C149A /* UIView+Visibility.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UIView+Visibility.m"; path = "UIView+Visibility/UIView+Visibility.m"; sourceTree = "<group>"; };
 		321435901BBFB697001C149A /* DDImagesModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DDImagesModel.h; path = ImagesModel/DDImagesModel.h; sourceTree = "<group>"; };
@@ -170,6 +173,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		32030E1E1BCD431000832BB5 /* AuthenticationManager */ = {
+			isa = PBXGroup;
+			children = (
+				32030E1B1BCD430500832BB5 /* DDAuthenticationManager.h */,
+				32030E1C1BCD430500832BB5 /* DDAuthenticationManager.m */,
+			);
+			name = AuthenticationManager;
+			sourceTree = "<group>";
+		};
 		3214358B1BBF9317001C149A /* UIView+Visibility */ = {
 			isa = PBXGroup;
 			children = (
@@ -327,8 +339,9 @@
 		3280831C1BC2F9E500319BC5 /* Managers */ = {
 			isa = PBXGroup;
 			children = (
-				328083181BC2F9B900319BC5 /* DataManager */,
+				32030E1E1BCD431000832BB5 /* AuthenticationManager */,
 				328B6AD11BB5CC28004AF4CF /* ApiManager */,
+				328083181BC2F9B900319BC5 /* DataManager */,
 			);
 			name = Managers;
 			sourceTree = "<group>";
@@ -837,6 +850,7 @@
 				321B313D1BB5BEB4005B4EBD /* main.m in Sources */,
 				3285549A1BC13950005B95EC /* DDContainerViewController.m in Sources */,
 				3214358A1BBF9313001C149A /* UIView+Visibility.m in Sources */,
+				32030E1D1BCD430500832BB5 /* DDAuthenticationManager.m in Sources */,
 				32B6743E1BB8673B00978C07 /* CAAnimation+CompetionBlock.m in Sources */,
 				328554A31BC139DA005B95EC /* DDTableViewController.m in Sources */,
 				32AD91A41BCBF7390018A4B0 /* UIImage+Convenience.m in Sources */,

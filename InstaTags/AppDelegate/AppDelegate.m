@@ -8,7 +8,7 @@
 
 #import "AppDelegate.h"
 #import "DDAppearanceConfigurator.h"
-#import "DDApiManager.h"
+#import "DDAuthenticationManager.h"
 
 @interface AppDelegate ()
 
@@ -27,24 +27,13 @@
     return YES;
 }
 
+// 2
 - (BOOL)application:(UIApplication *)application openURL:(NSURL *)url sourceApplication:(NSString *)sourceApplication annotation:(id)annotation {
+#warning Вынес в отдельный класс DDAuthenticationManager
+//#warning эту логику надо убрать из AppDelegate
+    DDAuthenticationManager *manager = [[DDAuthenticationManager alloc] init];
     
-    if([[url scheme] isEqualToString:INSTAGRAM_URL_SCHEME]) {
-#warning эту логику надо убрать из AppDelegate
-        if([[url absoluteString] rangeOfString:@"code="].location != NSNotFound) {
-            NSString* authorizationCode = [[url absoluteString] substringFromIndex: NSMaxRange([[url absoluteString] rangeOfString:@"code="])];
-            
-            [[NSUserDefaults standardUserDefaults] setValue:authorizationCode forKey:INSTAGRAM_CODE];
-            [[NSUserDefaults standardUserDefaults] synchronize];
-            
-            [[DDApiManager sharedManager] receiveRedirectFromInstagram];
-        } else {
-            if([[url absoluteString] rangeOfString:@"error="].location != NSNotFound) {
-                NSLog(@"error occured!");
-            }
-        }
-    }
-    return YES;
+    return [manager getInstagramCodeWithURL:url];
 }
 
 @end

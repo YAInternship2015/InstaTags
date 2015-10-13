@@ -9,10 +9,10 @@
 #import "DDSearchTagsController.h"
 #import "DDInstagramViewerController.h"
 #import <SDWebImage/UIImageView+WebCache.h>
+#import "DDAuthenticationManager.h"
 #import "DDTagsDataSource.h"
 #import "DDPostsDataSource.h"
 #import "DDInputValidator.h"
-#import "DDApiManager.h"
 
 #warning Из данного замечания реализовал вынос датасорса для пикера, который решил еще одну ошибку с обращением к ApiManager, child - обязательно реализую позже, спасибо за данную рекомендацию, получил понимание практического применения контейнеров
 //#warning достаточно "жирный" контроллер, много чего умеет делать. Напрашивается вынос датасорса для пикера и, как вариант, вынос логин-части с профилем пользователя (верхняя часть на экране) в отдельный контроллер, который добавится как child на этот. Если будет время, попробуйте что-то из этого воплотить в жизнь
@@ -206,7 +206,8 @@
     [self.loginActivityIndicator setVisible:YES animated:YES];
     [self.loginActivityIndicator startAnimating];
     
-    [[DDApiManager sharedManager] directUserToAuthorizationURL];
+    DDAuthenticationManager *manager = [[DDAuthenticationManager alloc] init];
+    [manager directUserToAuthorizationURL];
 }
 
 - (void)showPhotosAction {

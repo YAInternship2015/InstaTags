@@ -34,6 +34,7 @@
     return manager;
 }
 
+/*
 #pragma mark - Authentication
 
 #warning API клиент должен ТОЛЬКО отправлять запросы. Никакого маппинга моделей, перебрасывания на экраны и работы с UI.
@@ -62,15 +63,6 @@
 
 - (void)requestAccessToken {
     
-    /*
-     curl -F 'client_id=CLIENT_ID' \
-     -F 'client_secret=CLIENT_SECRET' \
-     -F 'grant_type=authorization_code' \
-     -F 'redirect_uri=AUTHORIZATION_REDIRECT_URI' \
-     -F 'code=CODE' \
-     https://api.instagram.com/oauth/access_token
-     */
-    
     NSString *fullPathString = [OAuthHostURL stringByAppendingString:NM_AccessTokenPath];
     
     NSDictionary *parameters = @{[NM_ParameterClientID removeLastCharacter] : INSTAGRAM_CLIENT_ID,
@@ -93,11 +85,11 @@
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
         NSLog(@"%@", [error localizedDescription]);
     }];
-}
+}*/
 
 #pragma mark - Requests
 
-- (void)searchForTagsByName:(NSString *)tagsByName completionHandler:(DataManagerBlock)completionHandler {
+- (void)searchForTagsByName:(NSString *)tagsByName completionHandler:(ApiManagerBlock)completionHandler {
     
     // https://api.instagram.com/v1/tags/search?q=snowy&access_token=ACCESS-TOKEN
     
@@ -118,7 +110,7 @@
     }];
 }
 
-- (void)loadImagesWithTag:(NSString *)tag completionHandler:(DataManagerBlock)completionHandler {
+- (void)loadImagesWithTag:(NSString *)tag completionHandler:(ApiManagerBlock)completionHandler {
     
     // https://api.instagram.com/v1/tags/{tag-name}/media/recent?access_token=ACCESS-TOKEN
     

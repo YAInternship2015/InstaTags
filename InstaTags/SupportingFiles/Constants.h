@@ -14,8 +14,7 @@
 
 #pragma mark - Instagram API
 
-static NSString *const INSTAGRAM_URL_SCHEME             = @"instatags";
-static NSString *const INSTAGRAM_CODE                   = @"INSTAGRAM_CODE";
+//static NSString *const INSTAGRAM_CODE                   = @"INSTAGRAM_CODE";
 static NSString *const INSTAGRAM_ACCESS_TOKEN_RECEIVED  = @"INSTAGRAM_ACCESS_TOKEN_RECEIVED";
 
 #pragma mark - Stroryboard IDs
@@ -31,13 +30,17 @@ static NSString *const SegueIdentifierCollectionController  = @"SegueIdentifierC
 
 #pragma mark - CoreData
 
-static NSString *const EntityDDModel    = @"DDModel";
-static NSString *const kSavedDate       = @"saved_date";
+static NSString *const EntityDDModel        = @"DDModel";
+static NSString *const kSavedDate           = @"saved_date";
+
+#pragma mark - Requests
+
+static NSString *const NM_AccessTokenPath   = @"access_token";
 
 #pragma mark - User profile
 
-static NSString *const kUserFullName                = @"full_name";
-static NSString *const kUserProfilePicture          = @"profile_picture";
+static NSString *const kUserFullName        = @"full_name";
+static NSString *const kUserProfilePicture  = @"profile_picture";
 
 #pragma mark - Notifications
 
