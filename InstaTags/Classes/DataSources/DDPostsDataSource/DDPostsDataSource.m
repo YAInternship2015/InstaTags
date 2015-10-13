@@ -32,7 +32,7 @@
 #pragma mark - DataSource methods
 
 - (void)setupFetchedResultsController {
-    self.fetchedResultsController = [DDModel MR_fetchAllSortedBy:kPostID ascending:NO withPredicate:nil groupBy:nil delegate:self];
+    self.fetchedResultsController = [DDModel MR_fetchAllSortedBy:kSavedDate ascending:YES withPredicate:nil groupBy:nil delegate:self];
 }
 
 - (NSUInteger)numberOfModels {

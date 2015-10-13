@@ -2,7 +2,7 @@
 //  DDModel.m
 //  InstaTags
 //
-//  Created by Dmitriy Demchenko on 10/4/15.
+//  Created by Dmitriy Demchenko on 10/13/15.
 //  Copyright (c) 2015 Dmitriy Demchenko. All rights reserved.
 //
 
@@ -11,11 +11,12 @@
 
 @implementation DDModel
 
-@dynamic post_id;
-@dynamic instagram_image_url;
 @dynamic caption_text;
-@dynamic user_profile_picture;
+@dynamic instagram_image_url;
+@dynamic post_id;
 @dynamic user_full_name;
+@dynamic user_profile_picture;
 @dynamic username;
+@dynamic saved_date;
 
 @end

@@ -31,8 +31,8 @@ static NSString *const SegueIdentifierCollectionController  = @"SegueIdentifierC
 
 #pragma mark - CoreData
 
-static NSString *const EntityDDModel = @"DDModel";
-static NSString *const kPostID = @"post_id";
+static NSString *const EntityDDModel    = @"DDModel";
+static NSString *const kSavedDate       = @"saved_date";
 
 #pragma mark - User profile
 
@@ -42,6 +42,5 @@ static NSString *const kUserProfilePicture          = @"profile_picture";
 #pragma mark - Notifications
 
 static NSString *const NotificationUserProfileSaved     = @"NotificationUserProfileSaved";
-static NSString *const NotificationTagsArrayDidChange   = @"NotificationTagsArrayDidChange";
 
 #endif

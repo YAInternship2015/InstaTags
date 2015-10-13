@@ -4,11 +4,12 @@
         <attribute name="caption_text" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="instagram_image_url" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="post_id" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="saved_date" optional="YES" attributeType="Date" syncable="YES"/>
         <attribute name="user_full_name" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="user_profile_picture" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="username" optional="YES" attributeType="String" syncable="YES"/>
     </entity>
     <elements>
-        <element name="DDModel" positionX="-63" positionY="-18" width="128" height="135"/>
+        <element name="DDModel" positionX="-63" positionY="-18" width="128" height="150"/>
     </elements>
 </model>

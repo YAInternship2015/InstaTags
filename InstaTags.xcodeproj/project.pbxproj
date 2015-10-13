@@ -15,8 +15,8 @@
 		321435A21BBFC0E3001C149A /* DDImageModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 321435A11BBFC0E2001C149A /* DDImageModel.m */; };
 		321B313D1BB5BEB4005B4EBD /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 321B313C1BB5BEB4005B4EBD /* main.m */; };
 		321B31571BB5BEB4005B4EBD /* InstaTagsTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 321B31561BB5BEB4005B4EBD /* InstaTagsTests.m */; };
+		323E0ED31BCD0AD00044CE3E /* DDModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 323E0ED21BCD0AD00044CE3E /* DDModel.m */; };
 		324C66BE1BC1BBF70063D72D /* DDPostCoreDataModel.xcdatamodel in Sources */ = {isa = PBXBuildFile; fileRef = 324C66BB1BC1BBF70063D72D /* DDPostCoreDataModel.xcdatamodel */; };
-		324C66BF1BC1BBF70063D72D /* DDModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 324C66BD1BC1BBF70063D72D /* DDModel.m */; };
 		3255654D1BCC27D5001FFEF9 /* DDPostsDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = 3255654B1BCC27D5001FFEF9 /* DDPostsDataSource.m */; };
 		3280831B1BC2F9B900319BC5 /* DDDataManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 3280831A1BC2F9B900319BC5 /* DDDataManager.m */; };
 		3285549A1BC13950005B95EC /* DDContainerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 328554961BC13950005B95EC /* DDContainerViewController.m */; };
@@ -84,9 +84,9 @@
 		321B31501BB5BEB4005B4EBD /* InstaTagsTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = InstaTagsTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		321B31551BB5BEB4005B4EBD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		321B31561BB5BEB4005B4EBD /* InstaTagsTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = InstaTagsTests.m; sourceTree = "<group>"; };
+		323E0ED11BCD0AD00044CE3E /* DDModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DDModel.h; sourceTree = "<group>"; };
+		323E0ED21BCD0AD00044CE3E /* DDModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DDModel.m; sourceTree = "<group>"; };
 		324C66BB1BC1BBF70063D72D /* DDPostCoreDataModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = DDPostCoreDataModel.xcdatamodel; sourceTree = "<group>"; };
-		324C66BC1BC1BBF70063D72D /* DDModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DDModel.h; sourceTree = "<group>"; };
-		324C66BD1BC1BBF70063D72D /* DDModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DDModel.m; sourceTree = "<group>"; };
 		3255654A1BCC27D5001FFEF9 /* DDPostsDataSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DDPostsDataSource.h; sourceTree = "<group>"; };
 		3255654B1BCC27D5001FFEF9 /* DDPostsDataSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DDPostsDataSource.m; sourceTree = "<group>"; };
 		328083191BC2F9B900319BC5 /* DDDataManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DDDataManager.h; sourceTree = "<group>"; };
@@ -411,9 +411,9 @@
 		328B6AC31BB5CC28004AF4CF /* CoreDataModels */ = {
 			isa = PBXGroup;
 			children = (
+				323E0ED11BCD0AD00044CE3E /* DDModel.h */,
+				323E0ED21BCD0AD00044CE3E /* DDModel.m */,
 				324C66BB1BC1BBF70063D72D /* DDPostCoreDataModel.xcdatamodel */,
-				324C66BC1BC1BBF70063D72D /* DDModel.h */,
-				324C66BD1BC1BBF70063D72D /* DDModel.m */,
 			);
 			path = CoreDataModels;
 			sourceTree = "<group>";
@@ -814,8 +814,8 @@
 			files = (
 				32C93BF31BB82CBA00945C62 /* PreStartController.m in Sources */,
 				3214359B1BBFB728001C149A /* DDUserModel.m in Sources */,
-				324C66BF1BC1BBF70063D72D /* DDModel.m in Sources */,
 				32E5B37E1BB5C36400B2ED5F /* UIColor+AppColors.m in Sources */,
+				323E0ED31BCD0AD00044CE3E /* DDModel.m in Sources */,
 				321435A21BBFC0E3001C149A /* DDImageModel.m in Sources */,
 				328554A71BC13B6F005B95EC /* DDContainerSegue.m in Sources */,
 				328554AF1BC13EE8005B95EC /* DDITTableViewCell.m in Sources */,

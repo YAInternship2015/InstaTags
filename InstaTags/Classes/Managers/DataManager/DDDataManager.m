@@ -76,6 +76,7 @@
                 item.username = networkObject.user.username;
                 item.instagram_image_url = networkObject.images.standard_resolution.url;
                 item.caption_text = networkObject.caption.text;
+                item.saved_date = [NSDate date];
             }
         }];
     }];
