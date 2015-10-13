@@ -16,5 +16,6 @@
 @dynamic caption_text;
 @dynamic user_profile_picture;
 @dynamic user_full_name;
+@dynamic username;
 
 @end

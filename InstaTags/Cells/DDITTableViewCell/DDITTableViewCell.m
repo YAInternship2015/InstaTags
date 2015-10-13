@@ -24,7 +24,7 @@
 - (void)configWithPostModel:(DDModel *)post {
     
     [self.profilePicture sd_setImageWithURL:[NSURL URLWithString:post.user_profile_picture]];
-    self.fullName.text = post.user_full_name;
+    self.fullName.text = (post.user_full_name) ? post.user_full_name : post.username;
     
     self.instagramImageView.image = nil;
 //#warning картинку-плейсхолдер надо вынести в категорию UIImage

@@ -13,5 +13,6 @@
 
 @property (nonatomic, strong) NSString *profile_picture;
 @property (nonatomic, strong) NSString *full_name;
+@property (nonatomic, strong) NSString *username;
 
 @end

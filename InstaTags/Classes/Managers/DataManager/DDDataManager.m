@@ -73,6 +73,7 @@
                 item.post_id = networkObject.post_id;
                 item.user_profile_picture = networkObject.user.profile_picture;
                 item.user_full_name = networkObject.user.full_name;
+                item.username = networkObject.user.username;
                 item.instagram_image_url = networkObject.images.standard_resolution.url;
                 item.caption_text = networkObject.caption.text;
             }

@@ -6,8 +6,9 @@
         <attribute name="post_id" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="user_full_name" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="user_profile_picture" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="username" optional="YES" attributeType="String" syncable="YES"/>
     </entity>
     <elements>
-        <element name="DDModel" positionX="-63" positionY="-18" width="128" height="30"/>
+        <element name="DDModel" positionX="-63" positionY="-18" width="128" height="135"/>
     </elements>
 </model>
