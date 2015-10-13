@@ -12,7 +12,7 @@
 
 static NSString *const InstagramCellIdentifier = @"InstagramCellIdentifier";
 
-@interface DDTableViewController () <DDPostsDataSourceDelegate> // tWGC3uLpB4nhUt
+@interface DDTableViewController () <DDPostsDataSourceDelegate>
 
 @property (nonatomic, strong) DDPostsDataSource *dataSource;
 @property (nonatomic, weak) IBOutlet UIActivityIndicatorView *activityIndicator;

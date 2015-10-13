@@ -8,10 +8,10 @@
 
 /* Begin PBXBuildFile section */
 		32030E1D1BCD430500832BB5 /* DDAuthenticationManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 32030E1C1BCD430500832BB5 /* DDAuthenticationManager.m */; };
-		32030E281BCD8B7900832BB5 /* DDUserProfileModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 32030E271BCD8B7900832BB5 /* DDUserProfileModel.m */; };
 		32030E2F1BCD8FD800832BB5 /* DDUser.m in Sources */ = {isa = PBXBuildFile; fileRef = 32030E2E1BCD8FD800832BB5 /* DDUser.m */; };
 		32030E321BCD959C00832BB5 /* DDUser+FetchingEntity.m in Sources */ = {isa = PBXBuildFile; fileRef = 32030E311BCD959C00832BB5 /* DDUser+FetchingEntity.m */; };
 		32030E341BCD9CC000832BB5 /* DDApiManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 32030E331BCD9CC000832BB5 /* DDApiManager.m */; };
+		32030E3B1BCDB09600832BB5 /* DDUserProfileModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 32030E3A1BCDB09600832BB5 /* DDUserProfileModel.m */; };
 		3214358A1BBF9313001C149A /* UIView+Visibility.m in Sources */ = {isa = PBXBuildFile; fileRef = 321435891BBF9313001C149A /* UIView+Visibility.m */; };
 		321435921BBFB697001C149A /* DDImagesModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 321435911BBFB697001C149A /* DDImagesModel.m */; };
 		3214359A1BBFB728001C149A /* DDPostModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 321435961BBFB728001C149A /* DDPostModel.m */; };
@@ -72,13 +72,13 @@
 		29E7D454D01B10C141266527 /* libPods-InstaTags.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-InstaTags.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		32030E1B1BCD430500832BB5 /* DDAuthenticationManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DDAuthenticationManager.h; path = Managers/AuthenticationManager/DDAuthenticationManager.h; sourceTree = "<group>"; };
 		32030E1C1BCD430500832BB5 /* DDAuthenticationManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DDAuthenticationManager.m; path = Managers/AuthenticationManager/DDAuthenticationManager.m; sourceTree = "<group>"; };
-		32030E261BCD8B7900832BB5 /* DDUserProfileModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DDUserProfileModel.h; sourceTree = "<group>"; };
-		32030E271BCD8B7900832BB5 /* DDUserProfileModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DDUserProfileModel.m; sourceTree = "<group>"; };
 		32030E2D1BCD8FD800832BB5 /* DDUser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DDUser.h; sourceTree = "<group>"; };
 		32030E2E1BCD8FD800832BB5 /* DDUser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DDUser.m; sourceTree = "<group>"; };
 		32030E301BCD959C00832BB5 /* DDUser+FetchingEntity.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "DDUser+FetchingEntity.h"; path = "InstaTags/Categories/DDUser+FetchingEntity/DDUser+FetchingEntity.h"; sourceTree = SOURCE_ROOT; };
 		32030E311BCD959C00832BB5 /* DDUser+FetchingEntity.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "DDUser+FetchingEntity.m"; path = "InstaTags/Categories/DDUser+FetchingEntity/DDUser+FetchingEntity.m"; sourceTree = SOURCE_ROOT; };
 		32030E331BCD9CC000832BB5 /* DDApiManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DDApiManager.m; sourceTree = "<group>"; };
+		32030E391BCDB09600832BB5 /* DDUserProfileModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DDUserProfileModel.h; sourceTree = "<group>"; };
+		32030E3A1BCDB09600832BB5 /* DDUserProfileModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DDUserProfileModel.m; sourceTree = "<group>"; };
 		321435881BBF9313001C149A /* UIView+Visibility.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "UIView+Visibility.h"; path = "UIView+Visibility/UIView+Visibility.h"; sourceTree = "<group>"; };
 		321435891BBF9313001C149A /* UIView+Visibility.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UIView+Visibility.m"; path = "UIView+Visibility/UIView+Visibility.m"; sourceTree = "<group>"; };
 		321435901BBFB697001C149A /* DDImagesModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DDImagesModel.h; path = ImagesModel/DDImagesModel.h; sourceTree = "<group>"; };
@@ -190,15 +190,6 @@
 			name = AuthenticationManager;
 			sourceTree = "<group>";
 		};
-		32030E291BCD8B8600832BB5 /* UserProfile */ = {
-			isa = PBXGroup;
-			children = (
-				32030E261BCD8B7900832BB5 /* DDUserProfileModel.h */,
-				32030E271BCD8B7900832BB5 /* DDUserProfileModel.m */,
-			);
-			name = UserProfile;
-			sourceTree = "<group>";
-		};
 		32030E351BCDA46A00832BB5 /* DDUser+FetchingEntity */ = {
 			isa = PBXGroup;
 			children = (
@@ -225,6 +216,15 @@
 				323E0ED21BCD0AD00044CE3E /* DDModel.m */,
 			);
 			name = DDModel;
+			sourceTree = "<group>";
+		};
+		32030E381BCDB09600832BB5 /* UserProfileModel */ = {
+			isa = PBXGroup;
+			children = (
+				32030E391BCDB09600832BB5 /* DDUserProfileModel.h */,
+				32030E3A1BCDB09600832BB5 /* DDUserProfileModel.m */,
+			);
+			path = UserProfileModel;
 			sourceTree = "<group>";
 		};
 		3214358B1BBF9317001C149A /* UIView+Visibility */ = {
@@ -495,7 +495,7 @@
 				321435A31BBFC0EA001C149A /* ImageModel */,
 				3214359F1BBFB83C001C149A /* CaptionModel */,
 				321435971BBFB728001C149A /* UserModel */,
-				32030E291BCD8B8600832BB5 /* UserProfile */,
+				32030E381BCDB09600832BB5 /* UserProfileModel */,
 			);
 			path = NetworkModels;
 			sourceTree = "<group>";
@@ -876,6 +876,7 @@
 				32E5B37E1BB5C36400B2ED5F /* UIColor+AppColors.m in Sources */,
 				323E0ED31BCD0AD00044CE3E /* DDModel.m in Sources */,
 				321435A21BBFC0E3001C149A /* DDImageModel.m in Sources */,
+				32030E3B1BCDB09600832BB5 /* DDUserProfileModel.m in Sources */,
 				328554A71BC13B6F005B95EC /* DDContainerSegue.m in Sources */,
 				328554AF1BC13EE8005B95EC /* DDITTableViewCell.m in Sources */,
 				3255654D1BCC27D5001FFEF9 /* DDPostsDataSource.m in Sources */,
@@ -885,7 +886,6 @@
 				328B6AE21BB5CD63004AF4CF /* DDSearchTagsController.m in Sources */,
 				32E5B3511BB5C1D500B2ED5F /* AppDelegate.m in Sources */,
 				32F7B0981BBC7E86007207DB /* NSString+Convenience.m in Sources */,
-				32030E281BCD8B7900832BB5 /* DDUserProfileModel.m in Sources */,
 				3214359E1BBFB836001C149A /* DDCaptionModel.m in Sources */,
 				32030E321BCD959C00832BB5 /* DDUser+FetchingEntity.m in Sources */,
 				32C93BFD1BB82D6700945C62 /* DDSplashSegue.m in Sources */,

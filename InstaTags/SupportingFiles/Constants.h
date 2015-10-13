@@ -6,7 +6,7 @@
 //  Copyright (c) 2015 Dmitriy Demchenko. All rights reserved.
 //
 
-#import <Foundation/Foundation.h> // tWGC3uLpB4nhUt
+#import <Foundation/Foundation.h>
 
 #ifndef INSTATAGS_Constants_h
 #define INSTATAGS_Constants_h
