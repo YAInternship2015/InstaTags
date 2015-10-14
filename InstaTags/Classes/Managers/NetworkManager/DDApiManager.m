@@ -63,7 +63,7 @@ static NSString *const TagsHostURL = @"https://api.instagram.com/v1/tags/";
     
     // https://api.instagram.com/v1/tags/{tag-name}/media/recent?access_token=ACCESS-TOKEN
     
-    NSString *pathString = (!self.nextURL) ? [NSString stringWithFormat:@"%@%@/media/recent?%@%@&count=5", TagsHostURL, tag, [NM_AccessTokenPath stringByAppendingString:@"=" ], [DDUser savedUser].access_token] : self.nextURL;
+    NSString *pathString = (tag) ? [NSString stringWithFormat:@"%@%@/media/recent?%@%@&count=5", TagsHostURL, tag, [NM_AccessTokenPath stringByAppendingString:@"=" ], [DDUser savedUser].access_token] : self.nextURL;
     
     __weak typeof(self) weakSelf = self;
     
