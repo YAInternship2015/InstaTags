@@ -18,4 +18,12 @@
     return [UIImage imageNamed:@"back_button"];
 }
 
++ (UIImage *)appTableViewIcon {
+    return [UIImage imageNamed:@"TableViewIcon"];
+}
+
++ (UIImage *)appCollectionViewIcon {
+    return[UIImage imageNamed:@"CollectionViewIcon"];
+}
+
 @end

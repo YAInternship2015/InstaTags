@@ -12,5 +12,7 @@
 
 + (UIImage *)appPlaceholderImage;
 + (UIImage *)appBackButton;
++ (UIImage *)appTableViewIcon;
++ (UIImage *)appCollectionViewIcon;
 
 @end

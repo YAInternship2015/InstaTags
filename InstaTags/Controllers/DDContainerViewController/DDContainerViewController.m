@@ -92,11 +92,11 @@ static CGFloat const AnimateDuration = 1.3f;
 - (void)swapViewControllers:(UINavigationItem *)navigationItem {
     if (!self.isChangeViewController) {
         [self swapCurrentControllerWith:self.collectionController];
-        [navigationItem.rightBarButtonItem setImage:[UIImage imageNamed:@"TableViewIcon"]];
+        [navigationItem.rightBarButtonItem setImage:[UIImage appTableViewIcon]];
         self.isChangeViewController = YES;
     } else {
         [self swapCurrentControllerWith:self.tableController];
-        [navigationItem.rightBarButtonItem setImage:[UIImage imageNamed:@"CollectionViewIcon"]];
+        [navigationItem.rightBarButtonItem setImage:[UIImage appCollectionViewIcon]];
         self.isChangeViewController = NO;
     }
 }
