@@ -10,6 +10,11 @@
 #import "DDTableViewController.h"
 #import "DDCollectionViewController.h"
 
+typedef enum {
+    TableViewMode,
+    CollectionViewMode
+} ControllerMode;
+
 static CGFloat const AnimateDuration = 1.3f;
 
 @interface DDContainerViewController ()
@@ -17,19 +22,25 @@ static CGFloat const AnimateDuration = 1.3f;
 @property (nonatomic, strong) DDTableViewController *tableController;
 @property (nonatomic, strong) DDCollectionViewController *collectionController;
 @property (nonatomic, strong) UIViewController *currentViewController;
-#warning сразу не заметил, лучше избавиться от булевой переменной здесь. Можно написать маленький enum, с типом ControllerMode, в котором будут значения tableViewMode и collectionViewMode. Данный контроллер будет хранить переменную такого типа, а в остально все останется также
-@property (nonatomic, assign) BOOL isChangeViewController;
+//#warning сразу не заметил, лучше избавиться от булевой переменной здесь. Можно написать маленький enum, с типом ControllerMode, в котором будут значения tableViewMode и collectionViewMode. Данный контроллер будет хранить переменную такого типа, а в остально все останется также
+//@property (nonatomic, assign) BOOL isChangeViewController;
 
 @end
 
 
-@implementation DDContainerViewController
+@implementation DDContainerViewController {
+    ControllerMode mode;
+}
 
 #pragma mark - Lifecycle
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.isChangeViewController = NO;
+    
+    
+    mode = TableViewMode;
+    
+//    self.isChangeViewController = NO;
     
     self.tableController = [self.storyboard instantiateViewControllerWithIdentifier:DDTableViewControllerID];
     self.collectionController = [self.storyboard instantiateViewControllerWithIdentifier:DDCollectionViewControllerID];
@@ -90,14 +101,14 @@ static CGFloat const AnimateDuration = 1.3f;
 #pragma mark - Actions
 
 - (void)swapViewControllers:(UINavigationItem *)navigationItem {
-    if (!self.isChangeViewController) {
+    if (mode == TableViewMode) {
         [self swapCurrentControllerWith:self.collectionController];
         [navigationItem.rightBarButtonItem setImage:[UIImage appTableViewIcon]];
-        self.isChangeViewController = YES;
+        mode =  CollectionViewMode;
     } else {
         [self swapCurrentControllerWith:self.tableController];
         [navigationItem.rightBarButtonItem setImage:[UIImage appCollectionViewIcon]];
-        self.isChangeViewController = NO;
+        mode =  TableViewMode;
     }
 }
 
