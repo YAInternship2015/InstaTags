@@ -15,8 +15,6 @@ static NSString *const TagsHostURL = @"https://api.instagram.com/v1/tags/";
 
 @interface DDApiManager ()
 
-//#warning не понял, зачем нужно свойство myTag
-//@property (nonatomic, strong) NSString *myTag;
 @property (nonatomic, strong) NSString *nextURL;
 
 @end
@@ -45,14 +43,6 @@ static NSString *const TagsHostURL = @"https://api.instagram.com/v1/tags/";
     
     AFHTTPRequestOperationManager *manager = [[AFHTTPRequestOperationManager alloc] initWithBaseURL:[NSURL URLWithString:TagsHostURL]];
     [manager GET:pathString parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
-        /*
-        NSArray *dataArray = responseObject[kTagsData];
-        __block NSMutableArray *tagsByNameArray = [[NSMutableArray alloc] init];
-//#warning обработка полученных данных должна происходить не в API клиенте
-        [dataArray enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
-            [tagsByNameArray addObject:obj[kTagsName]];
-        }];*/
-#warning Вынес все лишнее, оставил completionHandler
         completionHandler(YES, responseObject, nil);
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
         NSLog(@"%@", [error localizedDescription]);
@@ -69,18 +59,8 @@ static NSString *const TagsHostURL = @"https://api.instagram.com/v1/tags/";
     
     AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
     [manager GET:pathString parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
-        
         weakSelf.nextURL = responseObject[kTagsPagination][kTagsNextURL];
         completionHandler (YES, responseObject, nil);
-
-#warning Вынес все лишнее, оставил completionHandler & nextURL
-        /*
-        completionHandler (YES, responseObject[kTagsData], nil);        
-#warning этого здесь не должно быть
-        if (tag) {
-            [[DDDataManager sharedManager] insertItemsToCoreDataFromArray:responseObject[kTagsData]];
-        }*/
-        
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
         NSLog(@"%@", [error localizedDescription]);
     }];

@@ -15,7 +15,6 @@ typedef void (^ApiManagerBlock)(BOOL success, id responseObject, NSError *error)
 + (DDApiManager *)sharedManager;
 
 - (void)searchForTagsByName:(NSString *)tagsByName completionHandler:(ApiManagerBlock)completionHandler;
-//#warning здесь вместо get надо load или request
 - (void)loadImagesWithTag:(NSString *)tag completionHandler:(ApiManagerBlock)completionHandler;
 
 @end

@@ -12,7 +12,6 @@
 
 @interface DDITTableViewCell ()
 
-//#warning в моделях формат с "_" еще как-то оправдывается, здесь уже нет. Пользуйтесь camel case'ом
 @property (weak, nonatomic) IBOutlet UIImageView *profilePicture;
 @property (weak, nonatomic) IBOutlet UILabel *fullName;
 @property (weak, nonatomic) IBOutlet UIImageView *instagramImageView;
@@ -29,7 +28,6 @@
     self.fullName.text = (post.user_full_name) ? post.user_full_name : post.username;
     
     self.instagramImageView.image = nil;
-//#warning картинку-плейсхолдер надо вынести в категорию UIImage
     [self.instagramImageView sd_setImageWithURL:[NSURL URLWithString:post.instagram_image_url] placeholderImage:[UIImage appPlaceholderImage]];
     
     self.captionLabel.text = post.caption_text;

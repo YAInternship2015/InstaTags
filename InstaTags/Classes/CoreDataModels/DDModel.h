@@ -20,6 +20,4 @@
 @property (nonatomic, retain) NSString *username;
 @property (nonatomic, retain) NSDate *saved_date;
 
-#warning добавил 2 новых поля username (используется если юзер не предоставил user_full_name) и saved_date (для сортировки при выборке)
-
 @end
