@@ -11,6 +11,7 @@
 @implementation DDUser (FetchingEntity)
 
 + (DDUser *)savedUser {
+#warning проще вызвать [DDUser MR_findFirst], если вдруг MR_findAll вернет пустой массив, то приложение "упадет"
     return [DDUser MR_findAll][0];
 }
 

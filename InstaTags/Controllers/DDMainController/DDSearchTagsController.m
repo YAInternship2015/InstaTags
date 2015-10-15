@@ -222,6 +222,7 @@
     self.postsDataSource = [[DDPostsDataSource alloc] init];
     [self.postsDataSource requestPostWithTag:self.selectTag completion:^(BOOL success) {
         if (success) {
+#warning weakSelf.storyboard
             DDInstagramViewerController *controller = (DDInstagramViewerController *)[self.storyboard instantiateViewControllerWithIdentifier:DDInstagramViewerControllerID];
             controller.tagStringForTitle = [weakSelf.selectTag capitalizedString];
             [MBProgressHUD hideHUDForView:weakSelf.view animated:YES];

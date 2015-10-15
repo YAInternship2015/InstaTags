@@ -17,6 +17,7 @@ static CGFloat const AnimateDuration = 1.3f;
 @property (nonatomic, strong) DDTableViewController *tableController;
 @property (nonatomic, strong) DDCollectionViewController *collectionController;
 @property (nonatomic, strong) UIViewController *currentViewController;
+#warning сразу не заметил, лучше избавиться от булевой переменной здесь. Можно написать маленький enum, с типом ControllerMode, в котором будут значения tableViewMode и collectionViewMode. Данный контроллер будет хранить переменную такого типа, а в остально все останется также
 @property (nonatomic, assign) BOOL isChangeViewController;
 
 @end
