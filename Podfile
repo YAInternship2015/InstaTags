@@ -8,6 +8,7 @@ pod 'SDWebImage', '~> 3.7'
 pod 'MBProgressHUD', '~> 0.9'
 pod 'MagicalRecord', '~> 2.3'
 pod 'RBBAnimation', '~> 0.4'
+pod 'SVPullToRefresh', '~> 0.4'
 
 end
 
