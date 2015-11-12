@@ -9,6 +9,9 @@
 #import "DDTableViewController.h"
 #import "DDITTableViewCell.h"
 #import "DDPostsDataSource.h"
+#import "SVPullToRefresh.h"
+#import "UIScrollView+SVPullToRefresh.h"
+#import "UIScrollView+SVInfiniteScrolling.h"
 
 static NSString *const InstagramCellIdentifier = @"InstagramCellIdentifier";
 
@@ -63,7 +66,10 @@ static NSString *const InstagramCellIdentifier = @"InstagramCellIdentifier";
 
 - (void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath {
     if (indexPath.row == [self.dataSource numberOfModels] - 1) {
-        [self.dataSource requestPostWithTag:nil completion:nil];
+        
+        [tableView addPullToRefreshWithActionHandler:^{
+            [self.dataSource requestPostWithTag:nil completion:nil];
+        }];
     }
 }
 
