@@ -71,7 +71,7 @@
 
 #pragma mark - NSFetchedResultsControllerDelegate
 
-- (void)controllerDidChangeContent:(NSFetchedResultsController *)controller{
+- (void)controllerDidChangeContent:(NSFetchedResultsController *)controller {
     [self.delegate dataSourceDidUpdateContent];
 }
 

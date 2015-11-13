@@ -34,6 +34,11 @@
 		328B6ADE1BB5CC28004AF4CF /* DDAppearanceConfigurator.m in Sources */ = {isa = PBXBuildFile; fileRef = 328B6AD61BB5CC28004AF4CF /* DDAppearanceConfigurator.m */; };
 		328B6ADF1BB5CC28004AF4CF /* DDInputValidator.m in Sources */ = {isa = PBXBuildFile; fileRef = 328B6AD91BB5CC28004AF4CF /* DDInputValidator.m */; };
 		328B6AE21BB5CD63004AF4CF /* DDSearchTagsController.m in Sources */ = {isa = PBXBuildFile; fileRef = 328B6AE11BB5CD63004AF4CF /* DDSearchTagsController.m */; };
+		328C2B941BF6091F008601BF /* DDTableViewDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = 328C2B931BF6091F008601BF /* DDTableViewDataSource.m */; };
+		328C2B981BF61C31008601BF /* LoginView.m in Sources */ = {isa = PBXBuildFile; fileRef = 328C2B971BF61C31008601BF /* LoginView.m */; };
+		328C2B9B1BF61C4B008601BF /* LogedInView.m in Sources */ = {isa = PBXBuildFile; fileRef = 328C2B9A1BF61C4B008601BF /* LogedInView.m */; };
+		328C2B9D1BF61D54008601BF /* LoginView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 328C2B9C1BF61D54008601BF /* LoginView.xib */; };
+		328C2B9F1BF61D6D008601BF /* LogedInView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 328C2B9E1BF61D6D008601BF /* LogedInView.xib */; };
 		329048521BCC29DC00F5D12D /* DDTagsDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = 329048511BCC29DC00F5D12D /* DDTagsDataSource.m */; };
 		329692E71BB5E3D100B271EB /* NSArray+ObjectMapping.m in Sources */ = {isa = PBXBuildFile; fileRef = 329692E61BB5E3D100B271EB /* NSArray+ObjectMapping.m */; };
 		32A77C411BB5D2810044A6D4 /* DDNetworkObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 32A77C3D1BB5D2810044A6D4 /* DDNetworkObject.m */; };
@@ -124,6 +129,14 @@
 		328B6AD91BB5CC28004AF4CF /* DDInputValidator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DDInputValidator.m; sourceTree = "<group>"; };
 		328B6AE01BB5CD63004AF4CF /* DDSearchTagsController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DDSearchTagsController.h; path = DDMainController/DDSearchTagsController.h; sourceTree = "<group>"; };
 		328B6AE11BB5CD63004AF4CF /* DDSearchTagsController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DDSearchTagsController.m; path = DDMainController/DDSearchTagsController.m; sourceTree = "<group>"; };
+		328C2B921BF6091F008601BF /* DDTableViewDataSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DDTableViewDataSource.h; path = DDTableViewDataSource/DDTableViewDataSource.h; sourceTree = "<group>"; };
+		328C2B931BF6091F008601BF /* DDTableViewDataSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DDTableViewDataSource.m; path = DDTableViewDataSource/DDTableViewDataSource.m; sourceTree = "<group>"; };
+		328C2B961BF61C31008601BF /* LoginView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LoginView.h; path = DDMainController/LoginView.h; sourceTree = "<group>"; };
+		328C2B971BF61C31008601BF /* LoginView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = LoginView.m; path = DDMainController/LoginView.m; sourceTree = "<group>"; };
+		328C2B991BF61C4B008601BF /* LogedInView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LogedInView.h; path = DDMainController/LogedInView.h; sourceTree = "<group>"; };
+		328C2B9A1BF61C4B008601BF /* LogedInView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = LogedInView.m; path = DDMainController/LogedInView.m; sourceTree = "<group>"; };
+		328C2B9C1BF61D54008601BF /* LoginView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = LoginView.xib; path = DDMainController/LoginView.xib; sourceTree = "<group>"; };
+		328C2B9E1BF61D6D008601BF /* LogedInView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = LogedInView.xib; path = DDMainController/LogedInView.xib; sourceTree = "<group>"; };
 		329048501BCC29DC00F5D12D /* DDTagsDataSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DDTagsDataSource.h; sourceTree = "<group>"; };
 		329048511BCC29DC00F5D12D /* DDTagsDataSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DDTagsDataSource.m; sourceTree = "<group>"; };
 		329692E51BB5E3D100B271EB /* NSArray+ObjectMapping.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSArray+ObjectMapping.h"; sourceTree = "<group>"; };
@@ -349,6 +362,7 @@
 			children = (
 				3255654C1BCC27D5001FFEF9 /* DDTagsDataSource */,
 				325565491BCC27D5001FFEF9 /* DDPostsDataSource */,
+				328C2B951BF6092F008601BF /* DDTableViewDataSource */,
 			);
 			path = DataSources;
 			sourceTree = "<group>";
@@ -532,8 +546,23 @@
 			children = (
 				328B6AE01BB5CD63004AF4CF /* DDSearchTagsController.h */,
 				328B6AE11BB5CD63004AF4CF /* DDSearchTagsController.m */,
+				328C2B961BF61C31008601BF /* LoginView.h */,
+				328C2B971BF61C31008601BF /* LoginView.m */,
+				328C2B9C1BF61D54008601BF /* LoginView.xib */,
+				328C2B991BF61C4B008601BF /* LogedInView.h */,
+				328C2B9A1BF61C4B008601BF /* LogedInView.m */,
+				328C2B9E1BF61D6D008601BF /* LogedInView.xib */,
 			);
 			name = SearchTagsController;
+			sourceTree = "<group>";
+		};
+		328C2B951BF6092F008601BF /* DDTableViewDataSource */ = {
+			isa = PBXGroup;
+			children = (
+				328C2B921BF6091F008601BF /* DDTableViewDataSource.h */,
+				328C2B931BF6091F008601BF /* DDTableViewDataSource.m */,
+			);
+			name = DDTableViewDataSource;
 			sourceTree = "<group>";
 		};
 		329692E41BB5E3D100B271EB /* NSArray+ObjectMapping */ = {
@@ -816,12 +845,14 @@
 			files = (
 				32C93BFC1BB82D6700945C62 /* Main.storyboard in Resources */,
 				32A77C501BB5DB890044A6D4 /* proximanova-regular.otf in Resources */,
+				328C2B9D1BF61D54008601BF /* LoginView.xib in Resources */,
 				32A77C4E1BB5DB890044A6D4 /* proximanova-bold.otf in Resources */,
 				32E5B3541BB5C1FF00B2ED5F /* Images.xcassets in Resources */,
 				32A77C521BB5DB890044A6D4 /* proximanova-regularitalic.otf in Resources */,
 				32A77C4F1BB5DB890044A6D4 /* proximanova-light.otf in Resources */,
 				32A77C531BB5DB890044A6D4 /* proximanova-semibold.otf in Resources */,
 				32C93BFB1BB82D6700945C62 /* LaunchScreen.xib in Resources */,
+				328C2B9F1BF61D6D008601BF /* LogedInView.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -889,6 +920,7 @@
 			files = (
 				32C93BF31BB82CBA00945C62 /* PreStartController.m in Sources */,
 				3214359B1BBFB728001C149A /* DDUserModel.m in Sources */,
+				328C2B9B1BF61C4B008601BF /* LogedInView.m in Sources */,
 				32E5B37E1BB5C36400B2ED5F /* UIColor+AppColors.m in Sources */,
 				323E0ED31BCD0AD00044CE3E /* DDModel.m in Sources */,
 				321435A21BBFC0E3001C149A /* DDImageModel.m in Sources */,
@@ -899,11 +931,13 @@
 				321435921BBFB697001C149A /* DDImagesModel.m in Sources */,
 				329692E71BB5E3D100B271EB /* NSArray+ObjectMapping.m in Sources */,
 				3214359A1BBFB728001C149A /* DDPostModel.m in Sources */,
+				328C2B941BF6091F008601BF /* DDTableViewDataSource.m in Sources */,
 				328B6AE21BB5CD63004AF4CF /* DDSearchTagsController.m in Sources */,
 				32E5B3511BB5C1D500B2ED5F /* AppDelegate.m in Sources */,
 				32F7B0981BBC7E86007207DB /* NSString+Convenience.m in Sources */,
 				3214359E1BBFB836001C149A /* DDCaptionModel.m in Sources */,
 				32030E321BCD959C00832BB5 /* DDUser+FetchingEntity.m in Sources */,
+				328C2B981BF61C31008601BF /* LoginView.m in Sources */,
 				32C93BFD1BB82D6700945C62 /* DDSplashSegue.m in Sources */,
 				328B6ADE1BB5CC28004AF4CF /* DDAppearanceConfigurator.m in Sources */,
 				328B6ADF1BB5CC28004AF4CF /* DDInputValidator.m in Sources */,

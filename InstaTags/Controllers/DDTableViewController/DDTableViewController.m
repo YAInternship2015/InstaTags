@@ -7,15 +7,18 @@
 //
 
 #import "DDTableViewController.h"
-#import "DDITTableViewCell.h"
+//#import "DDITTableViewCell.h"
 #import "DDPostsDataSource.h"
 #import "SVPullToRefresh.h"
 
-static NSString *const InstagramCellIdentifier = @"InstagramCellIdentifier";
+#import "DDTableViewDataSource.h"
+
+//static NSString *const InstagramCellIdentifier = @"InstagramCellIdentifier";
 
 @interface DDTableViewController () <DDPostsDataSourceDelegate>
 
 @property (nonatomic, strong) DDPostsDataSource *dataSource;
+@property (nonatomic, strong) IBOutlet DDTableViewDataSource *tableViewDataSource;
 
 @end
 
@@ -25,10 +28,14 @@ static NSString *const InstagramCellIdentifier = @"InstagramCellIdentifier";
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    self.tableViewDataSource = [[DDTableViewDataSource alloc] init];
+//    self.tableViewDataSource.tableView = self.tableView;
+    
     self.dataSource = [[DDPostsDataSource alloc] initWithDelegate:self];
     [self setupLoadersCallback];
 }
 
+/*
 #pragma mark - UITableViewDataSource
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
@@ -52,6 +59,7 @@ static NSString *const InstagramCellIdentifier = @"InstagramCellIdentifier";
         [tableView endUpdates];
     }
 }
+*/
 
 #pragma mark - DDITDataSourceDelegate
 

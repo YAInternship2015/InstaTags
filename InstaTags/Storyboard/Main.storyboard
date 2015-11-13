@@ -432,12 +432,16 @@
                             </tableViewCell>
                         </prototypes>
                         <connections>
-                            <outlet property="dataSource" destination="I4a-1M-5tY" id="yfk-Ck-SeS"/>
+                            <outlet property="dataSource" destination="Kpp-oG-aoL" id="djX-9y-geZ"/>
                             <outlet property="delegate" destination="I4a-1M-5tY" id="iK3-Ai-8qY"/>
                         </connections>
                     </tableView>
+                    <connections>
+                        <outlet property="tableViewDataSource" destination="Kpp-oG-aoL" id="AmZ-r3-tQ5"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="8iZ-b1-XaL" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <customObject id="Kpp-oG-aoL" customClass="DDTableViewDataSource"/>
             </objects>
             <point key="canvasLocation" x="3286" y="99"/>
         </scene>
