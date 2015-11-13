@@ -9,7 +9,6 @@
 #import <Foundation/Foundation.h>
 #import <CoreData/CoreData.h>
 
-
 @interface DDUser : NSManagedObject
 
 @property (nonatomic, retain) NSString *access_token;

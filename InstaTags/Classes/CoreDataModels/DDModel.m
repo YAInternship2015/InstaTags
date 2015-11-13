@@ -8,7 +8,6 @@
 
 #import "DDModel.h"
 
-
 @implementation DDModel
 
 @dynamic caption_text;

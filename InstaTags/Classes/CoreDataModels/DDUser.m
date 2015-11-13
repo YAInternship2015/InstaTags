@@ -8,7 +8,6 @@
 
 #import "DDUser.h"
 
-
 @implementation DDUser
 
 @dynamic access_token;
