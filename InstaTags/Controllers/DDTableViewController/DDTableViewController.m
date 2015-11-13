@@ -10,15 +10,12 @@
 #import "DDITTableViewCell.h"
 #import "DDPostsDataSource.h"
 #import "SVPullToRefresh.h"
-#import "UIScrollView+SVPullToRefresh.h"
-#import "UIScrollView+SVInfiniteScrolling.h"
 
 static NSString *const InstagramCellIdentifier = @"InstagramCellIdentifier";
 
 @interface DDTableViewController () <DDPostsDataSourceDelegate>
 
 @property (nonatomic, strong) DDPostsDataSource *dataSource;
-@property (nonatomic, weak) IBOutlet UIActivityIndicatorView *activityIndicator;
 
 @end
 
@@ -30,7 +27,7 @@ static NSString *const InstagramCellIdentifier = @"InstagramCellIdentifier";
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.dataSource = [[DDPostsDataSource alloc] initWithDelegate:self];
-    [self.activityIndicator setVisible:NO];
+    [self setupLoadersCallback];
 }
 
 #pragma mark - UITableViewDataSource
@@ -64,30 +61,24 @@ static NSString *const InstagramCellIdentifier = @"InstagramCellIdentifier";
     }
 }
 
-- (void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath {
-    if (indexPath.row == [self.dataSource numberOfModels] - 1) {
-        
-        [tableView addPullToRefreshWithActionHandler:^{
-            [self.dataSource requestPostWithTag:nil completion:nil];
-        }];
-    }
-}
-
 #pragma mark - DDITDataSourceDelegate
 
-- (void)contentWasChangedAtIndexPath:(NSIndexPath *)indexPath forChangeType:(NSFetchedResultsChangeType)type newIndexPath:(NSIndexPath *)newIndexPath {
-    
-    [self.tableView beginUpdates];
-    
-    if (type == NSFetchedResultsChangeInsert) {
-        [self.tableView insertRowsAtIndexPaths:@[newIndexPath] withRowAnimation:UITableViewRowAnimationAutomatic];
-    } else if (type == NSFetchedResultsChangeDelete) {
-        [self.tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationAutomatic];
-    } else {
-        [self.tableView reloadData];
-    }
-    
-    [self.tableView endUpdates];
+- (void)contentWasChanged {
+    [self.tableView reloadData];
+    [self.tableView.pullToRefreshView stopAnimating];
+    [self.tableView.infiniteScrollingView stopAnimating];
+}
+
+#pragma mark - Private methods
+
+- (void)setupLoadersCallback {
+    __weak typeof(self) weakSelf = self;
+    [self.tableView addPullToRefreshWithActionHandler:^{
+        [weakSelf.dataSource refreshPostWithCompletion:nil];
+    }];
+    [self.tableView addInfiniteScrollingWithActionHandler:^{
+        [weakSelf.dataSource requestPostWithTag:nil completion:nil];
+    }];
 }
 
 @end

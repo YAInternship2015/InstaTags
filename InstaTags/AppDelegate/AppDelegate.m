@@ -10,6 +10,8 @@
 #import "DDAppearanceConfigurator.h"
 #import "DDAuthenticationManager.h"
 
+#import "DDModel.h"
+
 @interface AppDelegate ()
 
 @end
@@ -23,6 +25,9 @@
     [DDAppearanceConfigurator configurateTextField];
     
     [MagicalRecord setupCoreDataStack];
+    
+    [DDModel MR_truncateAllInContext:[NSManagedObjectContext MR_defaultContext]];
+    [[NSManagedObjectContext MR_defaultContext] MR_saveToPersistentStoreAndWait];
     
     return YES;
 }

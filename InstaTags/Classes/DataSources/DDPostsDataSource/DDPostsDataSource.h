@@ -23,6 +23,7 @@ typedef void (^SuccessBlock)(BOOL success);
 - (DDModel *)modelForIndex:(NSInteger)index;
 - (void)removeModelAtIndex:(NSIndexPath *)indexPath;
 - (void)requestPostWithTag:(NSString *)tag completion:(SuccessBlock)completion;
+- (void)refreshPostWithCompletion:(SuccessBlock)completion;
 
 @end
 
@@ -30,6 +31,6 @@ typedef void (^SuccessBlock)(BOOL success);
 @protocol DDPostsDataSourceDelegate <NSObject>
 
 @optional
-- (void)contentWasChangedAtIndexPath:(NSIndexPath *)indexPath forChangeType:(NSFetchedResultsChangeType)type newIndexPath:(NSIndexPath *)newIndexPath;
+- (void)contentWasChanged;
 
 @end

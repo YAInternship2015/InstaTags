@@ -9,6 +9,7 @@
 #import "DDPostsDataSource.h"
 #import "DDDataManager.h"
 #import "DDModel.h"
+#import "DDPostModel.h"
 
 @interface DDPostsDataSource () <NSFetchedResultsControllerDelegate>
 
@@ -58,10 +59,20 @@
     }];
 }
 
+- (void)refreshPostWithCompletion:(SuccessBlock)completion {
+    [[DDDataManager sharedManager] postsWithTag:nil completion:^(BOOL success, id responseObject, NSError *error) {
+        if (success) {
+            NSArray *array = responseObject[kTagsData];
+            NSPredicate *predicate = [NSPredicate predicateWithFormat:@"NOT post_id IN %@", [array valueForKey:@"id"]];
+            [DDModel MR_deleteAllMatchingPredicate:predicate inContext:[NSManagedObjectContext MR_defaultContext]];
+        }
+    }];
+}
+
 #pragma mark - NSFetchedResultsControllerDelegate
 
-- (void)controller:(NSFetchedResultsController *)controller didChangeObject:(id)anObject atIndexPath:(NSIndexPath *)indexPath forChangeType:(NSFetchedResultsChangeType)type newIndexPath:(NSIndexPath *)newIndexPath {
-    [self.delegate contentWasChangedAtIndexPath:indexPath forChangeType:type newIndexPath:newIndexPath];
+- (void)controllerDidChangeContent:(NSFetchedResultsController *)controller{
+    [self.delegate contentWasChanged];
 }
 
 @end

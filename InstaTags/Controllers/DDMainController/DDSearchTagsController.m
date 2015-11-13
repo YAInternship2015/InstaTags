@@ -167,9 +167,7 @@
     // show user profile
     [self.userFullNameLabel setVisible:YES animated:YES];
     self.userFullNameLabel.text = [DDUser savedUser].full_name;
-//    self.userFullNameLabel.text = [[NSUserDefaults standardUserDefaults] valueForKey:kUserFullName];
     [self.userProfilePicture setVisible:YES animated:YES];
-//    [self.userProfilePicture sd_setImageWithURL:[NSURL URLWithString:[[NSUserDefaults standardUserDefaults] valueForKey:kUserProfilePicture]]];
     [self.userProfilePicture sd_setImageWithURL:[NSURL URLWithString:[DDUser savedUser].profile_picture]];
     
     // search field

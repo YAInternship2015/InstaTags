@@ -36,32 +36,25 @@
 }
 
 - (void)postsWithTag:(NSString *)tag completion:(DataManagerBlock)completion {
-    
     [[DDApiManager sharedManager] loadImagesWithTag:tag completionHandler:^(BOOL success, id responseObject, NSError *error) {
         __weak typeof(self) weakSelf = self;
         [weakSelf insertItemsToCoreDataFromArray:responseObject[kTagsData]];
-        if (tag) {
-            completion(success, nil, nil);
-        }
+        completion(success, responseObject, nil);
     }];
 }
 
 #pragma mark - Private methods
 
 - (void)insertItemsToCoreDataFromArray:(NSArray *)array {
-    
     [array enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
-        
         DDPostModel *networkObject = [[DDPostModel alloc] init];
         networkObject.objectDictionary = obj;
-        
         [MagicalRecord saveWithBlockAndWait:^(NSManagedObjectContext *localContext) {
             DDModel *item = nil;
             NSArray *savedItemArray = [DDModel MR_findAllWithPredicate:[NSPredicate predicateWithFormat:@"post_id == %@", networkObject.post_id]];
-            
             if ([savedItemArray count] > 0) {
                 item = savedItemArray[0];
-            }else{
+            } else {
                 item = [DDModel MR_createEntityInContext:localContext];
                 item.post_id = networkObject.post_id;
                 item.user_profile_picture = networkObject.user.profile_picture;

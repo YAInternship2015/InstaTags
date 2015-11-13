@@ -9,6 +9,7 @@
 #import "DDCollectionViewController.h"
 #import "DDITCollectionViewCell.h"
 #import "DDPostsDataSource.h"
+#import "SVPullToRefresh.h"
 
 static CGFloat const durationAnimationDeleteCell = 0.3f;
 
@@ -26,6 +27,7 @@ static CGFloat const durationAnimationDeleteCell = 0.3f;
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.dataSource = [[DDPostsDataSource alloc] initWithDelegate:self];
+    [self setupLoadersCallback];
 }
 
 #pragma mark - UICollectionViewDataSource
@@ -44,12 +46,6 @@ static CGFloat const durationAnimationDeleteCell = 0.3f;
     return cell;
 }
 
-- (void)collectionView:(UICollectionView *)collectionView willDisplayCell:(UICollectionViewCell *)cell forItemAtIndexPath:(NSIndexPath *)indexPath {
-    if (indexPath.row == [self.dataSource numberOfModels] - 1) {
-        [self.dataSource requestPostWithTag:nil completion:nil];
-    }
-}
-
 #pragma mark - UICollectionViewDelegate
 
 - (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath {
@@ -59,21 +55,15 @@ static CGFloat const durationAnimationDeleteCell = 0.3f;
 
 #pragma mark - DDModelsDataSourceDelegate
 
-- (void)contentWasChangedAtIndexPath:(NSIndexPath *)indexPath forChangeType:(NSFetchedResultsChangeType)type newIndexPath:(NSIndexPath *)newIndexPath {
-    
-    if (type == NSFetchedResultsChangeInsert) {
-        [self.collectionView insertItemsAtIndexPaths:@[newIndexPath]];
-    } else if (type == NSFetchedResultsChangeDelete) {
-        [self.collectionView deleteItemsAtIndexPaths:@[indexPath]];
-    } else {
-        [self.collectionView reloadData];
-    }
+- (void)contentWasChanged {
+    [self.collectionView reloadData];
+    [self.collectionView.pullToRefreshView stopAnimating];
+    [self.collectionView.infiniteScrollingView stopAnimating];
 }
 
 #pragma mark - IBactions
 
 - (IBAction)handleLongPressAction:(UILongPressGestureRecognizer *)sender {
-    
     if (sender.state == UIGestureRecognizerStateBegan) {
         CGPoint point = [sender locationInView:self.collectionView];
         NSIndexPath *indexPath = [self.collectionView indexPathForItemAtPoint:point];
@@ -87,6 +77,18 @@ static CGFloat const durationAnimationDeleteCell = 0.3f;
             } completion:nil];
         }];
     }
+}
+
+#pragma mark - Private methods
+
+- (void)setupLoadersCallback {
+    __weak typeof(self) weakSelf = self;
+    [self.collectionView addPullToRefreshWithActionHandler:^{
+        [weakSelf.dataSource refreshPostWithCompletion:nil];
+    }];
+    [self.collectionView addInfiniteScrollingWithActionHandler:^{
+        [weakSelf.dataSource requestPostWithTag:nil completion:nil];
+    }];
 }
 
 @end
