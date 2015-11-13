@@ -12,20 +12,19 @@
 
 @interface DDTagsDataSource : NSObject
 
-@property (nonatomic, weak) id<DDTagsDataSourceDelegate>delegate;
+@property (nonatomic, weak) id <DDTagsDataSourceDelegate> delegate;
 
 - (instancetype)initWithDelegate:(id<DDTagsDataSourceDelegate>)delegate;
 
-- (void)requestForTagsByName:(NSString *)name;
-- (NSUInteger)countTags;
-- (NSString *)tagForIndex:(NSInteger)index;
+- (void)requestTagsListWithName:(NSString *)name;
+- (NSUInteger)objectsCount;
+- (NSString *)tagAtIndex:(NSInteger)index;
 
 @end
-
 
 @protocol DDTagsDataSourceDelegate <NSObject>
 
 @required
-- (void)dataWasChanged:(DDTagsDataSource *)dataSource;
+- (void)dataSourceDidUpdateContent:(DDTagsDataSource *)dataSource;
 
 @end

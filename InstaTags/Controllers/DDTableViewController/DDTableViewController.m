@@ -19,7 +19,6 @@ static NSString *const InstagramCellIdentifier = @"InstagramCellIdentifier";
 
 @end
 
-
 @implementation DDTableViewController
 
 #pragma mark - Lifecycle
@@ -32,20 +31,13 @@ static NSString *const InstagramCellIdentifier = @"InstagramCellIdentifier";
 
 #pragma mark - UITableViewDataSource
 
-- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-    return 1;
-}
-
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     return [self.dataSource numberOfModels];
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    
     DDITTableViewCell *cell = (DDITTableViewCell *)[tableView dequeueReusableCellWithIdentifier:InstagramCellIdentifier forIndexPath:indexPath];
-    
     [cell configWithPostModel:[self.dataSource modelForIndex:indexPath.row]];
-    
     return cell;
 }
 
@@ -53,7 +45,7 @@ static NSString *const InstagramCellIdentifier = @"InstagramCellIdentifier";
     return YES;
 }
 
--(void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
+- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
     if (editingStyle == UITableViewCellEditingStyleDelete) {
         [tableView beginUpdates];
         [self.dataSource removeModelAtIndex:indexPath];

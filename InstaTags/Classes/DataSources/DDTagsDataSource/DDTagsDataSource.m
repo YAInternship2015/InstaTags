@@ -17,7 +17,7 @@
 
 @implementation DDTagsDataSource
 
-#pragma mark - Initialization
+#pragma mark - Init
 
 - (instancetype)initWithDelegate:(id<DDTagsDataSourceDelegate>)delegate {
     self = [self init];
@@ -29,21 +29,21 @@
 
 #pragma mark - Public methods
 
-- (void)requestForTagsByName:(NSString *)name {
+- (void)requestTagsListWithName:(NSString *)name {
     __weak typeof(self) weakSelf = self;
     [[DDDataManager sharedManager] tagsByName:name completion:^(BOOL success, id responseObject, NSError *error) {
         if (success) {
             weakSelf.tagsArray = responseObject;
-            [weakSelf.delegate dataWasChanged:self];
+            [weakSelf.delegate dataSourceDidUpdateContent:self];
         }
     }];
 }
 
-- (NSUInteger)countTags {
+- (NSUInteger)objectsCount {
     return [self.tagsArray count];
 }
 
-- (NSString *)tagForIndex:(NSInteger)index {
+- (NSString *)tagAtIndex:(NSInteger)index {
     return self.tagsArray[index];
 }
 

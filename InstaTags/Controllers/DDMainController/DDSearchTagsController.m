@@ -57,7 +57,7 @@
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(setupOrUpdateViewIfUserLogin) name:NotificationUserProfileSaved object:nil];
     
     if (![DDUser MR_countOfEntities]) {
-        [self setupViewIfUserDontLogin];
+        [self setupViewIfUserIsNotLogedIn];
     } else {
         [self setupOrUpdateViewIfUserLogin];
     }
@@ -104,7 +104,7 @@
     
     NSError *error = NULL;
     if ([DDInputValidator validateInputString:textField.text error:&error]) {
-        [self.tagsDataSource requestForTagsByName:[self.searchField.text removeWhitespaces]];
+        [self.tagsDataSource requestTagsListWithName:[self.searchField.text removeWhitespaces]];
     } else {
         [MBProgressHUD hideHUDForView:self.view animated:YES];
     }
@@ -113,7 +113,7 @@
 
 #pragma mark - DDTagsDataSourceDelegate
 
-- (void)dataWasChanged:(DDTagsDataSource *)dataSource {
+- (void)dataSourceDidUpdateContent:(DDTagsDataSource *)dataSource {
     
     [self.searchHelpLabel setVisible:NO animated:YES];
     [self.pickerView setVisible:YES animated:YES];
@@ -130,19 +130,19 @@
 }
 
 - (NSInteger)pickerView:(UIPickerView *)pickerView numberOfRowsInComponent:(NSInteger)component {
-    return [self.tagsDataSource countTags];
+    return [self.tagsDataSource objectsCount];
 }
 
 - (NSAttributedString *)pickerView:(UIPickerView *)pickerView attributedTitleForRow:(NSInteger)row forComponent:(NSInteger)component {
     NSDictionary *attributes = @{NSFontAttributeName : [UIFont appFontProximanovaRegularWithSize:16.f],
                                  NSForegroundColorAttributeName :[UIColor appSearchFieldColor]};
-    return [[NSAttributedString alloc] initWithString:[self.tagsDataSource tagForIndex:row] attributes:attributes];
+    return [[NSAttributedString alloc] initWithString:[self.tagsDataSource tagAtIndex:row] attributes:attributes];
 }
 
 #pragma mark - UIPickerViewDelegate
 
 - (void)pickerView:(UIPickerView *)pickerView didSelectRow:(NSInteger)row inComponent:(NSInteger)component {
-    self.selectTag = [self.tagsDataSource tagForIndex:row];
+    self.selectTag = [self.tagsDataSource tagAtIndex:row];
     if (self.selectTag) {
         [self.showPhotosButton setVisible:YES animated:YES];
     }
@@ -174,7 +174,7 @@
     self.searchField.enabled = YES;
 }
 
-- (void)setupViewIfUserDontLogin {
+- (void)setupViewIfUserIsNotLogedIn {
     
     self.searchField.enabled = NO;
     
