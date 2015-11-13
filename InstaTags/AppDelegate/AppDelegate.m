@@ -10,25 +10,12 @@
 #import "DDAppearanceConfigurator.h"
 #import "DDAuthenticationManager.h"
 
-#import "DDModel.h"
-
-@interface AppDelegate ()
-
-@end
-
 @implementation AppDelegate
 
-
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
-    
     [DDAppearanceConfigurator configurateNavigationBarAndStatusBar];
     [DDAppearanceConfigurator configurateTextField];
-    
     [MagicalRecord setupCoreDataStack];
-    
-    [DDModel MR_truncateAllInContext:[NSManagedObjectContext MR_defaultContext]];
-    [[NSManagedObjectContext MR_defaultContext] MR_saveToPersistentStoreAndWait];
-    
     return YES;
 }
 
