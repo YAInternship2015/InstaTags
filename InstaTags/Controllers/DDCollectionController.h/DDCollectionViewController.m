@@ -37,12 +37,12 @@ static CGFloat const durationAnimationDeleteCell = 0.3f;
 }
 
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
-    return [self.dataSource numberOfModels];
+    return [self.dataSource objectsCount];
 }
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
     DDITCollectionViewCell *cell = (DDITCollectionViewCell *)[collectionView dequeueReusableCellWithReuseIdentifier:NSStringFromClass([DDITCollectionViewCell class]) forIndexPath:indexPath];
-    [cell configWithPostModel:[self.dataSource modelForIndex:indexPath.row]];
+    [cell configWithPostModel:[self.dataSource modelAtIndex:indexPath.row]];
     return cell;
 }
 
@@ -55,7 +55,7 @@ static CGFloat const durationAnimationDeleteCell = 0.3f;
 
 #pragma mark - DDModelsDataSourceDelegate
 
-- (void)contentWasChanged {
+- (void)dataSourceDidUpdateContent {
     [self.collectionView reloadData];
     [self.collectionView.pullToRefreshView stopAnimating];
     [self.collectionView.infiniteScrollingView stopAnimating];
@@ -84,10 +84,10 @@ static CGFloat const durationAnimationDeleteCell = 0.3f;
 - (void)setupLoadersCallback {
     __weak typeof(self) weakSelf = self;
     [self.collectionView addPullToRefreshWithActionHandler:^{
-        [weakSelf.dataSource refreshPostWithCompletion:nil];
+        [weakSelf.dataSource refreshPostsWithCompletion:nil];
     }];
     [self.collectionView addInfiniteScrollingWithActionHandler:^{
-        [weakSelf.dataSource requestPostWithTag:nil completion:nil];
+        [weakSelf.dataSource requestPostsWithTag:nil completion:nil];
     }];
 }
 

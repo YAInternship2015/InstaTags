@@ -213,7 +213,7 @@
     __weak typeof(self) weakSelf = self;
     
     self.postsDataSource = [[DDPostsDataSource alloc] init];
-    [self.postsDataSource requestPostWithTag:self.selectTag completion:^(BOOL success) {
+    [self.postsDataSource requestPostsWithTag:self.selectTag completion:^(BOOL success) {
         if (success) {
             DDInstagramViewerController *controller = (DDInstagramViewerController *)[self.storyboard instantiateViewControllerWithIdentifier:DDInstagramViewerControllerID];
             controller.tagStringForTitle = [weakSelf.selectTag capitalizedString];

@@ -32,12 +32,12 @@ static NSString *const InstagramCellIdentifier = @"InstagramCellIdentifier";
 #pragma mark - UITableViewDataSource
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return [self.dataSource numberOfModels];
+    return [self.dataSource objectsCount];
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     DDITTableViewCell *cell = (DDITTableViewCell *)[tableView dequeueReusableCellWithIdentifier:InstagramCellIdentifier forIndexPath:indexPath];
-    [cell configWithPostModel:[self.dataSource modelForIndex:indexPath.row]];
+    [cell configWithPostModel:[self.dataSource modelAtIndex:indexPath.row]];
     return cell;
 }
 
@@ -55,7 +55,7 @@ static NSString *const InstagramCellIdentifier = @"InstagramCellIdentifier";
 
 #pragma mark - DDITDataSourceDelegate
 
-- (void)contentWasChanged {
+- (void)dataSourceDidUpdateContent {
     [self.tableView reloadData];
     [self.tableView.pullToRefreshView stopAnimating];
     [self.tableView.infiniteScrollingView stopAnimating];
@@ -66,10 +66,10 @@ static NSString *const InstagramCellIdentifier = @"InstagramCellIdentifier";
 - (void)setupLoadersCallback {
     __weak typeof(self) weakSelf = self;
     [self.tableView addPullToRefreshWithActionHandler:^{
-        [weakSelf.dataSource refreshPostWithCompletion:nil];
+        [weakSelf.dataSource refreshPostsWithCompletion:nil];
     }];
     [self.tableView addInfiniteScrollingWithActionHandler:^{
-        [weakSelf.dataSource requestPostWithTag:nil completion:nil];
+        [weakSelf.dataSource requestPostsWithTag:nil completion:nil];
     }];
 }
 

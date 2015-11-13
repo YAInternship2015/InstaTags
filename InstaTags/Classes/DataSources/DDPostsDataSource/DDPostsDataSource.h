@@ -19,11 +19,11 @@ typedef void (^SuccessBlock)(BOOL success);
 @property (nonatomic, weak) id<DDPostsDataSourceDelegate>delegate;
 
 - (instancetype)initWithDelegate:(id<DDPostsDataSourceDelegate>)delegate;
-- (NSUInteger)numberOfModels;
-- (DDModel *)modelForIndex:(NSInteger)index;
+- (NSUInteger)objectsCount;
+- (DDModel *)modelAtIndex:(NSInteger)index;
 - (void)removeModelAtIndex:(NSIndexPath *)indexPath;
-- (void)requestPostWithTag:(NSString *)tag completion:(SuccessBlock)completion;
-- (void)refreshPostWithCompletion:(SuccessBlock)completion;
+- (void)requestPostsWithTag:(NSString *)tag completion:(SuccessBlock)completion;
+- (void)refreshPostsWithCompletion:(SuccessBlock)completion;
 
 @end
 
@@ -31,6 +31,6 @@ typedef void (^SuccessBlock)(BOOL success);
 @protocol DDPostsDataSourceDelegate <NSObject>
 
 @optional
-- (void)contentWasChanged;
+- (void)dataSourceDidUpdateContent;
 
 @end

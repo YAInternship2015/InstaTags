@@ -37,11 +37,11 @@
     self.fetchedResultsController = [DDModel MR_fetchAllSortedBy:kSavedDate ascending:YES withPredicate:nil groupBy:nil delegate:self];
 }
 
-- (NSUInteger)numberOfModels {
+- (NSUInteger)objectsCount {
     return [DDModel MR_countOfEntities];
 }
 
-- (DDModel *)modelForIndex:(NSInteger)index {
+- (DDModel *)modelAtIndex:(NSInteger)index {
     return self.fetchedResultsController.fetchedObjects[index];
 }
 
@@ -51,7 +51,7 @@
     [[NSManagedObjectContext MR_defaultContext] MR_saveToPersistentStoreAndWait];
 }
 
-- (void)requestPostWithTag:(NSString *)tag completion:(SuccessBlock)completion {
+- (void)requestPostsWithTag:(NSString *)tag completion:(SuccessBlock)completion {
     [[DDDataManager sharedManager] postsWithTag:tag completion:^(BOOL success, id responseObject, NSError *error) {
         if (tag && success) {
             completion(success);
@@ -59,7 +59,7 @@
     }];
 }
 
-- (void)refreshPostWithCompletion:(SuccessBlock)completion {
+- (void)refreshPostsWithCompletion:(SuccessBlock)completion {
     [[DDDataManager sharedManager] postsWithTag:nil completion:^(BOOL success, id responseObject, NSError *error) {
         if (success) {
             NSArray *array = responseObject[kTagsData];
@@ -72,7 +72,7 @@
 #pragma mark - NSFetchedResultsControllerDelegate
 
 - (void)controllerDidChangeContent:(NSFetchedResultsController *)controller{
-    [self.delegate contentWasChanged];
+    [self.delegate dataSourceDidUpdateContent];
 }
 
 @end
