@@ -42,18 +42,13 @@ static NSString *const OAuthHostURL             = @"https://api.instagram.com/oa
 }
 
 - (BOOL)getInstagramCodeFromURL:(NSURL *)url {
-    
     BOOL success = NO;
-    
     if([[url scheme] isEqualToString:INSTAGRAM_URL_SCHEME]) {
-
         if([[url absoluteString] rangeOfString:@"code="].location != NSNotFound) {
             NSString* authorizationCode = [[url absoluteString] substringFromIndex: NSMaxRange([[url absoluteString] rangeOfString:@"code="])];
-            
             self.instagramCode = authorizationCode;
             [self receiveRedirectFromInstagram];
             success = YES;
-            
         } else {
             if([[url absoluteString] rangeOfString:@"error="].location != NSNotFound) {
                 NSLog(@"error occured!");
@@ -72,7 +67,6 @@ static NSString *const OAuthHostURL             = @"https://api.instagram.com/oa
     NSString *customScheme = [INSTAGRAM_URL_SCHEME stringByAppendingString:@"://"];
     NSString *fullPath = [NSString stringWithFormat:@"%@?%@%@", customScheme, NM_ParameterCode, self.instagramCode];
     NSURL *url = [NSURL URLWithString:fullPath];
-    
     if ([[UIApplication sharedApplication] canOpenURL:url]) {
         [self requestAccessToken];
     } else {
@@ -92,16 +86,13 @@ static NSString *const OAuthHostURL             = @"https://api.instagram.com/oa
      */
     
     NSString *fullPathString = [OAuthHostURL stringByAppendingString:NM_AccessTokenPath];
-    
     NSDictionary *parameters = @{[NM_ParameterClientID removeLastCharacter] : INSTAGRAM_CLIENT_ID,
                                  NM_ParameterClientSecret : INSTAGRAM_CLIENT_SECRET,
                                  NM_ParameterGrantType : INSTAGRAM_GRANT_TYPE,
                                  [NM_ParameterRedirectURI removeLastCharacter] : INSTAGRAM_REDIRECT_URI,
                                  [NM_ParameterCode removeLastCharacter] : self.instagramCode};
-    
     AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
     manager.responseSerializer = [AFJSONResponseSerializer serializer];
-    
     [manager POST:fullPathString parameters:parameters success:^(AFHTTPRequestOperation *operation, id responseObject) {
         [self saveUserProfileFromResponseObject:responseObject];
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
@@ -110,10 +101,8 @@ static NSString *const OAuthHostURL             = @"https://api.instagram.com/oa
 }
 
 - (void)saveUserProfileFromResponseObject:(id)responseObject {
-    
     DDUserProfileModel *networkObject = [[DDUserProfileModel alloc] init];
     networkObject.objectDictionary = responseObject;
-    
     [MagicalRecord saveWithBlock:^(NSManagedObjectContext *localContext) {
         DDUser *user = [DDUser MR_createEntityInContext:localContext];
         user.access_token = networkObject.access_token;
