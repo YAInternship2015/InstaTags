@@ -81,17 +81,9 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="EkZ-Jk-waB" userLabel="GradientView">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="EkZ-Jk-waB" userLabel="LoginView">
                                 <rect key="frame" x="0.0" y="0.0" width="600" height="175"/>
                                 <subviews>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="logo_white" translatesAutoresizingMaskIntoConstraints="NO" id="1Y0-8g-eQj" userLabel="Logo">
-                                        <rect key="frame" x="225" y="32" width="150" height="43"/>
-                                        <animations/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="43" id="Plv-zs-UcJ"/>
-                                            <constraint firstAttribute="width" constant="150" id="xDz-Qp-W9A"/>
-                                        </constraints>
-                                    </imageView>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ccm-SM-wK7">
                                         <rect key="frame" x="0.0" y="145" width="600" height="30"/>
                                         <animations/>
@@ -104,7 +96,7 @@
                                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
                                     </button>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="loginInfo" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2Hc-F9-7Co">
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="loginInfo" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2Hc-F9-7Co">
                                         <rect key="frame" x="200" y="87" width="200" height="30"/>
                                         <animations/>
                                         <constraints>
@@ -115,18 +107,27 @@
                                         <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="userFullName" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dY2-Fk-ZhL">
-                                        <rect key="frame" x="0.0" y="145" width="600" height="30"/>
+                                </subviews>
+                                <animations/>
+                                <color key="backgroundColor" red="0.65882354974746704" green="0.66666668653488159" blue="0.67843139171600342" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstItem="ccm-SM-wK7" firstAttribute="leading" secondItem="EkZ-Jk-waB" secondAttribute="leading" id="0Yh-a2-T27"/>
+                                    <constraint firstAttribute="bottom" secondItem="ccm-SM-wK7" secondAttribute="bottom" id="LVv-pq-Hbv"/>
+                                    <constraint firstAttribute="centerX" secondItem="2Hc-F9-7Co" secondAttribute="centerX" id="NxJ-Kr-ZOg"/>
+                                    <constraint firstAttribute="height" constant="175" id="UPX-Fh-Gzg"/>
+                                    <constraint firstAttribute="trailing" secondItem="ccm-SM-wK7" secondAttribute="trailing" id="wn2-gZ-RJd"/>
+                                </constraints>
+                            </view>
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="c7B-nC-T4Q" userLabel="LogedInView">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="175"/>
+                                <subviews>
+                                    <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" style="white" translatesAutoresizingMaskIntoConstraints="NO" id="CRe-pk-IaK" userLabel="loginActivity">
+                                        <rect key="frame" x="290" y="78" width="20" height="20"/>
                                         <animations/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="30" id="g4a-by-XEH"/>
-                                        </constraints>
-                                        <fontDescription key="fontDescription" name="ProximaNova-Regular" family="Proxima Nova" pointSize="14"/>
-                                        <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="9kx-aJ-eAF" userLabel="userProfilePicture">
-                                        <rect key="frame" x="281" y="96" width="38" height="38"/>
+                                        <color key="color" red="0.98039215803146362" green="0.98039215803146362" blue="0.98039215803146362" alpha="1" colorSpace="calibratedRGB"/>
+                                    </activityIndicatorView>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="9kx-aJ-eAF" userLabel="userProfilePicture">
+                                        <rect key="frame" x="281" y="69" width="38" height="38"/>
                                         <animations/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="38" id="Riu-RG-GYM"/>
@@ -138,32 +139,28 @@
                                             </userDefinedRuntimeAttribute>
                                         </userDefinedRuntimeAttributes>
                                     </imageView>
-                                    <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="white" translatesAutoresizingMaskIntoConstraints="NO" id="CRe-pk-IaK" userLabel="loginActivity">
-                                        <rect key="frame" x="290" y="105" width="20" height="20"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="userFullName" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dY2-Fk-ZhL">
+                                        <rect key="frame" x="0.0" y="73" width="600" height="30"/>
                                         <animations/>
-                                        <color key="color" red="0.98039215803146362" green="0.98039215803146362" blue="0.98039215803146362" alpha="1" colorSpace="calibratedRGB"/>
-                                    </activityIndicatorView>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="30" id="g4a-by-XEH"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" name="ProximaNova-Regular" family="Proxima Nova" pointSize="14"/>
+                                        <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
                                 </subviews>
                                 <animations/>
-                                <color key="backgroundColor" red="0.65882354974746704" green="0.66666668653488159" blue="0.67843139171600342" alpha="1" colorSpace="calibratedRGB"/>
-                                <constraints>
-                                    <constraint firstItem="1Y0-8g-eQj" firstAttribute="top" secondItem="EkZ-Jk-waB" secondAttribute="top" constant="32" id="01C-wf-v8F"/>
-                                    <constraint firstItem="ccm-SM-wK7" firstAttribute="leading" secondItem="EkZ-Jk-waB" secondAttribute="leading" id="0Yh-a2-T27"/>
-                                    <constraint firstItem="CRe-pk-IaK" firstAttribute="centerY" secondItem="9kx-aJ-eAF" secondAttribute="centerY" id="8wE-bj-Ftq"/>
-                                    <constraint firstItem="dY2-Fk-ZhL" firstAttribute="leading" secondItem="EkZ-Jk-waB" secondAttribute="leading" id="B70-WI-YHs"/>
-                                    <constraint firstAttribute="centerX" secondItem="CRe-pk-IaK" secondAttribute="centerX" id="GLg-fS-ZJU"/>
-                                    <constraint firstAttribute="bottom" secondItem="dY2-Fk-ZhL" secondAttribute="bottom" id="Kyj-MW-CdS"/>
-                                    <constraint firstAttribute="bottom" secondItem="ccm-SM-wK7" secondAttribute="bottom" id="LVv-pq-Hbv"/>
-                                    <constraint firstAttribute="centerX" secondItem="2Hc-F9-7Co" secondAttribute="centerX" id="NxJ-Kr-ZOg"/>
-                                    <constraint firstItem="2Hc-F9-7Co" firstAttribute="top" secondItem="1Y0-8g-eQj" secondAttribute="bottom" constant="12" id="P1p-FQ-SxN"/>
-                                    <constraint firstAttribute="height" constant="175" id="UPX-Fh-Gzg"/>
-                                    <constraint firstItem="dY2-Fk-ZhL" firstAttribute="top" secondItem="9kx-aJ-eAF" secondAttribute="bottom" constant="11" id="YRt-gu-nXI"/>
-                                    <constraint firstAttribute="centerX" secondItem="9kx-aJ-eAF" secondAttribute="centerX" id="gpz-4h-NJD"/>
-                                    <constraint firstAttribute="trailing" secondItem="dY2-Fk-ZhL" secondAttribute="trailing" id="hdR-Js-iEr"/>
-                                    <constraint firstAttribute="centerX" secondItem="1Y0-8g-eQj" secondAttribute="centerX" id="kY2-sz-HUl"/>
-                                    <constraint firstAttribute="trailing" secondItem="ccm-SM-wK7" secondAttribute="trailing" id="wn2-gZ-RJd"/>
-                                </constraints>
+                                <color key="backgroundColor" red="0.0" green="1" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                             </view>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" image="logo_white" translatesAutoresizingMaskIntoConstraints="NO" id="1Y0-8g-eQj" userLabel="Logo">
+                                <rect key="frame" x="225" y="279" width="150" height="43"/>
+                                <animations/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="43" id="Plv-zs-UcJ"/>
+                                    <constraint firstAttribute="width" constant="150" id="xDz-Qp-W9A"/>
+                                </constraints>
+                            </imageView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="D8O-h1-QGA">
                                 <rect key="frame" x="0.0" y="225" width="600" height="307"/>
                                 <subviews>
@@ -267,7 +264,7 @@
                     <navigationItem key="navigationItem" id="Hol-eY-OqV"/>
                     <connections>
                         <outlet property="beforeLoginMessageLabel" destination="2Hc-F9-7Co" id="JIB-Kb-l3U"/>
-                        <outlet property="gradientView" destination="EkZ-Jk-waB" id="tgY-Qm-4Z0"/>
+                        <outlet property="headerView" destination="EkZ-Jk-waB" id="nQ1-HS-ELz"/>
                         <outlet property="loginActivityIndicator" destination="CRe-pk-IaK" id="gxt-nX-tCM"/>
                         <outlet property="loginButton" destination="ccm-SM-wK7" id="pAc-Nv-RRy"/>
                         <outlet property="pickerView" destination="ccp-0F-mry" id="KTg-4X-NhV"/>

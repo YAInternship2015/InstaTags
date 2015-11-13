@@ -34,6 +34,8 @@
 		328B6ADE1BB5CC28004AF4CF /* DDAppearanceConfigurator.m in Sources */ = {isa = PBXBuildFile; fileRef = 328B6AD61BB5CC28004AF4CF /* DDAppearanceConfigurator.m */; };
 		328B6ADF1BB5CC28004AF4CF /* DDInputValidator.m in Sources */ = {isa = PBXBuildFile; fileRef = 328B6AD91BB5CC28004AF4CF /* DDInputValidator.m */; };
 		328B6AE21BB5CD63004AF4CF /* DDSearchTagsController.m in Sources */ = {isa = PBXBuildFile; fileRef = 328B6AE11BB5CD63004AF4CF /* DDSearchTagsController.m */; };
+		328C2BA21BF639BD008601BF /* DDLogInView.m in Sources */ = {isa = PBXBuildFile; fileRef = 328C2BA11BF639BD008601BF /* DDLogInView.m */; };
+		328C2BA61BF639E1008601BF /* DDLogedInView.m in Sources */ = {isa = PBXBuildFile; fileRef = 328C2BA51BF639E1008601BF /* DDLogedInView.m */; };
 		329048521BCC29DC00F5D12D /* DDTagsDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = 329048511BCC29DC00F5D12D /* DDTagsDataSource.m */; };
 		329692E71BB5E3D100B271EB /* NSArray+ObjectMapping.m in Sources */ = {isa = PBXBuildFile; fileRef = 329692E61BB5E3D100B271EB /* NSArray+ObjectMapping.m */; };
 		32A77C411BB5D2810044A6D4 /* DDNetworkObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 32A77C3D1BB5D2810044A6D4 /* DDNetworkObject.m */; };
@@ -124,6 +126,10 @@
 		328B6AD91BB5CC28004AF4CF /* DDInputValidator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DDInputValidator.m; sourceTree = "<group>"; };
 		328B6AE01BB5CD63004AF4CF /* DDSearchTagsController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DDSearchTagsController.h; path = DDMainController/DDSearchTagsController.h; sourceTree = "<group>"; };
 		328B6AE11BB5CD63004AF4CF /* DDSearchTagsController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DDSearchTagsController.m; path = DDMainController/DDSearchTagsController.m; sourceTree = "<group>"; };
+		328C2BA01BF639BD008601BF /* DDLogInView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DDLogInView.h; path = DDMainController/DDLogInView/DDLogInView.h; sourceTree = "<group>"; };
+		328C2BA11BF639BD008601BF /* DDLogInView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DDLogInView.m; path = DDMainController/DDLogInView/DDLogInView.m; sourceTree = "<group>"; };
+		328C2BA41BF639E1008601BF /* DDLogedInView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DDLogedInView.h; path = DDMainController/DDLogedInView/DDLogedInView.h; sourceTree = "<group>"; };
+		328C2BA51BF639E1008601BF /* DDLogedInView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DDLogedInView.m; path = DDMainController/DDLogedInView/DDLogedInView.m; sourceTree = "<group>"; };
 		329048501BCC29DC00F5D12D /* DDTagsDataSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DDTagsDataSource.h; sourceTree = "<group>"; };
 		329048511BCC29DC00F5D12D /* DDTagsDataSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DDTagsDataSource.m; sourceTree = "<group>"; };
 		329692E51BB5E3D100B271EB /* NSArray+ObjectMapping.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSArray+ObjectMapping.h"; sourceTree = "<group>"; };
@@ -532,8 +538,28 @@
 			children = (
 				328B6AE01BB5CD63004AF4CF /* DDSearchTagsController.h */,
 				328B6AE11BB5CD63004AF4CF /* DDSearchTagsController.m */,
+				328C2BA31BF639C1008601BF /* DDLogInView */,
+				328C2BA71BF639F2008601BF /* DDLogedInView */,
 			);
 			name = SearchTagsController;
+			sourceTree = "<group>";
+		};
+		328C2BA31BF639C1008601BF /* DDLogInView */ = {
+			isa = PBXGroup;
+			children = (
+				328C2BA01BF639BD008601BF /* DDLogInView.h */,
+				328C2BA11BF639BD008601BF /* DDLogInView.m */,
+			);
+			name = DDLogInView;
+			sourceTree = "<group>";
+		};
+		328C2BA71BF639F2008601BF /* DDLogedInView */ = {
+			isa = PBXGroup;
+			children = (
+				328C2BA41BF639E1008601BF /* DDLogedInView.h */,
+				328C2BA51BF639E1008601BF /* DDLogedInView.m */,
+			);
+			name = DDLogedInView;
 			sourceTree = "<group>";
 		};
 		329692E41BB5E3D100B271EB /* NSArray+ObjectMapping */ = {
@@ -899,6 +925,7 @@
 				321435921BBFB697001C149A /* DDImagesModel.m in Sources */,
 				329692E71BB5E3D100B271EB /* NSArray+ObjectMapping.m in Sources */,
 				3214359A1BBFB728001C149A /* DDPostModel.m in Sources */,
+				328C2BA21BF639BD008601BF /* DDLogInView.m in Sources */,
 				328B6AE21BB5CD63004AF4CF /* DDSearchTagsController.m in Sources */,
 				32E5B3511BB5C1D500B2ED5F /* AppDelegate.m in Sources */,
 				32F7B0981BBC7E86007207DB /* NSString+Convenience.m in Sources */,
@@ -925,6 +952,7 @@
 				3285549B1BC13950005B95EC /* DDInstagramViewerController.m in Sources */,
 				32A77C411BB5D2810044A6D4 /* DDNetworkObject.m in Sources */,
 				32C93C001BB8334F00945C62 /* UIFont+AppFont.m in Sources */,
+				328C2BA61BF639E1008601BF /* DDLogedInView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

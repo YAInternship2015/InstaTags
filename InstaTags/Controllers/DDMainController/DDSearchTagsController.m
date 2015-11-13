@@ -35,9 +35,8 @@
 @property (nonatomic, weak) IBOutlet UIButton *showPhotosButton;
 
 // base properties
-@property (nonatomic, weak) IBOutlet UIView *gradientView;
+@property (nonatomic, weak) IBOutlet UIView *headerView;
 @property (nonatomic, strong) IBOutlet UITapGestureRecognizer *tap;
-@property (nonatomic, strong) CAGradientLayer *gradient;
 @property (nonatomic, strong) NSString *selectTag;
 @property (nonatomic, strong) DDTagsDataSource *tagsDataSource;
 @property (nonatomic, strong) DDPostsDataSource *postsDataSource;
@@ -67,11 +66,11 @@
     
     self.searchHelpLabel.text = [@"Все очень просто! Начинайте поиск тэгов, выбирайте тэг для просмотра фотографий." localized];
     
-    self.gradient = [CAGradientLayer layer];
-    self.gradient.frame = self.gradientView.bounds;
-    self.gradient.colors = @[(id)[UIColor appBaseBlueColor].CGColor,
+    CAGradientLayer *gradient = [CAGradientLayer layer];
+    gradient.frame = self.headerView.bounds;
+    gradient.colors = @[(id)[UIColor appBaseBlueColor].CGColor,
                              (id)[UIColor purpleColor].CGColor];
-    [self.gradientView.layer insertSublayer:self.gradient atIndex:0];
+    [self.headerView.layer insertSublayer:gradient atIndex:0];
     
     [self.pickerView setShowsSelectionIndicator:YES];
     [self.pickerView setVisible:NO];
