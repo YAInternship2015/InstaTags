@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9060" systemVersion="15B42" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="3AH-wf-R9D">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9060" systemVersion="15B42" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="awu-fL-exY">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9051"/>
@@ -7,6 +7,11 @@
     </dependencies>
     <customFonts key="customFonts">
         <mutableArray key="proximanova-regular.otf">
+            <string>ProximaNova-Regular</string>
+            <string>ProximaNova-Regular</string>
+            <string>ProximaNova-Regular</string>
+            <string>ProximaNova-Regular</string>
+            <string>ProximaNova-Regular</string>
             <string>ProximaNova-Regular</string>
             <string>ProximaNova-Regular</string>
             <string>ProximaNova-Regular</string>
@@ -69,6 +74,209 @@
             </objects>
             <point key="canvasLocation" x="-447" y="277"/>
         </scene>
+        <!--Main Controller-->
+        <scene sceneID="zuY-UH-Fgh">
+            <objects>
+                <viewController id="7mU-Oe-Hi4" customClass="DDMainController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="Omv-0g-CyF"/>
+                        <viewControllerLayoutGuide type="bottom" id="hl4-hh-LeV"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="eNI-uO-OV3">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="HeaderWithLogo" translatesAutoresizingMaskIntoConstraints="NO" id="9Us-Ka-KC8" userLabel="HeaderWithLogo">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="175"/>
+                                <animations/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="175" id="6AD-b6-gjM"/>
+                                </constraints>
+                            </imageView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="tD8-IG-eBm" userLabel="LoginView" customClass="LoginView">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="175"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="irK-XO-s0R">
+                                        <rect key="frame" x="0.0" y="145" width="600" height="30"/>
+                                        <animations/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="30" id="OUz-An-1cS"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" name="ProximaNova-Regular" family="Proxima Nova" pointSize="20"/>
+                                        <state key="normal" title="войти">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="loginActions:" destination="tD8-IG-eBm" eventType="touchUpInside" id="Wr4-NQ-jba"/>
+                                        </connections>
+                                    </button>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="messageLabel" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Mg0-EZ-W7G">
+                                        <rect key="frame" x="200" y="87" width="200" height="30"/>
+                                        <animations/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="30" id="4On-ot-VMv"/>
+                                            <constraint firstAttribute="width" constant="200" id="J66-lR-wfL"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" name="ProximaNova-Regular" family="Proxima Nova" pointSize="14"/>
+                                        <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <animations/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstItem="irK-XO-s0R" firstAttribute="leading" secondItem="tD8-IG-eBm" secondAttribute="leading" id="0Vv-x3-VqY"/>
+                                    <constraint firstItem="Mg0-EZ-W7G" firstAttribute="centerX" secondItem="tD8-IG-eBm" secondAttribute="centerX" id="EaD-hS-xxU"/>
+                                    <constraint firstItem="irK-XO-s0R" firstAttribute="top" secondItem="Mg0-EZ-W7G" secondAttribute="bottom" constant="28" id="GeP-rj-8aC"/>
+                                    <constraint firstAttribute="trailing" secondItem="irK-XO-s0R" secondAttribute="trailing" id="MEV-GQ-43T"/>
+                                    <constraint firstAttribute="bottom" secondItem="irK-XO-s0R" secondAttribute="bottom" id="Rdh-oZ-0XA"/>
+                                    <constraint firstAttribute="height" constant="175" id="m3U-hA-31g"/>
+                                </constraints>
+                                <connections>
+                                    <outlet property="loginButton" destination="irK-XO-s0R" id="ZoW-2x-FZ4"/>
+                                    <outlet property="messageLabel" destination="Mg0-EZ-W7G" id="RwK-8X-bYR"/>
+                                </connections>
+                            </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="9tN-y0-r5h" userLabel="LogedInView" customClass="LogedInView">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="175"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="userFullName" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mGA-bJ-bZL" userLabel="userName">
+                                        <rect key="frame" x="0.0" y="145" width="600" height="30"/>
+                                        <animations/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="30" id="XR8-Gk-2Ou"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" name="ProximaNova-Regular" family="Proxima Nova" pointSize="14"/>
+                                        <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="OvM-ID-RmU" userLabel="userProfilePicture">
+                                        <rect key="frame" x="281" y="96" width="38" height="38"/>
+                                        <animations/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="38" id="kS9-Lo-ZWc"/>
+                                            <constraint firstAttribute="height" constant="38" id="moy-zM-7K0"/>
+                                        </constraints>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                <integer key="value" value="19"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
+                                    </imageView>
+                                </subviews>
+                                <animations/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstItem="mGA-bJ-bZL" firstAttribute="top" secondItem="OvM-ID-RmU" secondAttribute="bottom" constant="11" id="4gP-CR-IhX"/>
+                                    <constraint firstItem="mGA-bJ-bZL" firstAttribute="leading" secondItem="9tN-y0-r5h" secondAttribute="leading" id="Cft-np-rrd"/>
+                                    <constraint firstAttribute="trailing" secondItem="mGA-bJ-bZL" secondAttribute="trailing" id="GA4-XL-vPq"/>
+                                    <constraint firstAttribute="height" constant="175" id="GxL-vq-MeG"/>
+                                    <constraint firstAttribute="bottom" secondItem="mGA-bJ-bZL" secondAttribute="bottom" id="My2-KH-Phv"/>
+                                    <constraint firstItem="OvM-ID-RmU" firstAttribute="centerX" secondItem="9tN-y0-r5h" secondAttribute="centerX" id="qfk-WN-lH0"/>
+                                </constraints>
+                                <connections>
+                                    <outlet property="userNameLabel" destination="mGA-bJ-bZL" id="FLf-ho-qOE"/>
+                                    <outlet property="userProfilePictureImageView" destination="OvM-ID-RmU" id="hwP-VG-sZE"/>
+                                </connections>
+                            </view>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Search Tags" textAlignment="center" minimumFontSize="14" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="ccU-aJ-1Fu">
+                                <rect key="frame" x="20" y="195" width="560" height="30"/>
+                                <animations/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="x6z-D8-8WG"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="ProximaNova-Regular" family="Proxima Nova" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="words" autocorrectionType="no" keyboardAppearance="light" returnKeyType="search"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <integer key="value" value="15"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.borderWidth">
+                                        <integer key="value" value="1"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <outlet property="delegate" destination="7mU-Oe-Hi4" id="LtS-Wk-FXz"/>
+                                </connections>
+                            </textField>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6VR-vu-00s">
+                                <rect key="frame" x="20" y="532" width="560" height="48"/>
+                                <animations/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="48" id="RoH-f8-sIt"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="ProximaNova-Regular" family="Proxima Nova" pointSize="16"/>
+                                <state key="normal" title="Показать фотографии">
+                                    <color key="titleColor" red="0.25098039220000001" green="0.56470588239999997" blue="0.85882352939999995" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <integer key="value" value="4"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.borderWidth">
+                                        <integer key="value" value="1"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </button>
+                            <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="i3a-ai-LMG">
+                                <rect key="frame" x="0.0" y="297" width="600" height="162"/>
+                                <animations/>
+                                <color key="tintColor" red="0.039215686270000001" green="0.28627450980000002" blue="0.47843137250000001" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="162" id="pZU-PB-t6F"/>
+                                </constraints>
+                                <connections>
+                                    <outlet property="dataSource" destination="7mU-Oe-Hi4" id="Jih-rS-ISb"/>
+                                    <outlet property="delegate" destination="7mU-Oe-Hi4" id="rBh-bJ-m7K"/>
+                                </connections>
+                            </pickerView>
+                        </subviews>
+                        <animations/>
+                        <color key="backgroundColor" red="0.94509804248809814" green="0.94509804248809814" blue="0.94509804248809814" alpha="1" colorSpace="calibratedRGB"/>
+                        <gestureRecognizers/>
+                        <constraints>
+                            <constraint firstItem="6VR-vu-00s" firstAttribute="top" secondItem="i3a-ai-LMG" secondAttribute="bottom" priority="100" constant="73" id="2mS-Dw-o8d"/>
+                            <constraint firstItem="tD8-IG-eBm" firstAttribute="leading" secondItem="eNI-uO-OV3" secondAttribute="leading" id="5Oq-5U-MJb"/>
+                            <constraint firstItem="9tN-y0-r5h" firstAttribute="top" secondItem="eNI-uO-OV3" secondAttribute="top" id="8He-ld-Ljb"/>
+                            <constraint firstItem="hl4-hh-LeV" firstAttribute="top" secondItem="6VR-vu-00s" secondAttribute="bottom" constant="20" id="Bb5-x0-l5k"/>
+                            <constraint firstItem="6VR-vu-00s" firstAttribute="leading" secondItem="eNI-uO-OV3" secondAttribute="leading" constant="20" id="EmX-AY-bgb"/>
+                            <constraint firstItem="i3a-ai-LMG" firstAttribute="leading" secondItem="eNI-uO-OV3" secondAttribute="leading" id="Nj8-FS-rHX"/>
+                            <constraint firstAttribute="trailing" secondItem="9Us-Ka-KC8" secondAttribute="trailing" id="PHd-Yk-RkB"/>
+                            <constraint firstItem="9tN-y0-r5h" firstAttribute="leading" secondItem="eNI-uO-OV3" secondAttribute="leading" id="Qnt-cz-nhm"/>
+                            <constraint firstItem="9Us-Ka-KC8" firstAttribute="top" secondItem="eNI-uO-OV3" secondAttribute="top" id="YBI-AY-M4u"/>
+                            <constraint firstItem="tD8-IG-eBm" firstAttribute="top" secondItem="eNI-uO-OV3" secondAttribute="top" id="YFI-yv-n9l"/>
+                            <constraint firstAttribute="trailing" secondItem="tD8-IG-eBm" secondAttribute="trailing" id="aVq-nM-AW8"/>
+                            <constraint firstAttribute="trailing" secondItem="i3a-ai-LMG" secondAttribute="trailing" id="eP5-ek-Ov5"/>
+                            <constraint firstItem="i3a-ai-LMG" firstAttribute="top" secondItem="ccU-aJ-1Fu" secondAttribute="bottom" priority="100" constant="72" id="hhN-ON-6Hq"/>
+                            <constraint firstItem="ccU-aJ-1Fu" firstAttribute="trailing" secondItem="eNI-uO-OV3" secondAttribute="trailingMargin" id="j1N-16-Wlh"/>
+                            <constraint firstAttribute="trailing" secondItem="6VR-vu-00s" secondAttribute="trailing" constant="20" id="lwO-Pq-UAT"/>
+                            <constraint firstItem="ccU-aJ-1Fu" firstAttribute="top" secondItem="9tN-y0-r5h" secondAttribute="bottom" constant="20" id="r2H-1R-N43"/>
+                            <constraint firstItem="ccU-aJ-1Fu" firstAttribute="leading" secondItem="eNI-uO-OV3" secondAttribute="leadingMargin" id="s0A-iI-HIr"/>
+                            <constraint firstItem="9Us-Ka-KC8" firstAttribute="leading" secondItem="eNI-uO-OV3" secondAttribute="leading" id="vf6-jz-yNt"/>
+                            <constraint firstAttribute="trailing" secondItem="9tN-y0-r5h" secondAttribute="trailing" id="xuC-Yt-M1g"/>
+                        </constraints>
+                        <connections>
+                            <outletCollection property="gestureRecognizers" destination="bxR-Kw-ORv" appends="YES" id="2cx-a8-B0y"/>
+                        </connections>
+                    </view>
+                    <navigationItem key="navigationItem" id="xkI-Y7-DNh"/>
+                    <connections>
+                        <outlet property="logedInView" destination="9tN-y0-r5h" id="9u4-lh-K3t"/>
+                        <outlet property="loginView" destination="tD8-IG-eBm" id="67A-dP-c17"/>
+                        <outlet property="pickerView" destination="i3a-ai-LMG" id="iDf-06-ecx"/>
+                        <outlet property="searchTagsTextField" destination="ccU-aJ-1Fu" id="81C-Uw-AOJ"/>
+                        <outlet property="showPhotosButton" destination="6VR-vu-00s" id="lGB-du-ykx"/>
+                        <outlet property="tapGestureRecognizer" destination="bxR-Kw-ORv" id="Scn-B8-OPK"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="tH4-9Z-PA2" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <tapGestureRecognizer id="bxR-Kw-ORv"/>
+            </objects>
+            <point key="canvasLocation" x="1851" y="-417"/>
+        </scene>
         <!--Search Tags Controller-->
         <scene sceneID="ufC-wZ-h7g">
             <objects>
@@ -81,7 +289,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="EkZ-Jk-waB" userLabel="GradientView">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="EkZ-Jk-waB" userLabel="Header">
                                 <rect key="frame" x="0.0" y="0.0" width="600" height="175"/>
                                 <subviews>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="logo_white" translatesAutoresizingMaskIntoConstraints="NO" id="1Y0-8g-eQj" userLabel="Logo">
@@ -241,7 +449,7 @@
                             </button>
                         </subviews>
                         <animations/>
-                        <color key="backgroundColor" red="0.98039215803146362" green="0.98039215803146362" blue="0.98039215803146362" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="backgroundColor" red="0.94509804248809814" green="0.94509804248809814" blue="0.94509804248809814" alpha="1" colorSpace="calibratedRGB"/>
                         <gestureRecognizers/>
                         <constraints>
                             <constraint firstItem="eb1-Ka-LyN" firstAttribute="top" secondItem="D8O-h1-QGA" secondAttribute="bottom" id="28x-UO-EYn"/>
@@ -267,7 +475,7 @@
                     <navigationItem key="navigationItem" id="Hol-eY-OqV"/>
                     <connections>
                         <outlet property="beforeLoginMessageLabel" destination="2Hc-F9-7Co" id="JIB-Kb-l3U"/>
-                        <outlet property="gradientView" destination="EkZ-Jk-waB" id="tgY-Qm-4Z0"/>
+                        <outlet property="headerView" destination="EkZ-Jk-waB" id="mz2-kg-zwf"/>
                         <outlet property="loginActivityIndicator" destination="CRe-pk-IaK" id="gxt-nX-tCM"/>
                         <outlet property="loginButton" destination="ccm-SM-wK7" id="pAc-Nv-RRy"/>
                         <outlet property="pickerView" destination="ccp-0F-mry" id="KTg-4X-NhV"/>
@@ -443,7 +651,7 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="8iZ-b1-XaL" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <customObject id="Kpp-oG-aoL" customClass="DDTableViewDataSource"/>
             </objects>
-            <point key="canvasLocation" x="3286" y="99"/>
+            <point key="canvasLocation" x="4098" y="99"/>
         </scene>
         <!--Collection View Controller-->
         <scene sceneID="4MB-bN-yUQ">
@@ -563,9 +771,29 @@
             </objects>
             <point key="canvasLocation" x="2512" y="277"/>
         </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="UAv-YM-07E">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="awu-fL-exY" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="3VS-h9-4X0">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <animations/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="7mU-Oe-Hi4" kind="relationship" relationship="rootViewController" id="z8e-XG-MZU"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="jvP-dJ-fgf" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1039" y="-417"/>
+        </scene>
     </scenes>
     <resources>
         <image name="CollectionViewIcon" width="32" height="32"/>
+        <image name="HeaderWithLogo" width="320" height="175"/>
         <image name="logo_white" width="150" height="43"/>
     </resources>
 </document>

@@ -7,39 +7,25 @@
 //
 
 #import "LogedInView.h"
+#import "DDUser.h"
+#import "DDUser+FetchingEntity.h"
+#import <SDWebImage/UIImageView+WebCache.h>
 
 @interface LogedInView ()
 
-@property (weak, nonatomic) IBOutlet UILabel *userFullNameLabel;
-@property (weak, nonatomic) IBOutlet UIImageView *userProfileImageView;
-@property (weak, nonatomic) IBOutlet UIActivityIndicatorView *activityIndicatorView;
+@property (nonatomic, weak) IBOutlet UILabel *userNameLabel;
+@property (nonatomic, weak) IBOutlet UIImageView *userProfilePictureImageView;
 
 @end
 
 @implementation LogedInView
 
-- (instancetype)initWithCoder:(NSCoder *)aDecoder {
-    if (self = [super initWithCoder:aDecoder]) {
-        [self load];
-    }
-    return self;
+- (void)setUserNameLabel:(UILabel *)userNameLabel {
+    userNameLabel.text = [DDUser savedUser].full_name;
 }
 
-- (instancetype)initWithFrame:(CGRect)frame {
-    if (self = [super initWithFrame:frame]) {
-        [self load];
-    }
-    return self;
-}
-
-- (void)load {
-    UIView *view = [[[NSBundle bundleForClass:[self class]] loadNibNamed:NSStringFromClass([self class]) owner:self options:nil] firstObject];
-    [self addSubview:view];
-    view.frame = self.bounds;
-    
-    self.userFullNameLabel.text = @"userFullNameLabel";
-    self.userProfileImageView.image = [UIImage appCollectionViewIcon]; // test
-    [self.activityIndicatorView startAnimating];
+- (void)setUserProfilePictureImageView:(UIImageView *)userProfilePictureImageView {
+    [userProfilePictureImageView sd_setImageWithURL:[NSURL URLWithString:[DDUser savedUser].profile_picture] placeholderImage:[UIImage appUserAvatar]];
 }
 
 @end

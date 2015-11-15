@@ -18,7 +18,7 @@
 @interface DDSearchTagsController () <DDTagsDataSourceDelegate>
 
 // before login
-@property (weak, nonatomic) IBOutlet UIActivityIndicatorView *loginActivityIndicator;
+@property (nonatomic, weak) IBOutlet UIActivityIndicatorView *loginActivityIndicator;
 @property (nonatomic, weak) IBOutlet UIButton *loginButton;
 @property (nonatomic, weak) IBOutlet UILabel *beforeLoginMessageLabel;
 
@@ -35,9 +35,8 @@
 @property (nonatomic, weak) IBOutlet UIButton *showPhotosButton;
 
 // base properties
-@property (nonatomic, weak) IBOutlet UIView *gradientView;
+@property (nonatomic, weak) IBOutlet UIView *headerView;
 @property (nonatomic, strong) IBOutlet UITapGestureRecognizer *tap;
-@property (nonatomic, strong) CAGradientLayer *gradient;
 @property (nonatomic, strong) NSString *selectTag;
 @property (nonatomic, strong) DDTagsDataSource *tagsDataSource;
 @property (nonatomic, strong) DDPostsDataSource *postsDataSource;
@@ -67,18 +66,11 @@
     
     self.searchHelpLabel.text = [@"Все очень просто! Начинайте поиск тэгов, выбирайте тэг для просмотра фотографий." localized];
     
-    self.gradient = [CAGradientLayer layer];
-    self.gradient.frame = self.gradientView.bounds;
-    self.gradient.colors = @[(id)[UIColor appBaseBlueColor].CGColor,
-                             (id)[UIColor purpleColor].CGColor];
-    [self.gradientView.layer insertSublayer:self.gradient atIndex:0];
+    [self initGradientLayer];
+    [self setupShowPhotosButton];
     
     [self.pickerView setShowsSelectionIndicator:YES];
     [self.pickerView setVisible:NO];
-    
-    self.showPhotosButton.layer.borderColor = [UIColor appButtonColor].CGColor;
-    [self.showPhotosButton setVisible:NO];
-    [self.showPhotosButton addTarget:self action:@selector(showPhotosAction) forControlEvents:UIControlEventTouchUpInside];
 }
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -186,8 +178,22 @@
     [self.loginButton addTarget:self action:@selector(loginInstagramAction) forControlEvents:UIControlEventTouchUpInside];
 }
 
--(void)dismissKeyboard {
+- (void)dismissKeyboard {
     [self.searchField resignFirstResponder];
+}
+
+- (void)initGradientLayer {
+    CAGradientLayer *gradientLayer = [CAGradientLayer layer];
+    gradientLayer.frame = self.headerView.bounds;
+    gradientLayer.colors = @[(id)[UIColor appBaseBlueColor].CGColor,
+                             (id)[UIColor purpleColor].CGColor];
+    [self.headerView.layer insertSublayer:gradientLayer atIndex:0];
+}
+
+- (void)setupShowPhotosButton {
+    self.showPhotosButton.layer.borderColor = [UIColor appButtonColor].CGColor;
+    [self.showPhotosButton setVisible:NO];
+    [self.showPhotosButton addTarget:self action:@selector(showPhotosAction) forControlEvents:UIControlEventTouchUpInside];
 }
 
 #pragma mark - Actions

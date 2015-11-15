@@ -1,5 +1,5 @@
 //
-//  LogedInView.h
+//  DDMainController.h
 //  InstaTags
 //
 //  Created by Dmitriy Demchenko on 11/13/15.
@@ -8,6 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface LogedInView : UIView
+@interface DDMainController : UIViewController
 
 @end

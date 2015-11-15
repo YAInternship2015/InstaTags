@@ -18,6 +18,10 @@
     return [UIImage imageNamed:@"back_button"];
 }
 
++ (UIImage *)appUserAvatar {
+    return [UIImage imageNamed:@"avatar"];
+}
+
 + (UIImage *)appTableViewIcon {
     return [UIImage imageNamed:@"TableViewIcon"];
 }

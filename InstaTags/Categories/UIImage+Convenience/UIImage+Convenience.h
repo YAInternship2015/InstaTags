@@ -14,5 +14,6 @@
 + (UIImage *)appBackButton;
 + (UIImage *)appTableViewIcon;
 + (UIImage *)appCollectionViewIcon;
++ (UIImage *)appUserAvatar;
 
 @end

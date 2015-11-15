@@ -7,37 +7,30 @@
 //
 
 #import "LoginView.h"
+#import "DDAuthenticationManager.h"
 
 @interface LoginView ()
 
-@property (weak, nonatomic) IBOutlet UILabel *infoLabel;
-@property (weak, nonatomic) IBOutlet UIButton *loginButton;
+@property (nonatomic, weak) IBOutlet UIButton *loginButton;
+@property (nonatomic, weak) IBOutlet UILabel *messageLabel;
 
 @end
 
 @implementation LoginView
 
-- (instancetype)initWithCoder:(NSCoder *)aDecoder {
-    if (self = [super initWithCoder:aDecoder]) {
-        [self load];
-    }
-    return self;
+- (void)setLoginButton:(UIButton *)loginButton {
+    [loginButton setTitle:[@"войти" localized] forState:UIControlStateNormal];
 }
 
-- (instancetype)initWithFrame:(CGRect)frame {
-    if (self = [super initWithFrame:frame]) {
-        [self load];
-    }
-    return self;
+- (void)setMessageLabel:(UILabel *)messageLabel {
+    messageLabel.text = [@"Войдите, чтобы смотреть фотографии." localized];
 }
 
-- (void)load {
-    UIView *view = [[[NSBundle bundleForClass:[self class]] loadNibNamed:NSStringFromClass([self class]) owner:self options:nil] firstObject];
-    [self addSubview:view];
-    view.frame = self.bounds;
-    
-    self.infoLabel.text = @"infoLabel";
-    [self.loginButton setTitle:[@"войти" localized] forState:UIControlStateNormal];
+- (IBAction)loginActions:(UIButton *)sender {
+    [self.loginButton setVisible:NO animated:YES];
+    [self.messageLabel setVisible:NO animated:YES];
+    DDAuthenticationManager *manager = [[DDAuthenticationManager alloc] init];
+    [manager authenticationAndLoginUser];
 }
 
 @end

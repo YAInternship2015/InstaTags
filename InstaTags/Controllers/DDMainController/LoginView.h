@@ -8,7 +8,8 @@
 
 #import <UIKit/UIKit.h>
 
-IB_DESIGNABLE
 @interface LoginView : UIView
+
+@property (nonatomic, weak) IBOutlet UIActivityIndicatorView *activityIndicatorView;
 
 @end
