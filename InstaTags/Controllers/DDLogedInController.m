@@ -7,31 +7,27 @@
 //
 
 #import "DDLogedInController.h"
+#import "DDUser.h"
+#import "DDUser+FetchingEntity.h"
+#import <SDWebImage/UIImageView+WebCache.h>
 
 @interface DDLogedInController ()
+
+@property (nonatomic, weak) IBOutlet UILabel *userNameLabel;
+@property (nonatomic, weak) IBOutlet UIImageView *userProfilePictureImageView;
 
 @end
 
 @implementation DDLogedInController
 
-- (void)viewDidLoad {
-    [super viewDidLoad];
-    // Do any additional setup after loading the view.
+#pragma mark - Setters
+
+- (void)setUserNameLabel:(UILabel *)userNameLabel {
+    userNameLabel.text = [DDUser savedUser].full_name;
 }
 
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+- (void)setUserProfilePictureImageView:(UIImageView *)userProfilePictureImageView {
+    [userProfilePictureImageView sd_setImageWithURL:[NSURL URLWithString:[DDUser savedUser].profile_picture] placeholderImage:[UIImage appUserAvatar]];
 }
-
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
 
 @end

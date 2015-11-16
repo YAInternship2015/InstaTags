@@ -29,15 +29,23 @@ static CGFloat const AnimateDuration = 1.3f;
 
 @implementation DDContainerHeaderView
 
+#pragma mark - Lifecycle
+
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(swapViewControllers:) name:NotificationUserProfileSaved object:nil];
     
     self.loginUserState = ([DDUser MR_countOfEntities]) ? LogedIn : Login;
     
     self.loginController = [self.storyboard instantiateViewControllerWithIdentifier:DDLoginControllerID];
     self.logedInController = [self.storyboard instantiateViewControllerWithIdentifier:DDLogedInControllerID];
     
-    [self presentController:(self.loginUserState == LogedIn) ? self.loginController : self.logedInController];
+    [self presentController:(self.loginUserState == LogedIn) ? self.logedInController : self.loginController];
+}
+
+- (void)dealloc {
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 
 #pragma mark - ContainerViewController methods
@@ -95,11 +103,9 @@ static CGFloat const AnimateDuration = 1.3f;
 - (void)swapViewControllers:(UINavigationItem *)navigationItem {
     if (self.loginUserState == Login) {
         [self swapCurrentControllerWith:self.loginController];
-        [navigationItem.rightBarButtonItem setImage:[UIImage appTableViewIcon]];
         self.loginUserState = LogedIn;
     } else {
         [self swapCurrentControllerWith:self.logedInController];
-        [navigationItem.rightBarButtonItem setImage:[UIImage appCollectionViewIcon]];
         self.loginUserState = Login;
     }
 }
