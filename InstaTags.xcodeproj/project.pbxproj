@@ -33,7 +33,6 @@
 		328554AF1BC13EE8005B95EC /* DDITTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 328554AD1BC13EE8005B95EC /* DDITTableViewCell.m */; };
 		328B6ADE1BB5CC28004AF4CF /* DDAppearanceConfigurator.m in Sources */ = {isa = PBXBuildFile; fileRef = 328B6AD61BB5CC28004AF4CF /* DDAppearanceConfigurator.m */; };
 		328B6ADF1BB5CC28004AF4CF /* DDInputValidator.m in Sources */ = {isa = PBXBuildFile; fileRef = 328B6AD91BB5CC28004AF4CF /* DDInputValidator.m */; };
-		328B6AE21BB5CD63004AF4CF /* DDSearchTagsController.m in Sources */ = {isa = PBXBuildFile; fileRef = 328B6AE11BB5CD63004AF4CF /* DDSearchTagsController.m */; };
 		328C2B941BF6091F008601BF /* DDTableViewDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = 328C2B931BF6091F008601BF /* DDTableViewDataSource.m */; };
 		329048521BCC29DC00F5D12D /* DDTagsDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = 329048511BCC29DC00F5D12D /* DDTagsDataSource.m */; };
 		329692E71BB5E3D100B271EB /* NSArray+ObjectMapping.m in Sources */ = {isa = PBXBuildFile; fileRef = 329692E61BB5E3D100B271EB /* NSArray+ObjectMapping.m */; };
@@ -126,8 +125,6 @@
 		328B6AD61BB5CC28004AF4CF /* DDAppearanceConfigurator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DDAppearanceConfigurator.m; sourceTree = "<group>"; };
 		328B6AD81BB5CC28004AF4CF /* DDInputValidator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DDInputValidator.h; sourceTree = "<group>"; };
 		328B6AD91BB5CC28004AF4CF /* DDInputValidator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DDInputValidator.m; sourceTree = "<group>"; };
-		328B6AE01BB5CD63004AF4CF /* DDSearchTagsController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DDSearchTagsController.h; path = DDMainController/DDSearchTagsController.h; sourceTree = "<group>"; };
-		328B6AE11BB5CD63004AF4CF /* DDSearchTagsController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DDSearchTagsController.m; path = DDMainController/DDSearchTagsController.m; sourceTree = "<group>"; };
 		328C2B921BF6091F008601BF /* DDTableViewDataSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DDTableViewDataSource.h; path = DDTableViewDataSource/DDTableViewDataSource.h; sourceTree = "<group>"; };
 		328C2B931BF6091F008601BF /* DDTableViewDataSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DDTableViewDataSource.m; path = DDTableViewDataSource/DDTableViewDataSource.m; sourceTree = "<group>"; };
 		329048501BCC29DC00F5D12D /* DDTagsDataSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DDTagsDataSource.h; sourceTree = "<group>"; };
@@ -545,8 +542,6 @@
 			children = (
 				32CE79981BF67E4000343DC3 /* DDMainController.h */,
 				32CE79991BF67E4000343DC3 /* DDMainController.m */,
-				328B6AE01BB5CD63004AF4CF /* DDSearchTagsController.h */,
-				328B6AE11BB5CD63004AF4CF /* DDSearchTagsController.m */,
 				32CE799B1BF687A400343DC3 /* LoginView.h */,
 				32CE799C1BF687A400343DC3 /* LoginView.m */,
 				32CE799E1BF687BF00343DC3 /* LogedInView.h */,
@@ -929,7 +924,6 @@
 				3214359A1BBFB728001C149A /* DDPostModel.m in Sources */,
 				328C2B941BF6091F008601BF /* DDTableViewDataSource.m in Sources */,
 				32CE799A1BF67E4000343DC3 /* DDMainController.m in Sources */,
-				328B6AE21BB5CD63004AF4CF /* DDSearchTagsController.m in Sources */,
 				32E5B3511BB5C1D500B2ED5F /* AppDelegate.m in Sources */,
 				32F7B0981BBC7E86007207DB /* NSString+Convenience.m in Sources */,
 				3214359E1BBFB836001C149A /* DDCaptionModel.m in Sources */,

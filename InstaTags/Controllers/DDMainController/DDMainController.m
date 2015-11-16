@@ -11,11 +11,13 @@
 #import "LogedInView.h"
 #import "DDInstagramViewerController.h"
 #import "DDUser.h"
-#import "DDAuthenticationManager.h"
 #import "DDTagsDataSource.h"
 #import "DDPostsDataSource.h"
 #import "DDInputValidator.h"
 
+#import "DDUser.h"
+#import "DDUser+FetchingEntity.h"
+#import <SDWebImage/UIImageView+WebCache.h>
 
 typedef enum LoginUserState {
     Login,
@@ -27,14 +29,12 @@ typedef enum LoginUserState {
 @property (nonatomic, weak) IBOutlet LoginView *loginView;
 @property (nonatomic, weak) IBOutlet LogedInView *logedInView;
 @property (nonatomic, weak) IBOutlet UITextField *searchTagsTextField;
-
 @property (nonatomic, weak) IBOutlet UIButton *showPhotosButton;
 @property (nonatomic, weak) IBOutlet UIPickerView *pickerView;
 @property (nonatomic, strong) IBOutlet UITapGestureRecognizer *tapGestureRecognizer;
-
+@property (nonatomic, strong) IBOutlet DDTagsDataSource *tagsDataSource;
 //@property (nonatomic, assign) BOOL loginUserState;
 @property (nonatomic, strong) NSString *selectTag;
-@property (nonatomic, strong) DDTagsDataSource *tagsDataSource;
 @property (nonatomic, strong) DDPostsDataSource *postsDataSource;
 
 @end
@@ -46,8 +46,6 @@ typedef enum LoginUserState {
 - (void)viewDidLoad {
     [super viewDidLoad];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(changeLoginUserState) name:NotificationUserProfileSaved object:nil];
-    self.tagsDataSource = [[DDTagsDataSource alloc] initWithDelegate:self];
-    
 #warning TODO
     self.searchTagsTextField.layer.borderColor = [UIColor appBorderColor].CGColor;
     [self.pickerView setShowsSelectionIndicator:YES];
@@ -82,14 +80,8 @@ typedef enum LoginUserState {
     [tapGestureRecognizer addTarget:self action:@selector(dismissKeyboard)];
 }
 
-//- (void)setPickerView:(UIPickerView *)pickerView {
-//    [pickerView setShowsSelectionIndicator:YES];
-//    [pickerView setVisible:NO];
-//}
-
 - (void)setShowPhotosButton:(UIButton *)showPhotosButton {
     showPhotosButton.layer.borderColor = [UIColor appButtonColor].CGColor;
-//    [showPhotosButton setVisible:NO];
     [showPhotosButton addTarget:self action:@selector(showPhotosAction) forControlEvents:UIControlEventTouchUpInside];
 }
 
@@ -121,33 +113,14 @@ typedef enum LoginUserState {
 #pragma mark - DDTagsDataSourceDelegate
 
 - (void)dataSourceDidUpdateContent:(DDTagsDataSource *)dataSource {
-//    [self.searchHelpLabel setVisible:NO animated:YES];
-    [self.pickerView setVisible:YES animated:YES];
     [self.pickerView reloadAllComponents];
     [self.pickerView selectRow:0 inComponent:0 animated:YES];
+    [self.pickerView setVisible:YES animated:YES];
     [MBProgressHUD hideHUDForView:self.view animated:YES];
 }
 
-#pragma mark - UIPickerViewDataSource
-
-- (NSInteger)numberOfComponentsInPickerView:(UIPickerView *)pickerView {
-    return 1;
-}
-
-- (NSInteger)pickerView:(UIPickerView *)pickerView numberOfRowsInComponent:(NSInteger)component {
-    return [self.tagsDataSource objectsCount];
-}
-
-- (NSAttributedString *)pickerView:(UIPickerView *)pickerView attributedTitleForRow:(NSInteger)row forComponent:(NSInteger)component {
-    NSDictionary *attributes = @{NSFontAttributeName : [UIFont appFontProximanovaRegularWithSize:16.f],
-                                 NSForegroundColorAttributeName :[UIColor appSearchFieldColor]};
-    return [[NSAttributedString alloc] initWithString:[self.tagsDataSource tagAtIndex:row] attributes:attributes];
-}
-
-#pragma mark - UIPickerViewDelegate
-
-- (void)pickerView:(UIPickerView *)pickerView didSelectRow:(NSInteger)row inComponent:(NSInteger)component {
-    self.selectTag = [self.tagsDataSource tagAtIndex:row];
+- (void)dataSource:(DDTagsDataSource *)dataSource didSelectRowAtIndex:(NSInteger)index{
+    self.selectTag = [self.tagsDataSource tagAtIndex:index];
     if (self.selectTag) {
         [self.showPhotosButton setVisible:YES animated:YES];
     }

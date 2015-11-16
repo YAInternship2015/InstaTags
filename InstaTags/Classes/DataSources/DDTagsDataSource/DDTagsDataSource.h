@@ -12,9 +12,7 @@
 
 @interface DDTagsDataSource : NSObject
 
-@property (nonatomic, weak) id <DDTagsDataSourceDelegate> delegate;
-
-- (instancetype)initWithDelegate:(id<DDTagsDataSourceDelegate>)delegate;
+@property (nonatomic, weak) IBOutlet id <DDTagsDataSourceDelegate> delegate;
 
 - (void)requestTagsListWithName:(NSString *)name;
 - (NSUInteger)objectsCount;
@@ -26,5 +24,6 @@
 
 @required
 - (void)dataSourceDidUpdateContent:(DDTagsDataSource *)dataSource;
+- (void)dataSource:(DDTagsDataSource *)dataSource didSelectRowAtIndex:(NSInteger)index;
 
 @end

@@ -9,7 +9,7 @@
 #import "DDTagsDataSource.h"
 #import "DDDataManager.h"
 
-@interface DDTagsDataSource ()
+@interface DDTagsDataSource () <UIPickerViewDataSource, UIPickerViewDelegate>
 
 @property (nonatomic, strong) NSArray *tagsArray;
 
@@ -17,23 +17,13 @@
 
 @implementation DDTagsDataSource
 
-#pragma mark - Init
-
-- (instancetype)initWithDelegate:(id<DDTagsDataSourceDelegate>)delegate {
-    self = [self init];
-    if (self) {
-        self.delegate = delegate;
-    }
-    return self;
-}
-
 #pragma mark - Public methods
 
 - (void)requestTagsListWithName:(NSString *)name {
     __weak typeof(self) weakSelf = self;
     [[DDDataManager sharedManager] tagsByName:name completion:^(BOOL success, id responseObject, NSError *error) {
         if (success) {
-            weakSelf.tagsArray = responseObject;
+            weakSelf.tagsArray = [[NSArray alloc] initWithArray:responseObject];
             [weakSelf.delegate dataSourceDidUpdateContent:self];
         }
     }];
@@ -45,6 +35,29 @@
 
 - (NSString *)tagAtIndex:(NSInteger)index {
     return self.tagsArray[index];
+}
+
+#pragma mark - UIPickerViewDataSource
+
+- (NSInteger)numberOfComponentsInPickerView:(UIPickerView *)pickerView {
+    return 1;
+}
+
+- (NSInteger)pickerView:(UIPickerView *)pickerView numberOfRowsInComponent:(NSInteger)component {
+    return [self.tagsArray count];
+}
+
+- (NSAttributedString *)pickerView:(UIPickerView *)pickerView attributedTitleForRow:(NSInteger)row forComponent:(NSInteger)component {
+    NSDictionary *attributes = @{NSFontAttributeName : [UIFont appFontProximanovaRegularWithSize:16.f],
+                                 NSForegroundColorAttributeName :[UIColor appSearchFieldColor]};
+    return [[NSAttributedString alloc] initWithString:self.tagsArray[row] attributes:attributes];
+}
+
+#pragma mark - UIPickerViewDelegate
+
+- (void)pickerView:(UIPickerView *)pickerView didSelectRow:(NSInteger)row inComponent:(NSInteger)component {
+    if (self.delegate && [self.delegate respondsToSelector:@selector(dataSource:didSelectRowAtIndex:)])
+    [self.delegate dataSource:self didSelectRowAtIndex:row];
 }
 
 @end

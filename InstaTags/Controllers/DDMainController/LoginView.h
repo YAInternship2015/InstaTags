@@ -10,6 +10,4 @@
 
 @interface LoginView : UIView
 
-@property (nonatomic, weak) IBOutlet UIActivityIndicatorView *activityIndicatorView;
-
 @end
