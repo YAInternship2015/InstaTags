@@ -7,28 +7,16 @@
 //
 
 #import "DDMainController.h"
-#import "LoginView.h"
-#import "LogedInView.h"
 #import "DDInstagramViewerController.h"
-#import "DDUser.h"
 #import "DDTagsDataSource.h"
 #import "DDPostsDataSource.h"
 #import "DDInputValidator.h"
 #import "DDContainerHeaderView.h"
 
-#import "DDUser.h"
-#import "DDUser+FetchingEntity.h"
-#import <SDWebImage/UIImageView+WebCache.h>
-
-#import "DDAuthenticationManager.h"
-
 static NSString *const HeaderContainer = @"HeaderContainer";
 
-@interface DDMainController () <DDTagsDataSourceDelegate, LoginViewDelegate>
+@interface DDMainController () <DDTagsDataSourceDelegate>
 
-@property (weak, nonatomic) IBOutlet UIView *headerView;
-@property (nonatomic, weak) IBOutlet LoginView *loginView;
-@property (nonatomic, weak) IBOutlet LogedInView *logedInView;
 @property (nonatomic, weak) IBOutlet UITextField *searchTagsTextField;
 @property (nonatomic, weak) IBOutlet UIButton *showPhotosButton;
 @property (nonatomic, weak) IBOutlet UIPickerView *pickerView;
@@ -36,7 +24,6 @@ static NSString *const HeaderContainer = @"HeaderContainer";
 @property (nonatomic, strong) IBOutlet DDTagsDataSource *tagsDataSource;
 @property (nonatomic, strong) NSString *selectTag;
 @property (nonatomic, strong) DDPostsDataSource *postsDataSource;
-
 @property (nonatomic, strong) DDContainerHeaderView *containerHeaderView;
 
 @end
@@ -47,7 +34,6 @@ static NSString *const HeaderContainer = @"HeaderContainer";
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(changeLoginUserState) name:NotificationUserProfileSaved object:nil];
 #warning TODO
     self.searchTagsTextField.layer.borderColor = [UIColor appBorderColor].CGColor;
     [self.pickerView setShowsSelectionIndicator:YES];
@@ -65,10 +51,6 @@ static NSString *const HeaderContainer = @"HeaderContainer";
     [self.navigationController setNavigationBarHidden:NO animated:animated];
 }
 
-- (void)dealloc {
-    [[NSNotificationCenter defaultCenter] removeObserver:self];
-}
-
 #pragma mark - ContainerHeader methods
 
 - (BOOL)shouldPerformSegueWithIdentifier:(NSString *)identifier sender:(id)sender {
@@ -82,14 +64,6 @@ static NSString *const HeaderContainer = @"HeaderContainer";
 }
 
 #pragma mark - Setters
-
-- (void)setLoginView:(LoginView *)loginView {
-    loginView.hidden = ([DDUser MR_countOfEntities]) ? YES: NO;
-}
-
-- (void)setLogedInView:(LogedInView *)logedInView {
-    logedInView.hidden = (![DDUser MR_countOfEntities]) ? YES : NO;
-}
 
 - (void)setTapGestureRecognizer:(UITapGestureRecognizer *)tapGestureRecognizer {
     [tapGestureRecognizer addTarget:self action:@selector(dismissKeyboard)];
@@ -113,24 +87,6 @@ static NSString *const HeaderContainer = @"HeaderContainer";
         [MBProgressHUD hideHUDForView:self.view animated:YES];
     }
     return YES;
-}
-
-#pragma mark - LoginViewDelegate
-
-- (void)loginAction {
-    DDAuthenticationManager *manager = [[DDAuthenticationManager alloc] init];
-    [manager authenticationAndLoginUser];
-}
-
-#pragma mark - Private methods
-
-- (void)dismissKeyboard {
-    [self.searchTagsTextField resignFirstResponder];
-}
-
-- (void)changeLoginUserState {
-    self.loginView.hidden = YES;
-    self.logedInView.hidden = NO;
 }
 
 #pragma mark - DDTagsDataSourceDelegate
@@ -157,14 +113,24 @@ static NSString *const HeaderContainer = @"HeaderContainer";
     self.postsDataSource = [[DDPostsDataSource alloc] init];
     [self.postsDataSource requestPostsWithTag:self.selectTag completion:^(BOOL success) {
         if (success) {
-            DDInstagramViewerController *controller = (DDInstagramViewerController *)[self.storyboard instantiateViewControllerWithIdentifier:DDInstagramViewerControllerID];
-            controller.tagStringForTitle = [weakSelf.selectTag capitalizedString];
+            [weakSelf pushInstagramViewerController];
             [MBProgressHUD hideHUDForView:weakSelf.view animated:YES];
-            [weakSelf.navigationController pushViewController:controller animated:YES];
         } else {
             [MBProgressHUD hideHUDForView:weakSelf.view animated:YES];
         }
     }];
+}
+
+#pragma mark - Private methods
+
+- (void)dismissKeyboard {
+    [self.searchTagsTextField resignFirstResponder];
+}
+
+- (void)pushInstagramViewerController {
+    DDInstagramViewerController *controller = (DDInstagramViewerController *)[self.storyboard instantiateViewControllerWithIdentifier:DDInstagramViewerControllerID];
+    controller.tagStringForTitle = [self.selectTag capitalizedString];
+    [self.navigationController pushViewController:controller animated:YES];
 }
 
 @end

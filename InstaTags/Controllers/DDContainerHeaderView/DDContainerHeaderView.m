@@ -92,6 +92,7 @@ static CGFloat const AnimateDuration = 1.3f;
         self.currentViewController = controller;
         [self.currentViewController didMoveToParentViewController:self];
     }];
+    
 }
 
 - (CGRect)frameForCharacterController {
