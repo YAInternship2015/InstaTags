@@ -12,6 +12,7 @@
 #import "DDPostsDataSource.h"
 #import "DDInputValidator.h"
 #import "DDContainerHeaderView.h"
+#import "DDUser.h"
 
 static NSString *const HeaderContainer = @"HeaderContainer";
 
@@ -25,6 +26,7 @@ static NSString *const HeaderContainer = @"HeaderContainer";
 @property (nonatomic, strong) NSString *selectTag;
 @property (nonatomic, strong) DDPostsDataSource *postsDataSource;
 @property (nonatomic, strong) DDContainerHeaderView *containerHeaderView;
+@property (nonatomic, assign) BOOL isAnimated;
 
 @end
 
@@ -35,6 +37,7 @@ static NSString *const HeaderContainer = @"HeaderContainer";
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self setupIBOutlets];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(userLogedIn) name:NotificationUserProfileSaved object:nil];
 }
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -84,8 +87,9 @@ static NSString *const HeaderContainer = @"HeaderContainer";
 
 - (void)dataSource:(DDTagsDataSource *)dataSource didSelectRowAtIndex:(NSInteger)index{
     self.selectTag = [self.tagsDataSource tagAtIndex:index];
-    if (self.selectTag) {
+    if (self.selectTag && !self.isAnimated) {
         [self.showPhotosButton setVisible:YES animated:YES];
+        [self animateAppearanceForView:self.showPhotosButton duration:0.3];
     }
 }
 
@@ -109,12 +113,18 @@ static NSString *const HeaderContainer = @"HeaderContainer";
 
 - (void)setupIBOutlets {
     self.searchTagsTextField.layer.borderColor = [UIColor appBorderColor].CGColor;
+    self.searchTagsTextField.hidden = ([DDUser MR_countOfEntities]) ? NO : YES;
     self.showPhotosButton.layer.borderColor = [UIColor appButtonColor].CGColor;
     [self.tapGestureRecognizer addTarget:self action:@selector(dismissKeyboard)];
     [self.showPhotosButton addTarget:self action:@selector(showPhotosAction) forControlEvents:UIControlEventTouchUpInside];
     [self.pickerView setShowsSelectionIndicator:YES];
     [self.pickerView setVisible:NO];
     [self.showPhotosButton setVisible:NO];
+    self.isAnimated = NO;
+}
+
+- (void)userLogedIn {
+    self.searchTagsTextField.hidden = NO;
 }
 
 - (void)dismissKeyboard {
@@ -125,6 +135,18 @@ static NSString *const HeaderContainer = @"HeaderContainer";
     DDInstagramViewerController *controller = (DDInstagramViewerController *)[self.storyboard instantiateViewControllerWithIdentifier:DDInstagramViewerControllerID];
     controller.tagStringForTitle = [self.selectTag capitalizedString];
     [self.navigationController pushViewController:controller animated:YES];
+}
+
+- (void)animateAppearanceForView:(UIView *)view duration:(CFTimeInterval)duration {
+    CABasicAnimation *animation = [CABasicAnimation animation];
+    animation.keyPath = @"position.y";
+    animation.fromValue = @(CGRectGetMaxY([UIScreen mainScreen].bounds));
+    animation.toValue = @(CGRectGetMidY(self.showPhotosButton.frame));
+    animation.duration = duration;
+    animation.timingFunction = [CAMediaTimingFunction functionWithControlPoints:0.5:0:0.9:0.7];
+    [view.layer addAnimation:animation forKey:@"basic"];
+    view.layer.position = CGPointMake(CGRectGetMidX(view.frame), CGRectGetMidY(view.frame));
+    self.isAnimated = YES;
 }
 
 @end

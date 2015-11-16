@@ -11,12 +11,12 @@
 #import "DDLoginController.h"
 #import "DDUser.h"
 
+static CGFloat const TransitionDuration = 1.3;
+
 typedef enum LoginUserState {
     Login,
     LogedIn
 } LoginUserState;
-
-static CGFloat const AnimateDuration = 1.3f;
 
 @interface DDContainerHeaderView ()
 
@@ -34,7 +34,7 @@ static CGFloat const AnimateDuration = 1.3f;
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(swapViewControllers:) name:NotificationUserProfileSaved object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(swapViewController) name:NotificationUserProfileSaved object:nil];
     
     self.loginUserState = ([DDUser MR_countOfEntities]) ? LogedIn : Login;
     
@@ -67,48 +67,30 @@ static CGFloat const AnimateDuration = 1.3f;
     [self.currentViewController removeFromParentViewController];
 }
 
-- (void)swapCurrentControllerWith:(UIViewController *)controller {
-    
-    __block CGRect tempRect;
-    tempRect.origin.x = 0.f;
-    tempRect.origin.y = CGRectGetHeight([UIScreen mainScreen].bounds) * 2;
-    tempRect.size = CGSizeMake(CGRectGetWidth(controller.view.frame), CGRectGetHeight(controller.view.frame));
-    
-    [self.currentViewController willMoveToParentViewController:nil];
-    [self addChildViewController:controller];
-    controller.view.frame = tempRect;
-    [self.view addSubview:controller.view];
-    
-    [UIView animateWithDuration:AnimateDuration animations:^{
-        
-        controller.view.frame = self.currentViewController.view.frame;
-        tempRect.origin.y = -(CGRectGetHeight([UIScreen mainScreen].bounds) * 2);
-        self.currentViewController.view.frame = tempRect;
-        
-    } completion:^(BOOL finished) {
-        
-        [self.currentViewController.view removeFromSuperview];
-        [self.currentViewController removeFromParentViewController];
-        self.currentViewController = controller;
-        [self.currentViewController didMoveToParentViewController:self];
-    }];
-    
-}
-
 - (CGRect)frameForCharacterController {
     return self.view.bounds;
 }
 
 #pragma mark - Actions
 
-- (void)swapViewControllers:(UINavigationItem *)navigationItem {
-    if (self.loginUserState == Login) {
-        [self swapCurrentControllerWith:self.loginController];
-        self.loginUserState = LogedIn;
-    } else {
-        [self swapCurrentControllerWith:self.logedInController];
-        self.loginUserState = Login;
-    }
+- (void)swapViewController {
+    [self.currentViewController willMoveToParentViewController:nil];
+    [self addChildViewController:self.logedInController];
+    self.logedInController.view.frame = CGRectMake(CGRectGetMaxX(self.logedInController.view.frame),
+                                                   0.f,
+                                                   CGRectGetWidth(self.logedInController.view.frame),
+                                                   175.f);
+    [self transitionFromViewController:self.currentViewController toViewController:self.logedInController duration:TransitionDuration options:0 animations:^{
+        self.logedInController.view.frame = self.currentViewController.view.frame;
+        self.currentViewController.view.frame = CGRectMake(-(CGRectGetMaxX(self.currentViewController.view.frame)),
+                                                           0.f,
+                                                           CGRectGetWidth(self.currentViewController.view.frame),
+                                                           175.f);
+    } completion:^(BOOL finished) {
+        [self.currentViewController removeFromParentViewController];
+        self.currentViewController = self.logedInController;
+        [self.currentViewController didMoveToParentViewController:self];
+    }];
 }
 
 @end

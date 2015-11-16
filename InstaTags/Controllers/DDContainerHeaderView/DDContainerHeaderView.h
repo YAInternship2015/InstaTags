@@ -10,6 +10,4 @@
 
 @interface DDContainerHeaderView : UIViewController
 
-- (void)swapViewControllers:(UINavigationItem *)navigationItem;
-
 @end

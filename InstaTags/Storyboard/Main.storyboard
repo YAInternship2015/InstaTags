@@ -511,7 +511,7 @@
                             </label>
                         </subviews>
                         <animations/>
-                        <color key="backgroundColor" red="0.2941176593" green="0.69411766529999996" blue="0.47450980539999998" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="Tl4-7O-uvy" firstAttribute="centerX" secondItem="FeN-XU-CGe" secondAttribute="centerX" id="36i-ru-CF0"/>
                             <constraint firstAttribute="trailing" secondItem="qMg-An-w7l" secondAttribute="trailing" id="Gos-U5-FFq"/>
@@ -571,7 +571,7 @@
                             </label>
                         </subviews>
                         <animations/>
-                        <color key="backgroundColor" red="0.94901961089999998" green="0.52156865600000002" blue="0.29803922770000002" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="zYg-93-G1k" firstAttribute="leading" secondItem="0gp-Gw-feK" secondAttribute="leading" id="Oac-2y-5iY"/>
                             <constraint firstAttribute="trailing" secondItem="zYg-93-G1k" secondAttribute="trailing" id="UEO-Jk-4x9"/>
@@ -595,6 +595,10 @@
         <scene sceneID="c4i-Jc-cMv">
             <objects>
                 <viewController id="FGa-OQ-Bnz" customClass="DDContainerHeaderView" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="drg-Jl-K8H"/>
+                        <viewControllerLayoutGuide type="bottom" id="qfl-hx-WBj"/>
+                    </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="VY8-aF-Agb">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="175"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

@@ -15,7 +15,7 @@ typedef enum {
     CollectionViewMode
 } ControllerMode;
 
-static CGFloat const AnimateDuration = 1.3f;
+static CGFloat const AnimateDuration = 1.3;
 
 @interface DDContainerViewController ()
 
@@ -34,15 +34,9 @@ static CGFloat const AnimateDuration = 1.3f;
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
-    
     mode = TableViewMode;
-    
-//    self.isChangeViewController = NO;
-    
     self.tableController = [self.storyboard instantiateViewControllerWithIdentifier:DDTableViewControllerID];
     self.collectionController = [self.storyboard instantiateViewControllerWithIdentifier:DDCollectionViewControllerID];
-    
     [self presentController:self.tableController];
 }
 
@@ -66,25 +60,19 @@ static CGFloat const AnimateDuration = 1.3f;
 }
 
 - (void)swapCurrentControllerWith:(UIViewController *)controller {
-    
     __block CGRect tempRect;
     tempRect.origin.x = 0.f;
     tempRect.origin.y = CGRectGetHeight([UIScreen mainScreen].bounds) * 2;
     tempRect.size = CGSizeMake(CGRectGetWidth(controller.view.frame), CGRectGetHeight(controller.view.frame));
-    
     [self.currentViewController willMoveToParentViewController:nil];
     [self addChildViewController:controller];
     controller.view.frame = tempRect;
     [self.view addSubview:controller.view];
-    
     [UIView animateWithDuration:AnimateDuration animations:^{
-        
         controller.view.frame = self.currentViewController.view.frame;
         tempRect.origin.y = -(CGRectGetHeight([UIScreen mainScreen].bounds) * 2);
         self.currentViewController.view.frame = tempRect;
-        
     } completion:^(BOOL finished) {
-        
         [self.currentViewController.view removeFromSuperview];
         [self.currentViewController removeFromParentViewController];
         self.currentViewController = controller;
