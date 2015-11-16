@@ -35,7 +35,7 @@ typedef enum LoginUserState {
 @property (nonatomic, weak) IBOutlet UIPickerView *pickerView;
 @property (nonatomic, strong) IBOutlet UITapGestureRecognizer *tapGestureRecognizer;
 @property (nonatomic, strong) IBOutlet DDTagsDataSource *tagsDataSource;
-//@property (nonatomic, assign) BOOL loginUserState;
+@property (nonatomic, assign) LoginUserState loginUserState;
 @property (nonatomic, strong) NSString *selectTag;
 @property (nonatomic, strong) DDPostsDataSource *postsDataSource;
 
@@ -52,6 +52,15 @@ typedef enum LoginUserState {
     self.searchTagsTextField.layer.borderColor = [UIColor appBorderColor].CGColor;
     [self.pickerView setShowsSelectionIndicator:YES];
     [self.pickerView setVisible:NO];
+    self.showPhotosButton.hidden = YES;
+    
+//    self.loginUserState = ([DDUser MR_countOfEntities]) ? LogedIn : Login;
+
+}
+
+- (void)setLoginUserState:(LoginUserState)loginUserState {
+    loginUserState = ([DDUser MR_countOfEntities]) ? LogedIn : Login;
+    
 }
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -85,6 +94,7 @@ typedef enum LoginUserState {
 - (void)setShowPhotosButton:(UIButton *)showPhotosButton {
     showPhotosButton.layer.borderColor = [UIColor appButtonColor].CGColor;
     [showPhotosButton addTarget:self action:@selector(showPhotosAction) forControlEvents:UIControlEventTouchUpInside];
+//    [self.showPhotosButton setVisible:NO];
 }
 
 #pragma mark - UITextFieldDelegate
