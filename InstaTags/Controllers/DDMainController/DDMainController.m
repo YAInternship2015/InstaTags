@@ -34,11 +34,7 @@ static NSString *const HeaderContainer = @"HeaderContainer";
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-#warning TODO
-    self.searchTagsTextField.layer.borderColor = [UIColor appBorderColor].CGColor;
-    [self.pickerView setShowsSelectionIndicator:YES];
-    [self.pickerView setVisible:NO];
-    self.showPhotosButton.hidden = YES;
+    [self setupIBOutlets];
 }
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -61,18 +57,6 @@ static NSString *const HeaderContainer = @"HeaderContainer";
     if ([segue.identifier isEqualToString:HeaderContainer]) {
         self.containerHeaderView = segue.destinationViewController;
     }
-}
-
-#pragma mark - Setters
-
-- (void)setTapGestureRecognizer:(UITapGestureRecognizer *)tapGestureRecognizer {
-    [tapGestureRecognizer addTarget:self action:@selector(dismissKeyboard)];
-}
-
-- (void)setShowPhotosButton:(UIButton *)showPhotosButton {
-    showPhotosButton.layer.borderColor = [UIColor appButtonColor].CGColor;
-    [showPhotosButton addTarget:self action:@selector(showPhotosAction) forControlEvents:UIControlEventTouchUpInside];
-//    [self.showPhotosButton setVisible:NO];
 }
 
 #pragma mark - UITextFieldDelegate
@@ -122,6 +106,16 @@ static NSString *const HeaderContainer = @"HeaderContainer";
 }
 
 #pragma mark - Private methods
+
+- (void)setupIBOutlets {
+    self.searchTagsTextField.layer.borderColor = [UIColor appBorderColor].CGColor;
+    self.showPhotosButton.layer.borderColor = [UIColor appButtonColor].CGColor;
+    [self.tapGestureRecognizer addTarget:self action:@selector(dismissKeyboard)];
+    [self.showPhotosButton addTarget:self action:@selector(showPhotosAction) forControlEvents:UIControlEventTouchUpInside];
+    [self.pickerView setShowsSelectionIndicator:YES];
+    [self.pickerView setVisible:NO];
+    [self.showPhotosButton setVisible:NO];
+}
 
 - (void)dismissKeyboard {
     [self.searchTagsTextField resignFirstResponder];
