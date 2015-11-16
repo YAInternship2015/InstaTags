@@ -29,14 +29,6 @@
     }];
 }
 
-- (NSUInteger)objectsCount {
-    return [self.tagsArray count];
-}
-
-- (NSString *)tagAtIndex:(NSInteger)index {
-    return self.tagsArray[index];
-}
-
 #pragma mark - UIPickerViewDataSource
 
 - (NSInteger)numberOfComponentsInPickerView:(UIPickerView *)pickerView {
@@ -47,17 +39,18 @@
     return [self.tagsArray count];
 }
 
+#pragma mark - UIPickerViewDelegate
+
 - (NSAttributedString *)pickerView:(UIPickerView *)pickerView attributedTitleForRow:(NSInteger)row forComponent:(NSInteger)component {
     NSDictionary *attributes = @{NSFontAttributeName : [UIFont appFontProximanovaRegularWithSize:16.f],
                                  NSForegroundColorAttributeName :[UIColor appSearchFieldColor]};
     return [[NSAttributedString alloc] initWithString:self.tagsArray[row] attributes:attributes];
 }
 
-#pragma mark - UIPickerViewDelegate
-
 - (void)pickerView:(UIPickerView *)pickerView didSelectRow:(NSInteger)row inComponent:(NSInteger)component {
-    if (self.delegate && [self.delegate respondsToSelector:@selector(dataSource:didSelectRowAtIndex:)])
-    [self.delegate dataSource:self didSelectRowAtIndex:row];
+    if (self.delegate && [self.delegate respondsToSelector:@selector(dataSourceDidSelectTag:)]) {
+        [self.delegate dataSourceDidSelectTag:self.tagsArray[row]];
+    }
 }
 
 @end

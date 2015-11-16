@@ -15,8 +15,6 @@
 @property (nonatomic, weak) IBOutlet id <DDTagsDataSourceDelegate> delegate;
 
 - (void)requestTagsListWithName:(NSString *)name;
-- (NSUInteger)objectsCount;
-- (NSString *)tagAtIndex:(NSInteger)index;
 
 @end
 
@@ -24,6 +22,6 @@
 
 @required
 - (void)dataSourceDidUpdateContent:(DDTagsDataSource *)dataSource;
-- (void)dataSource:(DDTagsDataSource *)dataSource didSelectRowAtIndex:(NSInteger)index;
+- (void)dataSourceDidSelectTag:(NSString *)selectTag;
 
 @end

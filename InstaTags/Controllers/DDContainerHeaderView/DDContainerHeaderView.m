@@ -33,14 +33,10 @@ typedef enum LoginUserState {
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(swapViewController) name:NotificationUserProfileSaved object:nil];
-    
     self.loginUserState = ([DDUser MR_countOfEntities]) ? LogedIn : Login;
-    
     self.loginController = [self.storyboard instantiateViewControllerWithIdentifier:DDLoginControllerID];
     self.logedInController = [self.storyboard instantiateViewControllerWithIdentifier:DDLogedInControllerID];
-    
     [self presentController:(self.loginUserState == LogedIn) ? self.logedInController : self.loginController];
 }
 

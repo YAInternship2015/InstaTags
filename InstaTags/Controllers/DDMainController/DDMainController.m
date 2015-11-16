@@ -85,8 +85,8 @@ static NSString *const HeaderContainer = @"HeaderContainer";
     [MBProgressHUD hideHUDForView:self.view animated:YES];
 }
 
-- (void)dataSource:(DDTagsDataSource *)dataSource didSelectRowAtIndex:(NSInteger)index{
-    self.selectTag = [self.tagsDataSource tagAtIndex:index];
+- (void)dataSourceDidSelectTag:(NSString *)selectTag {
+    self.selectTag = selectTag;
     if (self.selectTag && !self.isAnimated) {
         [self.showPhotosButton setVisible:YES animated:YES];
         [self animateAppearanceForView:self.showPhotosButton duration:0.3];
