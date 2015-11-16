@@ -19,12 +19,14 @@
 #import "DDUser+FetchingEntity.h"
 #import <SDWebImage/UIImageView+WebCache.h>
 
+#import "DDAuthenticationManager.h"
+
 typedef enum LoginUserState {
     Login,
     LogedIn
 } LoginUserState;
 
-@interface DDMainController () <DDTagsDataSourceDelegate>
+@interface DDMainController () <DDTagsDataSourceDelegate, LoginViewDelegate>
 
 @property (nonatomic, weak) IBOutlet LoginView *loginView;
 @property (nonatomic, weak) IBOutlet LogedInView *logedInView;
@@ -97,6 +99,13 @@ typedef enum LoginUserState {
         [MBProgressHUD hideHUDForView:self.view animated:YES];
     }
     return YES;
+}
+
+#pragma mark - LoginViewDelegate
+
+- (void)loginAction {
+    DDAuthenticationManager *manager = [[DDAuthenticationManager alloc] init];
+    [manager authenticationAndLoginUser];
 }
 
 #pragma mark - Private methods

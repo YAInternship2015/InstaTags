@@ -15,6 +15,7 @@
 
 @property (nonatomic, weak) IBOutlet UILabel *userNameLabel;
 @property (nonatomic, weak) IBOutlet UIImageView *userProfilePictureImageView;
+@property (nonatomic, strong) DDUser *logedUser;
 
 @end
 
@@ -26,6 +27,10 @@
 
 - (void)setUserProfilePictureImageView:(UIImageView *)userProfilePictureImageView {
     [userProfilePictureImageView sd_setImageWithURL:[NSURL URLWithString:[DDUser savedUser].profile_picture] placeholderImage:[UIImage appUserAvatar]];
+}
+
+- (void)setLogedUser:(DDUser *)logedUser {
+    logedUser = [DDUser savedUser];
 }
 
 @end

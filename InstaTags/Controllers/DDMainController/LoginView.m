@@ -26,11 +26,10 @@
     messageLabel.text = [@"Войдите, чтобы смотреть фотографии." localized];
 }
 
-- (IBAction)loginActions:(UIButton *)sender {
+- (IBAction)loginAction:(UIButton *)sender {
     [self.loginButton setVisible:NO animated:YES];
     [self.messageLabel setVisible:NO animated:YES];
-    DDAuthenticationManager *manager = [[DDAuthenticationManager alloc] init];
-    [manager authenticationAndLoginUser];
+    [self.delegate loginAction];
 }
 
 @end

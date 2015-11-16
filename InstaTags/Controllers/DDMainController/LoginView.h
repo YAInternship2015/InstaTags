@@ -8,6 +8,16 @@
 
 #import <UIKit/UIKit.h>
 
+@protocol LoginViewDelegate <NSObject>
+
+@required
+- (void)loginAction;
+
+@end
+
+
 @interface LoginView : UIView
+
+@property (nonatomic, weak) IBOutlet id <LoginViewDelegate> delegate;
 
 @end
