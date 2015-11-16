@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9060" systemVersion="15B42" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="3AH-wf-R9D">
     <dependencies>
+        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9051"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
@@ -227,6 +228,16 @@
                                     <outlet property="delegate" destination="Mnz-Ke-NJe" id="AXS-9W-IzZ"/>
                                 </connections>
                             </pickerView>
+                            <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Zwx-gU-9sg">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="175"/>
+                                <animations/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="175" id="oay-53-Kne"/>
+                                </constraints>
+                                <connections>
+                                    <segue destination="FGa-OQ-Bnz" kind="embed" identifier="HeaderContainer" id="adt-p8-hLo"/>
+                                </connections>
+                            </containerView>
                         </subviews>
                         <animations/>
                         <color key="backgroundColor" red="0.94509804248809814" green="0.94509804248809814" blue="0.94509804248809814" alpha="1" colorSpace="calibratedRGB"/>
@@ -235,7 +246,9 @@
                             <constraint firstItem="6VR-vu-00s" firstAttribute="top" secondItem="i3a-ai-LMG" secondAttribute="bottom" priority="100" constant="73" id="2mS-Dw-o8d"/>
                             <constraint firstItem="tD8-IG-eBm" firstAttribute="leading" secondItem="eNI-uO-OV3" secondAttribute="leading" id="5Oq-5U-MJb"/>
                             <constraint firstItem="9tN-y0-r5h" firstAttribute="top" secondItem="eNI-uO-OV3" secondAttribute="top" id="8He-ld-Ljb"/>
+                            <constraint firstAttribute="trailing" secondItem="Zwx-gU-9sg" secondAttribute="trailing" id="8r1-9h-e3T"/>
                             <constraint firstItem="hl4-hh-LeV" firstAttribute="top" secondItem="6VR-vu-00s" secondAttribute="bottom" constant="20" id="Bb5-x0-l5k"/>
+                            <constraint firstItem="Zwx-gU-9sg" firstAttribute="leading" secondItem="eNI-uO-OV3" secondAttribute="leading" id="Dwj-jA-AnB"/>
                             <constraint firstItem="6VR-vu-00s" firstAttribute="leading" secondItem="eNI-uO-OV3" secondAttribute="leading" constant="20" id="EmX-AY-bgb"/>
                             <constraint firstItem="i3a-ai-LMG" firstAttribute="leading" secondItem="eNI-uO-OV3" secondAttribute="leading" id="Nj8-FS-rHX"/>
                             <constraint firstAttribute="trailing" secondItem="9Us-Ka-KC8" secondAttribute="trailing" id="PHd-Yk-RkB"/>
@@ -251,6 +264,7 @@
                             <constraint firstItem="ccU-aJ-1Fu" firstAttribute="leading" secondItem="eNI-uO-OV3" secondAttribute="leadingMargin" id="s0A-iI-HIr"/>
                             <constraint firstItem="9Us-Ka-KC8" firstAttribute="leading" secondItem="eNI-uO-OV3" secondAttribute="leading" id="vf6-jz-yNt"/>
                             <constraint firstAttribute="trailing" secondItem="9tN-y0-r5h" secondAttribute="trailing" id="xuC-Yt-M1g"/>
+                            <constraint firstItem="Zwx-gU-9sg" firstAttribute="top" secondItem="eNI-uO-OV3" secondAttribute="top" id="yEl-5B-H6N"/>
                         </constraints>
                         <connections>
                             <outletCollection property="gestureRecognizers" destination="bxR-Kw-ORv" appends="YES" id="2cx-a8-B0y"/>
@@ -258,6 +272,7 @@
                     </view>
                     <navigationItem key="navigationItem" id="xkI-Y7-DNh"/>
                     <connections>
+                        <outlet property="headerView" destination="Zwx-gU-9sg" id="SGO-J1-F8L"/>
                         <outlet property="logedInView" destination="9tN-y0-r5h" id="9u4-lh-K3t"/>
                         <outlet property="loginView" destination="tD8-IG-eBm" id="67A-dP-c17"/>
                         <outlet property="pickerView" destination="i3a-ai-LMG" id="iDf-06-ecx"/>
@@ -319,7 +334,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="z4H-XR-USw" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2596" y="277"/>
+            <point key="canvasLocation" x="1871" y="1057"/>
         </scene>
         <!--Table View Controller-->
         <scene sceneID="844-c1-Qr5">
@@ -436,7 +451,7 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="8iZ-b1-XaL" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <customObject id="Kpp-oG-aoL" customClass="DDTableViewDataSource"/>
             </objects>
-            <point key="canvasLocation" x="4098" y="-1"/>
+            <point key="canvasLocation" x="3420" y="-107"/>
         </scene>
         <!--Collection View Controller-->
         <scene sceneID="4MB-bN-yUQ">
@@ -511,7 +526,7 @@
                     </connections>
                 </pongPressGestureRecognizer>
             </objects>
-            <point key="canvasLocation" x="4098" y="703"/>
+            <point key="canvasLocation" x="3420" y="601"/>
         </scene>
         <!--Container View Controller-->
         <scene sceneID="FMp-1w-9nZ">
@@ -535,7 +550,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Rz0-QV-0oo" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3324" y="277"/>
+            <point key="canvasLocation" x="2636" y="245"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="czs-PW-wU3">
@@ -555,6 +570,67 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="kGO-b5-UXc" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1059" y="277"/>
+        </scene>
+        <!--Loged In Controller-->
+        <scene sceneID="JWg-Xd-OKE">
+            <objects>
+                <viewController storyboardIdentifier="DDLogedInControllerID" id="scM-1v-Y1h" customClass="DDLogedInController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="lHy-Rd-9Up"/>
+                        <viewControllerLayoutGuide type="bottom" id="nCA-8i-xjO"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="FeN-XU-CGe">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="175"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <animations/>
+                        <color key="backgroundColor" red="0.94901961089999998" green="0.52156865600000002" blue="0.29803922770000002" alpha="1" colorSpace="calibratedRGB"/>
+                    </view>
+                    <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+                    <size key="freeformSize" width="600" height="175"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="6nB-zq-do6" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2217" y="-291.5"/>
+        </scene>
+        <!--Login Controller-->
+        <scene sceneID="vVA-yl-WWx">
+            <objects>
+                <viewController storyboardIdentifier="DDLoginControllerID" id="xdu-2A-lpU" customClass="DDLoginController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="jzH-jo-t7e"/>
+                        <viewControllerLayoutGuide type="bottom" id="QL8-63-ZM4"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="0gp-Gw-feK">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="175"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <animations/>
+                        <color key="backgroundColor" red="0.2941176593" green="0.69411766529999996" blue="0.47450980539999998" alpha="1" colorSpace="calibratedRGB"/>
+                    </view>
+                    <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+                    <size key="freeformSize" width="600" height="175"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="SQc-UP-ihe" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1512" y="-291.5"/>
+        </scene>
+        <!--Container Header View-->
+        <scene sceneID="c4i-Jc-cMv">
+            <objects>
+                <viewController id="FGa-OQ-Bnz" customClass="DDContainerHeaderView" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="VY8-aF-Agb">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="175"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <animations/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <connections>
+                        <segue destination="xdu-2A-lpU" kind="custom" customClass="DDContainerSegue" customModule="DDLoginControllerID" id="dwO-1B-CXD"/>
+                        <segue destination="scM-1v-Y1h" kind="custom" customClass="DDContainerSegue" customModule="DDLogedInControllerID" id="PYH-MN-qfK"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="TTd-dV-bNG" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1871" y="-726.5"/>
         </scene>
     </scenes>
     <resources>

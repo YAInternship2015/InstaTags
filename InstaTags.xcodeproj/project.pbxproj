@@ -36,6 +36,9 @@
 		328C2B941BF6091F008601BF /* DDTableViewDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = 328C2B931BF6091F008601BF /* DDTableViewDataSource.m */; };
 		329048521BCC29DC00F5D12D /* DDTagsDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = 329048511BCC29DC00F5D12D /* DDTagsDataSource.m */; };
 		329692E71BB5E3D100B271EB /* NSArray+ObjectMapping.m in Sources */ = {isa = PBXBuildFile; fileRef = 329692E61BB5E3D100B271EB /* NSArray+ObjectMapping.m */; };
+		329D35E21BFA0DD5005E7678 /* DDContainerHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 329D35E11BFA0DD5005E7678 /* DDContainerHeaderView.m */; };
+		329D35E61BFA0E48005E7678 /* DDLoginController.m in Sources */ = {isa = PBXBuildFile; fileRef = 329D35E51BFA0E48005E7678 /* DDLoginController.m */; };
+		329D35E91BFA0E62005E7678 /* DDLogedInController.m in Sources */ = {isa = PBXBuildFile; fileRef = 329D35E81BFA0E62005E7678 /* DDLogedInController.m */; };
 		32A77C411BB5D2810044A6D4 /* DDNetworkObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 32A77C3D1BB5D2810044A6D4 /* DDNetworkObject.m */; };
 		32A77C461BB5D58B0044A6D4 /* UIColor+ConvertHEX.m in Sources */ = {isa = PBXBuildFile; fileRef = 32A77C451BB5D58B0044A6D4 /* UIColor+ConvertHEX.m */; };
 		32A77C4E1BB5DB890044A6D4 /* proximanova-bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 32A77C481BB5DB890044A6D4 /* proximanova-bold.otf */; };
@@ -131,6 +134,12 @@
 		329048511BCC29DC00F5D12D /* DDTagsDataSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DDTagsDataSource.m; sourceTree = "<group>"; };
 		329692E51BB5E3D100B271EB /* NSArray+ObjectMapping.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSArray+ObjectMapping.h"; sourceTree = "<group>"; };
 		329692E61BB5E3D100B271EB /* NSArray+ObjectMapping.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSArray+ObjectMapping.m"; sourceTree = "<group>"; };
+		329D35E01BFA0DD5005E7678 /* DDContainerHeaderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DDContainerHeaderView.h; path = InstaTags/Controllers/DDContainerHeaderView/DDContainerHeaderView.h; sourceTree = SOURCE_ROOT; };
+		329D35E11BFA0DD5005E7678 /* DDContainerHeaderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DDContainerHeaderView.m; path = InstaTags/Controllers/DDContainerHeaderView/DDContainerHeaderView.m; sourceTree = SOURCE_ROOT; };
+		329D35E41BFA0E48005E7678 /* DDLoginController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DDLoginController.h; path = InstaTags/Controllers/DDLoginController/DDLoginController.h; sourceTree = SOURCE_ROOT; };
+		329D35E51BFA0E48005E7678 /* DDLoginController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DDLoginController.m; path = InstaTags/Controllers/DDLoginController/DDLoginController.m; sourceTree = SOURCE_ROOT; };
+		329D35E71BFA0E62005E7678 /* DDLogedInController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DDLogedInController.h; path = InstaTags/Controllers/DDLogedInController.h; sourceTree = SOURCE_ROOT; };
+		329D35E81BFA0E62005E7678 /* DDLogedInController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DDLogedInController.m; path = InstaTags/Controllers/DDLogedInController.m; sourceTree = SOURCE_ROOT; };
 		32A77C381BB5D1F90044A6D4 /* DDApiManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DDApiManager.h; sourceTree = "<group>"; };
 		32A77C3C1BB5D2810044A6D4 /* DDNetworkObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DDNetworkObject.h; sourceTree = "<group>"; };
 		32A77C3D1BB5D2810044A6D4 /* DDNetworkObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DDNetworkObject.m; sourceTree = "<group>"; };
@@ -568,6 +577,20 @@
 			path = "NSArray+ObjectMapping";
 			sourceTree = "<group>";
 		};
+		329D35E31BFA0E05005E7678 /* DDContainerHeaderView */ = {
+			isa = PBXGroup;
+			children = (
+				329D35E01BFA0DD5005E7678 /* DDContainerHeaderView.h */,
+				329D35E11BFA0DD5005E7678 /* DDContainerHeaderView.m */,
+				329D35E41BFA0E48005E7678 /* DDLoginController.h */,
+				329D35E51BFA0E48005E7678 /* DDLoginController.m */,
+				329D35E71BFA0E62005E7678 /* DDLogedInController.h */,
+				329D35E81BFA0E62005E7678 /* DDLogedInController.m */,
+			);
+			name = DDContainerHeaderView;
+			path = DDContainerViewController;
+			sourceTree = "<group>";
+		};
 		32A77C3B1BB5D2810044A6D4 /* NetworkObject */ = {
 			isa = PBXGroup;
 			children = (
@@ -678,6 +701,7 @@
 			children = (
 				32C93BF01BB82CBA00945C62 /* PreStartController */,
 				328B6AE31BB5CD6B004AF4CF /* SearchTagsController */,
+				329D35E31BFA0E05005E7678 /* DDContainerHeaderView */,
 				328554971BC13950005B95EC /* DDInstagramViewerController */,
 				328554941BC13950005B95EC /* DDContainerViewController */,
 				3285549F1BC139DA005B95EC /* DDTableViewController */,
@@ -911,6 +935,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				32C93BF31BB82CBA00945C62 /* PreStartController.m in Sources */,
+				329D35E61BFA0E48005E7678 /* DDLoginController.m in Sources */,
 				3214359B1BBFB728001C149A /* DDUserModel.m in Sources */,
 				32E5B37E1BB5C36400B2ED5F /* UIColor+AppColors.m in Sources */,
 				323E0ED31BCD0AD00044CE3E /* DDModel.m in Sources */,
@@ -941,6 +966,7 @@
 				32030E341BCD9CC000832BB5 /* DDApiManager.m in Sources */,
 				32030E1D1BCD430500832BB5 /* DDAuthenticationManager.m in Sources */,
 				32B6743E1BB8673B00978C07 /* CAAnimation+CompetionBlock.m in Sources */,
+				329D35E91BFA0E62005E7678 /* DDLogedInController.m in Sources */,
 				328554A31BC139DA005B95EC /* DDTableViewController.m in Sources */,
 				32AD91A41BCBF7390018A4B0 /* UIImage+Convenience.m in Sources */,
 				32A77C461BB5D58B0044A6D4 /* UIColor+ConvertHEX.m in Sources */,
@@ -949,6 +975,7 @@
 				32CE79A01BF687BF00343DC3 /* LogedInView.m in Sources */,
 				328554AE1BC13EE8005B95EC /* DDITCollectionViewCell.m in Sources */,
 				3285549B1BC13950005B95EC /* DDInstagramViewerController.m in Sources */,
+				329D35E21BFA0DD5005E7678 /* DDContainerHeaderView.m in Sources */,
 				32A77C411BB5D2810044A6D4 /* DDNetworkObject.m in Sources */,
 				32C93C001BB8334F00945C62 /* UIFont+AppFont.m in Sources */,
 			);

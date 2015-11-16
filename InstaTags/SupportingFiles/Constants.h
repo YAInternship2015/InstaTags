@@ -22,6 +22,8 @@ static NSString *const NotificationUserProfileSaved     = @"NotificationUserProf
 static NSString *const DDInstagramViewerControllerID    = @"DDInstagramViewerControllerID";
 static NSString *const DDTableViewControllerID          = @"DDTableViewControllerID";
 static NSString *const DDCollectionViewControllerID     = @"DDCollectionViewControllerID";
+static NSString *const DDLoginControllerID              = @"DDLoginControllerID";
+static NSString *const DDLogedInControllerID            = @"DDLogedInControllerID";
 
 #pragma mark - Segue identifiers
 

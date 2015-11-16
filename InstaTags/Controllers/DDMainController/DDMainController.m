@@ -14,6 +14,7 @@
 #import "DDTagsDataSource.h"
 #import "DDPostsDataSource.h"
 #import "DDInputValidator.h"
+#import "DDContainerHeaderView.h"
 
 #import "DDUser.h"
 #import "DDUser+FetchingEntity.h"
@@ -21,13 +22,11 @@
 
 #import "DDAuthenticationManager.h"
 
-typedef enum LoginUserState {
-    Login,
-    LogedIn
-} LoginUserState;
+static NSString *const HeaderContainer = @"HeaderContainer";
 
 @interface DDMainController () <DDTagsDataSourceDelegate, LoginViewDelegate>
 
+@property (weak, nonatomic) IBOutlet UIView *headerView;
 @property (nonatomic, weak) IBOutlet LoginView *loginView;
 @property (nonatomic, weak) IBOutlet LogedInView *logedInView;
 @property (nonatomic, weak) IBOutlet UITextField *searchTagsTextField;
@@ -35,9 +34,10 @@ typedef enum LoginUserState {
 @property (nonatomic, weak) IBOutlet UIPickerView *pickerView;
 @property (nonatomic, strong) IBOutlet UITapGestureRecognizer *tapGestureRecognizer;
 @property (nonatomic, strong) IBOutlet DDTagsDataSource *tagsDataSource;
-@property (nonatomic, assign) LoginUserState loginUserState;
 @property (nonatomic, strong) NSString *selectTag;
 @property (nonatomic, strong) DDPostsDataSource *postsDataSource;
+
+@property (nonatomic, strong) DDContainerHeaderView *containerHeaderView;
 
 @end
 
@@ -53,14 +53,6 @@ typedef enum LoginUserState {
     [self.pickerView setShowsSelectionIndicator:YES];
     [self.pickerView setVisible:NO];
     self.showPhotosButton.hidden = YES;
-    
-//    self.loginUserState = ([DDUser MR_countOfEntities]) ? LogedIn : Login;
-
-}
-
-- (void)setLoginUserState:(LoginUserState)loginUserState {
-    loginUserState = ([DDUser MR_countOfEntities]) ? LogedIn : Login;
-    
 }
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -75,6 +67,18 @@ typedef enum LoginUserState {
 
 - (void)dealloc {
     [[NSNotificationCenter defaultCenter] removeObserver:self];
+}
+
+#pragma mark - ContainerHeader methods
+
+- (BOOL)shouldPerformSegueWithIdentifier:(NSString *)identifier sender:(id)sender {
+    return YES;
+}
+
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    if ([segue.identifier isEqualToString:HeaderContainer]) {
+        self.containerHeaderView = segue.destinationViewController;
+    }
 }
 
 #pragma mark - Setters
