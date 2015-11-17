@@ -59,7 +59,9 @@ static NSString *const InstagramCellIdentifier = @"InstagramCellIdentifier";
         if (success) {
             NSArray *array = responseObject[kTagsData];
             NSPredicate *predicate = [NSPredicate predicateWithFormat:@"NOT post_id IN %@", [array valueForKey:@"id"]];
-            [DDModel MR_deleteAllMatchingPredicate:predicate inContext:[NSManagedObjectContext MR_defaultContext]];
+            [DDModel MR_deleteAllMatchingPredicate:predicate];
+            [[NSManagedObjectContext MR_defaultContext] MR_saveToPersistentStoreAndWait];
+            
         }
     }];
 }
