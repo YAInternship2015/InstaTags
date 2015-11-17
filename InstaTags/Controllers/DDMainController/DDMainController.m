@@ -14,6 +14,10 @@
 #import "DDContainerHeaderView.h"
 #import "DDUser.h"
 
+#import "UIDevice+Resolutions.h"
+
+static CGFloat const TopPickerConstraint = 13.f;
+static CGFloat const BottomPickerConstraint = 14.f;
 static NSString *const HeaderContainer = @"HeaderContainer";
 
 @interface DDMainController () <DDTagsDataSourceDelegate>
@@ -38,22 +42,9 @@ static NSString *const HeaderContainer = @"HeaderContainer";
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    [self setupLayoutConstraintForPickerView];
     [self setupIBOutlets];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(userLogedIn) name:NotificationUserProfileSaved object:nil];
-    
-    if (CGRectGetHeight([UIScreen mainScreen].bounds) == 480.f) {
-        self.topPickerConstraint.constant = 55.f;
-        self.bottomPickerConstraint.constant = 56.f;
-        [self.pickerView layoutIfNeeded];
-    }
-    
-    NSLog(@"%f", CGRectGetHeight([UIScreen mainScreen].bounds));
-    
-    NSLog(@"SEARCH %.0f", CGRectGetMaxY(self.searchTagsTextField.frame));
-    NSLog(@"SHOW %.0f", CGRectGetMinY(self.showPhotosButton.frame));
-    
-    NSLog(@"bottomPickerConstraint = %.f", self.bottomPickerConstraint.constant);
-    NSLog(@"topPickerConstraint = %.f", self.topPickerConstraint.constant);
 }
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -126,6 +117,14 @@ static NSString *const HeaderContainer = @"HeaderContainer";
 }
 
 #pragma mark - Private methods
+
+- (void)setupLayoutConstraintForPickerView {
+    if (UIDeviceResolution_iPhoneRetina4) {
+        self.topPickerConstraint.constant = TopPickerConstraint;
+        self.bottomPickerConstraint.constant = BottomPickerConstraint;
+        [self.pickerView layoutIfNeeded];
+    }
+}
 
 - (void)setupIBOutlets {
     self.searchTagsTextField.layer.borderColor = [UIColor appBorderColor].CGColor;
