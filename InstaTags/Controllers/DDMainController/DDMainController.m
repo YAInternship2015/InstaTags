@@ -21,7 +21,7 @@ static NSString *const HeaderContainer = @"HeaderContainer";
 @property (nonatomic, weak) IBOutlet UITextField *searchTagsTextField;
 @property (nonatomic, weak) IBOutlet UIButton *showPhotosButton;
 @property (nonatomic, weak) IBOutlet UIPickerView *pickerView;
-@property (nonatomic, strong) IBOutlet UITapGestureRecognizer *tapGestureRecognizer;
+@property (nonatomic, weak) IBOutlet UITapGestureRecognizer *tapGestureRecognizer;
 @property (nonatomic, strong) IBOutlet DDTagsDataSource *tagsDataSource;
 @property (nonatomic, strong) NSString *selectTag;
 @property (nonatomic, strong) DDPostsDataSource *postsDataSource;

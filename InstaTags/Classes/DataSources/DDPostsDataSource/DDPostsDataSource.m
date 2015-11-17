@@ -10,8 +10,12 @@
 #import "DDDataManager.h"
 #import "DDModel.h"
 #import "DDPostModel.h"
+#import "DDITTableViewCell.h"
+#import "DDITCollectionViewCell.h"
 
-@interface DDPostsDataSource () <NSFetchedResultsControllerDelegate>
+static NSString *const InstagramCellIdentifier = @"InstagramCellIdentifier";
+
+@interface DDPostsDataSource () <UITableViewDataSource, UITableViewDelegate, UICollectionViewDataSource, UICollectionViewDelegate, NSFetchedResultsControllerDelegate>
 
 @property (nonatomic, strong) NSFetchedResultsController *fetchedResultsController;
 
@@ -22,10 +26,9 @@
 
 #pragma mark - Lifecycle
 
-- (instancetype)initWithDelegate:(id<DDPostsDataSourceDelegate>)delegate {
+- (instancetype)init {
     self = [super init];
     if (self) {
-        self.delegate = delegate;
         [self setupFetchedResultsController];
     }
     return self;
@@ -35,14 +38,6 @@
 
 - (void)setupFetchedResultsController {
     self.fetchedResultsController = [DDModel MR_fetchAllSortedBy:kSavedDate ascending:YES withPredicate:nil groupBy:nil delegate:self];
-}
-
-- (NSUInteger)objectsCount {
-    return [DDModel MR_countOfEntities];
-}
-
-- (DDModel *)modelAtIndex:(NSInteger)index {
-    return self.fetchedResultsController.fetchedObjects[index];
 }
 
 - (void)removeModelAtIndex:(NSIndexPath *)indexPath {
@@ -67,6 +62,55 @@
             [DDModel MR_deleteAllMatchingPredicate:predicate inContext:[NSManagedObjectContext MR_defaultContext]];
         }
     }];
+}
+
+#pragma mark - UITableViewDataSource
+
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
+    return [DDModel MR_countOfEntities];
+}
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+    DDITTableViewCell *cell = (DDITTableViewCell *)[tableView dequeueReusableCellWithIdentifier:InstagramCellIdentifier forIndexPath:indexPath];
+    [cell configWithPostModel:self.fetchedResultsController.fetchedObjects[indexPath.row]];
+    return cell;
+}
+
+- (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath {
+    return YES;
+}
+
+- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
+    if (editingStyle == UITableViewCellEditingStyleDelete) {
+        [tableView beginUpdates];
+        [self removeModelAtIndex:indexPath];
+        [tableView endUpdates];
+    }
+}
+
+#pragma mark - UICollectionViewDataSource
+
+- (NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView {
+    return 1;
+}
+
+- (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
+    return [DDModel MR_countOfEntities];
+}
+
+- (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
+    DDITCollectionViewCell *cell = (DDITCollectionViewCell *)[collectionView dequeueReusableCellWithReuseIdentifier:NSStringFromClass([DDITCollectionViewCell class]) forIndexPath:indexPath];
+    [cell configWithPostModel:self.fetchedResultsController.fetchedObjects[indexPath.row]];
+    return cell;
+}
+
+#pragma mark - UICollectionViewDelegate
+
+- (CGSize)collectionView:(UICollectionView *)collectionView
+                  layout:(UICollectionViewLayout*)collectionViewLayout
+  sizeForItemAtIndexPath:(NSIndexPath *)indexPath {
+    CGFloat widthOfScreen = CGRectGetWidth([UIScreen mainScreen].bounds);
+    return CGSizeMake(widthOfScreen, widthOfScreen + 1.f); // 1px for separator (gray line)
 }
 
 #pragma mark - NSFetchedResultsControllerDelegate

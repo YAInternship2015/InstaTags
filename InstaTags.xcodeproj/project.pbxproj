@@ -33,7 +33,6 @@
 		328554AF1BC13EE8005B95EC /* DDITTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 328554AD1BC13EE8005B95EC /* DDITTableViewCell.m */; };
 		328B6ADE1BB5CC28004AF4CF /* DDAppearanceConfigurator.m in Sources */ = {isa = PBXBuildFile; fileRef = 328B6AD61BB5CC28004AF4CF /* DDAppearanceConfigurator.m */; };
 		328B6ADF1BB5CC28004AF4CF /* DDInputValidator.m in Sources */ = {isa = PBXBuildFile; fileRef = 328B6AD91BB5CC28004AF4CF /* DDInputValidator.m */; };
-		328C2B941BF6091F008601BF /* DDTableViewDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = 328C2B931BF6091F008601BF /* DDTableViewDataSource.m */; };
 		329048521BCC29DC00F5D12D /* DDTagsDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = 329048511BCC29DC00F5D12D /* DDTagsDataSource.m */; };
 		329692E71BB5E3D100B271EB /* NSArray+ObjectMapping.m in Sources */ = {isa = PBXBuildFile; fileRef = 329692E61BB5E3D100B271EB /* NSArray+ObjectMapping.m */; };
 		329D35E21BFA0DD5005E7678 /* DDContainerHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 329D35E11BFA0DD5005E7678 /* DDContainerHeaderView.m */; };
@@ -126,8 +125,6 @@
 		328B6AD61BB5CC28004AF4CF /* DDAppearanceConfigurator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DDAppearanceConfigurator.m; sourceTree = "<group>"; };
 		328B6AD81BB5CC28004AF4CF /* DDInputValidator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DDInputValidator.h; sourceTree = "<group>"; };
 		328B6AD91BB5CC28004AF4CF /* DDInputValidator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DDInputValidator.m; sourceTree = "<group>"; };
-		328C2B921BF6091F008601BF /* DDTableViewDataSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DDTableViewDataSource.h; path = DDTableViewDataSource/DDTableViewDataSource.h; sourceTree = "<group>"; };
-		328C2B931BF6091F008601BF /* DDTableViewDataSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DDTableViewDataSource.m; path = DDTableViewDataSource/DDTableViewDataSource.m; sourceTree = "<group>"; };
 		329048501BCC29DC00F5D12D /* DDTagsDataSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DDTagsDataSource.h; sourceTree = "<group>"; };
 		329048511BCC29DC00F5D12D /* DDTagsDataSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DDTagsDataSource.m; sourceTree = "<group>"; };
 		329692E51BB5E3D100B271EB /* NSArray+ObjectMapping.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSArray+ObjectMapping.h"; sourceTree = "<group>"; };
@@ -361,7 +358,6 @@
 			children = (
 				3255654C1BCC27D5001FFEF9 /* DDTagsDataSource */,
 				325565491BCC27D5001FFEF9 /* DDPostsDataSource */,
-				328C2B951BF6092F008601BF /* DDTableViewDataSource */,
 			);
 			path = DataSources;
 			sourceTree = "<group>";
@@ -540,22 +536,13 @@
 			path = InputValidator;
 			sourceTree = "<group>";
 		};
-		328B6AE31BB5CD6B004AF4CF /* SearchTagsController */ = {
+		328B6AE31BB5CD6B004AF4CF /* MainController */ = {
 			isa = PBXGroup;
 			children = (
 				32CE79981BF67E4000343DC3 /* DDMainController.h */,
 				32CE79991BF67E4000343DC3 /* DDMainController.m */,
 			);
-			name = SearchTagsController;
-			sourceTree = "<group>";
-		};
-		328C2B951BF6092F008601BF /* DDTableViewDataSource */ = {
-			isa = PBXGroup;
-			children = (
-				328C2B921BF6091F008601BF /* DDTableViewDataSource.h */,
-				328C2B931BF6091F008601BF /* DDTableViewDataSource.m */,
-			);
-			name = DDTableViewDataSource;
+			name = MainController;
 			sourceTree = "<group>";
 		};
 		329692E41BB5E3D100B271EB /* NSArray+ObjectMapping */ = {
@@ -690,7 +677,7 @@
 			isa = PBXGroup;
 			children = (
 				32C93BF01BB82CBA00945C62 /* PreStartController */,
-				328B6AE31BB5CD6B004AF4CF /* SearchTagsController */,
+				328B6AE31BB5CD6B004AF4CF /* MainController */,
 				329D35E31BFA0E05005E7678 /* DDContainerHeaderView */,
 				328554971BC13950005B95EC /* DDInstagramViewerController */,
 				328554941BC13950005B95EC /* DDContainerViewController */,
@@ -937,7 +924,6 @@
 				321435921BBFB697001C149A /* DDImagesModel.m in Sources */,
 				329692E71BB5E3D100B271EB /* NSArray+ObjectMapping.m in Sources */,
 				3214359A1BBFB728001C149A /* DDPostModel.m in Sources */,
-				328C2B941BF6091F008601BF /* DDTableViewDataSource.m in Sources */,
 				32CE799A1BF67E4000343DC3 /* DDMainController.m in Sources */,
 				32E5B3511BB5C1D500B2ED5F /* AppDelegate.m in Sources */,
 				32F7B0981BBC7E86007207DB /* NSString+Convenience.m in Sources */,

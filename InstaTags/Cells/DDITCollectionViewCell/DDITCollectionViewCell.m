@@ -16,7 +16,6 @@
 
 @end
 
-
 @implementation DDITCollectionViewCell
 
 - (void)configWithPostModel:(DDModel *)post {

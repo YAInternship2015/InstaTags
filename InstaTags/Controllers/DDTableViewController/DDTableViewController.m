@@ -7,18 +7,12 @@
 //
 
 #import "DDTableViewController.h"
-//#import "DDITTableViewCell.h"
 #import "DDPostsDataSource.h"
 #import "SVPullToRefresh.h"
 
-#import "DDTableViewDataSource.h"
-
-//static NSString *const InstagramCellIdentifier = @"InstagramCellIdentifier";
-
 @interface DDTableViewController () <DDPostsDataSourceDelegate>
 
-@property (nonatomic, strong) DDPostsDataSource *dataSource;
-@property (nonatomic, strong) IBOutlet DDTableViewDataSource *tableViewDataSource;
+@property (strong, nonatomic) IBOutlet DDPostsDataSource *postsDataSource;
 
 @end
 
@@ -28,38 +22,8 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.tableViewDataSource = [[DDTableViewDataSource alloc] init];
-//    self.tableViewDataSource.tableView = self.tableView;
-    
-    self.dataSource = [[DDPostsDataSource alloc] initWithDelegate:self];
     [self setupLoadersCallback];
 }
-
-/*
-#pragma mark - UITableViewDataSource
-
-- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return [self.dataSource objectsCount];
-}
-
-- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    DDITTableViewCell *cell = (DDITTableViewCell *)[tableView dequeueReusableCellWithIdentifier:InstagramCellIdentifier forIndexPath:indexPath];
-    [cell configWithPostModel:[self.dataSource modelAtIndex:indexPath.row]];
-    return cell;
-}
-
-- (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath {
-    return YES;
-}
-
-- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
-    if (editingStyle == UITableViewCellEditingStyleDelete) {
-        [tableView beginUpdates];
-        [self.dataSource removeModelAtIndex:indexPath];
-        [tableView endUpdates];
-    }
-}
-*/
 
 #pragma mark - DDITDataSourceDelegate
 
@@ -74,10 +38,10 @@
 - (void)setupLoadersCallback {
     __weak typeof(self) weakSelf = self;
     [self.tableView addPullToRefreshWithActionHandler:^{
-        [weakSelf.dataSource refreshPostsWithCompletion:nil];
+        [weakSelf.postsDataSource refreshPostsWithCompletion:nil];
     }];
     [self.tableView addInfiniteScrollingWithActionHandler:^{
-        [weakSelf.dataSource requestPostsWithTag:nil completion:nil];
+        [weakSelf.postsDataSource requestPostsWithTag:nil completion:nil];
     }];
 }
 

@@ -16,17 +16,13 @@ typedef void (^SuccessBlock)(BOOL success);
 
 @interface DDPostsDataSource : NSObject
 
-@property (nonatomic, weak) id<DDPostsDataSourceDelegate>delegate;
+@property (nonatomic, weak) IBOutlet id<DDPostsDataSourceDelegate>delegate;
 
-- (instancetype)initWithDelegate:(id<DDPostsDataSourceDelegate>)delegate;
-- (NSUInteger)objectsCount;
-- (DDModel *)modelAtIndex:(NSInteger)index;
-- (void)removeModelAtIndex:(NSIndexPath *)indexPath;
 - (void)requestPostsWithTag:(NSString *)tag completion:(SuccessBlock)completion;
 - (void)refreshPostsWithCompletion:(SuccessBlock)completion;
+- (void)removeModelAtIndex:(NSIndexPath *)indexPath;
 
 @end
-
 
 @protocol DDPostsDataSourceDelegate <NSObject>
 

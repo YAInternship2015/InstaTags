@@ -239,7 +239,7 @@
             </objects>
             <point key="canvasLocation" x="1871" y="1057"/>
         </scene>
-        <!--Table View Controller-->
+        <!--Delegate-->
         <scene sceneID="844-c1-Qr5">
             <objects>
                 <tableViewController storyboardIdentifier="DDTableViewControllerID" id="I4a-1M-5tY" customClass="DDTableViewController" sceneMemberID="viewController">
@@ -343,20 +343,24 @@
                             </tableViewCell>
                         </prototypes>
                         <connections>
-                            <outlet property="dataSource" destination="Kpp-oG-aoL" id="djX-9y-geZ"/>
-                            <outlet property="delegate" destination="I4a-1M-5tY" id="iK3-Ai-8qY"/>
+                            <outlet property="dataSource" destination="QHH-Ri-TIg" id="UGB-27-5WT"/>
+                            <outlet property="delegate" destination="I4a-1M-5tY" id="xa2-gm-UPR"/>
                         </connections>
                     </tableView>
                     <connections>
-                        <outlet property="tableViewDataSource" destination="Kpp-oG-aoL" id="AmZ-r3-tQ5"/>
+                        <outlet property="postsDataSource" destination="QHH-Ri-TIg" id="PgD-gf-heD"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="8iZ-b1-XaL" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <customObject id="Kpp-oG-aoL" customClass="DDTableViewDataSource"/>
+                <customObject id="QHH-Ri-TIg" customClass="DDPostsDataSource">
+                    <connections>
+                        <outlet property="delegate" destination="I4a-1M-5tY" id="keO-H3-h3E"/>
+                    </connections>
+                </customObject>
             </objects>
             <point key="canvasLocation" x="3420" y="-107"/>
         </scene>
-        <!--Collection View Controller-->
+        <!--Delegate-->
         <scene sceneID="4MB-bN-yUQ">
             <objects>
                 <collectionViewController storyboardIdentifier="DDCollectionViewControllerID" id="tGI-KR-X93" customClass="DDCollectionViewController" sceneMemberID="viewController">
@@ -416,12 +420,20 @@
                             </collectionViewCell>
                         </cells>
                         <connections>
-                            <outlet property="dataSource" destination="tGI-KR-X93" id="U37-wD-ldv"/>
-                            <outlet property="delegate" destination="tGI-KR-X93" id="DOr-Vv-9Qq"/>
+                            <outlet property="dataSource" destination="vNe-pY-SYz" id="vmV-rL-S02"/>
+                            <outlet property="delegate" destination="vNe-pY-SYz" id="Ckn-ID-7jr"/>
                         </connections>
                     </collectionView>
+                    <connections>
+                        <outlet property="postsDataSource" destination="vNe-pY-SYz" id="uvc-Qw-rge"/>
+                    </connections>
                 </collectionViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Eas-o4-ZyK" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <customObject id="vNe-pY-SYz" customClass="DDPostsDataSource">
+                    <connections>
+                        <outlet property="delegate" destination="tGI-KR-X93" id="WJJ-cj-RRL"/>
+                    </connections>
+                </customObject>
                 <pongPressGestureRecognizer allowableMovement="10" minimumPressDuration="0.5" id="Zdh-nD-hKP">
                     <connections>
                         <action selector="handleLongPressAction:" destination="tGI-KR-X93" id="uTa-q5-kpF"/>
