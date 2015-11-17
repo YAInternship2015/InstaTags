@@ -27,6 +27,8 @@ static NSString *const HeaderContainer = @"HeaderContainer";
 @property (nonatomic, strong) DDPostsDataSource *postsDataSource;
 @property (nonatomic, strong) DDContainerHeaderView *containerHeaderView;
 @property (nonatomic, assign) BOOL isAnimated;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *bottomPickerConstraint;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *topPickerConstraint;
 
 @end
 
@@ -38,6 +40,20 @@ static NSString *const HeaderContainer = @"HeaderContainer";
     [super viewDidLoad];
     [self setupIBOutlets];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(userLogedIn) name:NotificationUserProfileSaved object:nil];
+    
+    if (CGRectGetHeight([UIScreen mainScreen].bounds) == 480.f) {
+        self.topPickerConstraint.constant = 55.f;
+        self.bottomPickerConstraint.constant = 56.f;
+        [self.pickerView layoutIfNeeded];
+    }
+    
+    NSLog(@"%f", CGRectGetHeight([UIScreen mainScreen].bounds));
+    
+    NSLog(@"SEARCH %.0f", CGRectGetMaxY(self.searchTagsTextField.frame));
+    NSLog(@"SHOW %.0f", CGRectGetMinY(self.showPhotosButton.frame));
+    
+    NSLog(@"bottomPickerConstraint = %.f", self.bottomPickerConstraint.constant);
+    NSLog(@"topPickerConstraint = %.f", self.topPickerConstraint.constant);
 }
 
 - (void)viewWillAppear:(BOOL)animated {

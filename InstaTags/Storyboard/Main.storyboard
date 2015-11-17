@@ -178,11 +178,13 @@
                     </view>
                     <navigationItem key="navigationItem" id="xkI-Y7-DNh"/>
                     <connections>
+                        <outlet property="bottomPickerConstraint" destination="2mS-Dw-o8d" id="0Nd-fk-QV7"/>
                         <outlet property="pickerView" destination="i3a-ai-LMG" id="iDf-06-ecx"/>
                         <outlet property="searchTagsTextField" destination="ccU-aJ-1Fu" id="81C-Uw-AOJ"/>
                         <outlet property="showPhotosButton" destination="6VR-vu-00s" id="lGB-du-ykx"/>
                         <outlet property="tagsDataSource" destination="Mnz-Ke-NJe" id="d2B-2M-pwG"/>
                         <outlet property="tapGestureRecognizer" destination="bxR-Kw-ORv" id="Scn-B8-OPK"/>
+                        <outlet property="topPickerConstraint" destination="hhN-ON-6Hq" id="T0K-gQ-9h4"/>
                         <segue destination="nxG-HV-EGV" kind="show" id="o8s-Km-U5j"/>
                     </connections>
                 </viewController>
