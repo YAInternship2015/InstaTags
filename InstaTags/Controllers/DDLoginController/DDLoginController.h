@@ -8,15 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@protocol LoginControllerDelegate <NSObject>
-
-@required
-- (void)loginAction;
-
-@end
-
 @interface DDLoginController : UIViewController
-
-@property (nonatomic, weak) IBOutlet id <LoginControllerDelegate> delegate;
 
 @end

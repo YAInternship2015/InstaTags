@@ -29,13 +29,10 @@
 }
 
 - (IBAction)loginAction:(UIButton *)sender {
-    
     DDAuthenticationManager *manager = [[DDAuthenticationManager alloc] init];
     [manager authenticationAndLoginUser];
-    
     [self.loginButton setVisible:NO animated:YES];
     [self.messageLabel setVisible:NO animated:YES];
-//    [self.delegate loginAction];
 }
 
 @end

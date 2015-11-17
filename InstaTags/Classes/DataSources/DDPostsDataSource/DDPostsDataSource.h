@@ -28,5 +28,6 @@ typedef void (^SuccessBlock)(BOOL success);
 
 @optional
 - (void)dataSourceDidUpdateContent;
+- (void)contentWasChangedAtIndexPath:(NSIndexPath *)indexPath forChangeType:(NSFetchedResultsChangeType)type newIndexPath:(NSIndexPath *)newIndexPath;
 
 @end
