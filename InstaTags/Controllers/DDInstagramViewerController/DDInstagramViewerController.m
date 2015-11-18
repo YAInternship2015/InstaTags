@@ -32,7 +32,6 @@ static NSString *const EmbedContainer = @"EmbedContainer";
     self.navigationItem.title = self.tagStringForTitle;
 }
 
-
 #pragma mark - UIViewController methods
 
 - (BOOL)shouldPerformSegueWithIdentifier:(NSString *)identifier sender:(id)sender {

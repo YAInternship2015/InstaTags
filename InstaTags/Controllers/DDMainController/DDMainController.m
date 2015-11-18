@@ -119,6 +119,11 @@ static NSString *const HeaderContainer = @"HeaderContainer";
 #pragma mark - Private methods
 
 - (void)setupLayoutConstraintForPickerView {
+    
+    UIScreen *mainScreen = [UIScreen mainScreen];
+    CGFloat scale = ([mainScreen respondsToSelector:@selector(scale)] ? mainScreen.scale : 1.0f);
+    CGFloat pixelHeight = (CGRectGetHeight(mainScreen.bounds) * scale);
+    
     if (UIDeviceResolution_iPhoneRetina4) {
         self.topPickerConstraint.constant = TopPickerConstraint;
         self.bottomPickerConstraint.constant = BottomPickerConstraint;

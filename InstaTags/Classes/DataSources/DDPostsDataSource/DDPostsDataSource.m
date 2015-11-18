@@ -121,8 +121,4 @@ static NSString *const InstagramCellIdentifier = @"InstagramCellIdentifier";
     [self.delegate dataSourceDidUpdateContent];
 }
 
-- (void)controller:(NSFetchedResultsController *)controller didChangeObject:(id)anObject atIndexPath:(NSIndexPath *)indexPath forChangeType:(NSFetchedResultsChangeType)type newIndexPath:(NSIndexPath *)newIndexPath {
-    [self.delegate contentWasChangedAtIndexPath:indexPath forChangeType:type newIndexPath:newIndexPath];
-}
-
 @end

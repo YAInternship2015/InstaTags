@@ -33,18 +33,6 @@
     [self.tableView.infiniteScrollingView stopAnimating];
 }
 
-- (void)contentWasChangedAtIndexPath:(NSIndexPath *)indexPath forChangeType:(NSFetchedResultsChangeType)type newIndexPath:(NSIndexPath *)newIndexPath {
-    [self.tableView beginUpdates];
-    if (type == NSFetchedResultsChangeInsert) {
-        [self.tableView insertRowsAtIndexPaths:@[newIndexPath] withRowAnimation:UITableViewRowAnimationAutomatic];
-    } else if (type == NSFetchedResultsChangeDelete) {
-        [self.tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationAutomatic];
-    } else {
-        [self.tableView reloadData];
-    }
-    [self.tableView endUpdates];
-}
-
 #pragma mark - Private methods
 
 - (void)setupLoadersCallback {
